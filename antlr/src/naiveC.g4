@@ -1,5 +1,8 @@
 // Define a grammar called Hello
 grammar naiveC;
+stmt: r
+    ;
+
 r  :  functionCall
     | functionDeclare
     | functionDefine
