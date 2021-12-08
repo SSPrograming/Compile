@@ -137,7 +137,6 @@ idList: ID ',' idList
       ;
 
 INT: [1-9][0-9]* | '0';
-NEWLINE: '\r'?'\n';
 ID : [a-zA-Z_][a-z0-9A-Z_]* ;             // match lower-case identifiers
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
@@ -202,13 +201,13 @@ defineParamList: defineParam ',' defineParamList
 
 block:  '{' statements '}';
 
-loopBlock: '{' (assignment|definition|callProc|whileBlock|loopBlock|ifLoopBlock|NEWLINE|breakLine|continueLine)* '}';
+loopBlock: '{' (assignment|definition|callProc|whileBlock|loopBlock|ifLoopBlock|breakLine|continueLine)* '}';
 
 breakLine: 'break' ';' ;
 
 continueLine: 'continue' ';' ;
 
-statements: (assignment|definition|callProc|whileBlock|block|ifBlock|NEWLINE)*;
+statements: (assignment|definition|callProc|whileBlock|block|ifBlock)*;
 
 whileBlock: 'while' '(' conditionExpr ')' loopBlock;
 
