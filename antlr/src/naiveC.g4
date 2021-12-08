@@ -193,7 +193,7 @@ param:
      ;
 
 paramList: param ',' paramList
-         | param
+         | param?
          ;
 
 defineParam: (typeIdentifier|typeIdentifierPointer) ID;
@@ -222,7 +222,7 @@ BlockComment: '/*' .*? '*/' ->skip;
 LineComment: '//' ~[\r\n]* ->skip;
 String: '"' .*? '"';
 functionCall : ID '(' paramList ')'
-             |sizeof '(' typeIdentifier ')'
+             | sizeof '(' typeIdentifier ')'
              ;
 functionDeclare: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' ';';
 functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' '{' statements return? '}';
