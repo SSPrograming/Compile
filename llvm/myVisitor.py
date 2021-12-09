@@ -54,6 +54,16 @@ class MyVisitor(naiveCVisitor):
             r_value = self.visit(ctx.expr())
             self.builder.store(r_value, l_value)
 
+    def visitAssignment(self, ctx: naiveCParser.AssignmentContext):
+        identity = ctx.ID().getSymbol().text
+        l_value = self.ST.get(identity)
+        if not l_value:
+            raise 'panic: visitAssignment'
+        if ctx.index:
+            pass
+        r_value = self.visit(ctx.value)
+        self.builder.store(r_value, l_value)
+
     def visitMulDiv(self, ctx: naiveCParser.MulDivContext) -> ir.Value:
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))

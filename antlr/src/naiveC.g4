@@ -179,7 +179,7 @@ conditionExpr: conditionExpr '&&' conditionExpr
              | expr
              ;
 
-assignment: (ID|ID '[' expr ']') AssignOperator expr ';';
+assignment: (ID|ID '[' index=expr ']') AssignOperator value=expr ';';
 
 definition: (typeIdentifier|typeIdentifierPointer) ID ('=' expr)? ';';
 

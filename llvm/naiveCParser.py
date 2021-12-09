@@ -1568,9 +1568,14 @@ class naiveCParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.index = None # ExprContext
+            self.value = None # ExprContext
 
         def AssignOperator(self):
             return self.getToken(naiveCParser.AssignOperator, 0)
+
+        def Semicolon(self):
+            return self.getToken(naiveCParser.Semicolon, 0)
 
         def expr(self, i:int=None):
             if i is None:
@@ -1578,9 +1583,6 @@ class naiveCParser ( Parser ):
             else:
                 return self.getTypedRuleContext(naiveCParser.ExprContext,i)
 
-
-        def Semicolon(self):
-            return self.getToken(naiveCParser.Semicolon, 0)
 
         def ID(self):
             return self.getToken(naiveCParser.ID, 0)
@@ -1631,7 +1633,7 @@ class naiveCParser ( Parser ):
                 self.state = 159
                 self.match(naiveCParser.LeftBracket)
                 self.state = 160
-                self.expr(0)
+                localctx.index = self.expr(0)
                 self.state = 161
                 self.match(naiveCParser.RightBracket)
                 pass
@@ -1640,7 +1642,7 @@ class naiveCParser ( Parser ):
             self.state = 165
             self.match(naiveCParser.AssignOperator)
             self.state = 166
-            self.expr(0)
+            localctx.value = self.expr(0)
             self.state = 167
             self.match(naiveCParser.Semicolon)
         except RecognitionException as re:
