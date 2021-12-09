@@ -123,16 +123,16 @@ LeftBrace: '{'
 RightBrace: '}'
     ;
 
-True: 'true'
+TRUE: 'true'
     ;
 
-False: 'false'
+FALSE: 'false'
     ;
 
 sizeof: 'sizeof'
     ;
 
-boolExpr: True | False
+boolExpr: TRUE | FALSE
         ;
 
 idList: ID ',' idList
@@ -184,7 +184,7 @@ definition: (typeIdentifier|typeIdentifierPointer) ID ('=' expr)? ';';
 
 callProc: functionCall ';';
 
-return: 'return' expr ';';
+returnLine: 'return' expr ';';
 
 param:
        expr
@@ -214,9 +214,15 @@ statements: (assignment|definition|callProc|whileBlock|block|ifBlock)*;
 
 whileBlock: 'while' '(' conditionExpr ')' loopBlock;
 
-ifBlock: 'if' '(' conditionExpr ')' block;
+ifBlock: 'if' '(' conditionExpr ')' block
+        ('else' 'if' '(' conditionExpr ')' block)*
+        ('else' block)?
+        ;
 
-ifLoopBlock: 'if' '(' conditionExpr ')' loopBlock;
+ifLoopBlock: 'if' '(' conditionExpr ')'
+            loopBlock('else' 'if' '(' conditionExpr ')' loopBlock)*
+            ('else' loopBlock)?
+            ;
 
 BlockComment: '/*' .*? '*/' ->skip;
 LineComment: '//' ~[\r\n]* ->skip;
@@ -225,4 +231,4 @@ functionCall : ID '(' paramList ')'
              | sizeof '(' typeIdentifier ')'
              ;
 functionDeclare: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' ';';
-functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' '{' statements return? '}';
+functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' '{' statements returnLine? '}';
