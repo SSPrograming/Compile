@@ -41,7 +41,7 @@ class MyVisitor(naiveCVisitor):
         elif ctx.typeIdentifierPointer():
             typeIdentifier = self.visit(ctx.typeIdentifierPointer())
         else:
-            raise 'panic: visitDefinition'
+            raise Exception('panic: visitDefinition')
         pointer_count = typeIdentifier.count('*')
         ir_type = str2irType[typeIdentifier.replace('*', '')]
         for i in range(pointer_count):
@@ -58,7 +58,8 @@ class MyVisitor(naiveCVisitor):
         identity = ctx.ID().getSymbol().text
         l_value = self.ST.get(identity)
         if not l_value:
-            raise 'panic: visitAssignment'
+            print('未定义的标识符: ' + identity)
+            raise Exception('panic: visitAssignment')
         if ctx.index:
             pass
         r_value = self.visit(ctx.value)
@@ -68,7 +69,7 @@ class MyVisitor(naiveCVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         if left.type != right.type:
-            raise 'panic: visitAddSub'
+            raise Exception('panic: visitMulDiv')
         if ctx.op.type == naiveCParser.MUL:
             return self.builder.mul(left, right)
         else:
@@ -78,7 +79,7 @@ class MyVisitor(naiveCVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         if left.type != right.type:
-            raise 'panic: visitAddSub'
+            raise Exception('panic: visitAddSub')
         if ctx.op.type == naiveCParser.ADD:
             return self.builder.add(left, right)
         else:
@@ -91,7 +92,7 @@ class MyVisitor(naiveCVisitor):
             return symbol
         else:
             print('未定义的标识符: ' + identity)
-            raise 'panic: visitGetP'
+            raise Exception('panic: visitGetP')
 
     def visitInt(self, ctx: naiveCParser.IntContext) -> ir.Constant:
         return ir.Constant(int32, int(ctx.INT().getSymbol().text))
@@ -103,10 +104,42 @@ class MyVisitor(naiveCVisitor):
             return self.builder.load(symbol)
         else:
             print('未定义的标识符: ' + identity)
-            raise 'panic: visitId'
+            raise Exception('panic: visitId')
+
+    def visitBoolExpr(self, ctx: naiveCParser.BoolExprContext) -> ir.Constant:
+        if ctx.TRUE():
+            return ir.Constant(boolean, True)
+        elif ctx.FALSE():
+            return ir.Constant(boolean, False)
+        raise Exception('panic: visitBoolExpr')
 
     def visitParens(self, ctx: naiveCParser.ParensContext) -> ir.Value:
         return self.visit(ctx.expr())
+
+    def visitConditionOperator(self, ctx: naiveCParser.ConditionOperatorContext) -> str:
+        return ctx.getChild(0).getSymbol().text
+
+    def visitAnd(self, ctx: naiveCParser.AndContext) -> boolean:
+        value0 = self.visit(ctx.conditionExpr(0))
+        value1 = self.visit(ctx.conditionExpr(1))
+        return self.builder.and_(value0, value1)
+
+    def visitOr(self, ctx: naiveCParser.OrContext) -> boolean:
+        value0 = self.visit(ctx.conditionExpr(0))
+        value1 = self.visit(ctx.conditionExpr(1))
+        return self.builder.or_(value0, value1)
+
+    def visitCondParen(self, ctx: naiveCParser.CondParenContext) -> boolean:
+        return self.visit(ctx.conditionExpr())
+
+    def visitCondOp(self, ctx: naiveCParser.CondOpContext) -> boolean:
+        value0 = self.visit(ctx.expr(0))
+        value1 = self.visit(ctx.expr(1))
+        return self.builder.icmp_signed(self.visit(ctx.conditionOperator()), value0, value1)
+
+    def visitCondExp(self, ctx: naiveCParser.CondExpContext) -> boolean:
+        value = self.visit(ctx.expr())
+        return self.builder.icmp_signed('!=', value, ir.Constant(value.type, 0))
 
     def visitReturnLine(self, ctx: naiveCParser.ReturnLineContext):
         value = self.visit(ctx.expr())
@@ -149,8 +182,28 @@ class MyVisitor(naiveCVisitor):
         else:
             return [param]
 
-    def visitFunctionCall(self, ctx: naiveCParser.FunctionCallContext):
+    def visitFunctionCall(self, ctx: naiveCParser.FunctionCallContext) -> None:
         identity = ctx.ID().getSymbol().text
         func = self.module.get_global(identity)
         paramsList = self.visit(ctx.paramList())
         self.builder.call(func, paramsList)
+
+    def visitBlock(self, ctx: naiveCParser.BlockContext) -> None:
+        self.ST = SymbolTable(self.ST)
+        self.visit(ctx.statements())
+        self.ST = self.ST.prev()
+
+    def _visitIfBlock(self, ctx: naiveCParser.IfBlockContext, i) -> None:
+        if i == len(ctx.conditionExpr()):
+            if ctx.block(i):
+                self.visit(ctx.block(i))
+            return
+        cond = self.visit(ctx.conditionExpr(i))
+        with self.builder.if_else(cond) as (then, otherwise):
+            with then:
+                self.visit(ctx.block(i))
+            with otherwise:
+                self._visitIfBlock(ctx, i + 1)
+
+    def visitIfBlock(self, ctx: naiveCParser.IfBlockContext) -> None:
+        self._visitIfBlock(ctx, 0)

@@ -161,15 +161,6 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#Fcall.
-    def enterFcall(self, ctx:naiveCParser.FcallContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#Fcall.
-    def exitFcall(self, ctx:naiveCParser.FcallContext):
-        pass
-
-
     # Enter a parse tree produced by naiveCParser#MakP.
     def enterMakP(self, ctx:naiveCParser.MakPContext):
         pass
@@ -188,6 +179,15 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by naiveCParser#FCall.
+    def enterFCall(self, ctx:naiveCParser.FCallContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#FCall.
+    def exitFCall(self, ctx:naiveCParser.FCallContext):
+        pass
+
+
     # Enter a parse tree produced by naiveCParser#conditionOperator.
     def enterConditionOperator(self, ctx:naiveCParser.ConditionOperatorContext):
         pass
@@ -197,12 +197,48 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#conditionExpr.
-    def enterConditionExpr(self, ctx:naiveCParser.ConditionExprContext):
+    # Enter a parse tree produced by naiveCParser#CondExp.
+    def enterCondExp(self, ctx:naiveCParser.CondExpContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#conditionExpr.
-    def exitConditionExpr(self, ctx:naiveCParser.ConditionExprContext):
+    # Exit a parse tree produced by naiveCParser#CondExp.
+    def exitCondExp(self, ctx:naiveCParser.CondExpContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Or.
+    def enterOr(self, ctx:naiveCParser.OrContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Or.
+    def exitOr(self, ctx:naiveCParser.OrContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#And.
+    def enterAnd(self, ctx:naiveCParser.AndContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#And.
+    def exitAnd(self, ctx:naiveCParser.AndContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#CondOp.
+    def enterCondOp(self, ctx:naiveCParser.CondOpContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#CondOp.
+    def exitCondOp(self, ctx:naiveCParser.CondOpContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#CondParen.
+    def enterCondParen(self, ctx:naiveCParser.CondParenContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#CondParen.
+    def exitCondParen(self, ctx:naiveCParser.CondParenContext):
         pass
 
 

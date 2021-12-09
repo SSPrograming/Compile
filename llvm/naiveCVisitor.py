@@ -94,11 +94,6 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#Fcall.
-    def visitFcall(self, ctx:naiveCParser.FcallContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by naiveCParser#MakP.
     def visitMakP(self, ctx:naiveCParser.MakPContext):
         return self.visitChildren(ctx)
@@ -109,13 +104,38 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by naiveCParser#FCall.
+    def visitFCall(self, ctx:naiveCParser.FCallContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by naiveCParser#conditionOperator.
     def visitConditionOperator(self, ctx:naiveCParser.ConditionOperatorContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#conditionExpr.
-    def visitConditionExpr(self, ctx:naiveCParser.ConditionExprContext):
+    # Visit a parse tree produced by naiveCParser#CondExp.
+    def visitCondExp(self, ctx:naiveCParser.CondExpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Or.
+    def visitOr(self, ctx:naiveCParser.OrContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#And.
+    def visitAnd(self, ctx:naiveCParser.AndContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#CondOp.
+    def visitCondOp(self, ctx:naiveCParser.CondOpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#CondParen.
+    def visitCondParen(self, ctx:naiveCParser.CondParenContext):
         return self.visitChildren(ctx)
 
 

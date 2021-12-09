@@ -159,7 +159,7 @@ expr: expr op=(MUL|DIV) expr    # MulDiv
     | '*' expr                  # MakP
     | INT                       # Int
     | ID                        # Id
-    | functionCall              # Fcall
+    | functionCall              # FCall
     | boolExpr                  # TrueFalse
     | expr '[' expr ']'         # ArrayVisit
     | '(' expr ')'              # Parens
@@ -172,11 +172,11 @@ conditionOperator: Greater
                  | Equal
                  ;
 
-conditionExpr: conditionExpr '&&' conditionExpr
-             | conditionExpr '||'  conditionExpr
-             | '(' conditionExpr ')'
-             | expr conditionOperator expr
-             | expr
+conditionExpr: conditionExpr '&&' conditionExpr  # And
+             | conditionExpr '||'  conditionExpr # Or
+             | '(' conditionExpr ')' # CondParen
+             | expr conditionOperator expr # CondOp
+             | expr # CondExp
              ;
 
 assignment: (ID|ID '[' index=expr ']') AssignOperator value=expr ';';
@@ -218,8 +218,8 @@ returnStatemts: (assignment|definition|callProc|whileBlock|block|ifBlock|returnL
 whileBlock: 'while' '(' conditionExpr ')' loopBlock;
 
 ifBlock: 'if' '(' conditionExpr ')' block
-        ('else' 'if' '(' conditionExpr ')' block)*
-        ('else' block)?
+        ('else' 'if' '(' elif_cond=conditionExpr ')' block)*
+        ('else' else_block=block)?
         ;
 
 ifLoopBlock: 'if' '(' conditionExpr ')'

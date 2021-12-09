@@ -1118,31 +1118,6 @@ class naiveCParser ( Parser ):
                 return visitor.visitChildren(self)
 
 
-    class FcallContext(ExprContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.ExprContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def functionCall(self):
-            return self.getTypedRuleContext(naiveCParser.FunctionCallContext,0)
-
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterFcall" ):
-                listener.enterFcall(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitFcall" ):
-                listener.exitFcall(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitFcall" ):
-                return visitor.visitFcall(self)
-            else:
-                return visitor.visitChildren(self)
-
-
     class MakPContext(ExprContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.ExprContext
@@ -1190,6 +1165,31 @@ class naiveCParser ( Parser ):
         def accept(self, visitor:ParseTreeVisitor):
             if hasattr( visitor, "visitInt" ):
                 return visitor.visitInt(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class FCallContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def functionCall(self):
+            return self.getTypedRuleContext(naiveCParser.FunctionCallContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterFCall" ):
+                listener.enterFCall(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitFCall" ):
+                listener.exitFCall(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitFCall" ):
+                return visitor.visitFCall(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1246,7 +1246,7 @@ class naiveCParser ( Parser ):
                 pass
 
             elif la_ == 5:
-                localctx = naiveCParser.FcallContext(self, localctx)
+                localctx = naiveCParser.FCallContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 108
@@ -1425,8 +1425,45 @@ class naiveCParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def LeftParentheses(self):
-            return self.getToken(naiveCParser.LeftParentheses, 0)
+
+        def getRuleIndex(self):
+            return naiveCParser.RULE_conditionExpr
+
+     
+        def copyFrom(self, ctx:ParserRuleContext):
+            super().copyFrom(ctx)
+
+
+    class CondExpContext(ConditionExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.ConditionExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def expr(self):
+            return self.getTypedRuleContext(naiveCParser.ExprContext,0)
+
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCondExp" ):
+                listener.enterCondExp(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCondExp" ):
+                listener.exitCondExp(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCondExp" ):
+                return visitor.visitCondExp(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class OrContext(ConditionExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.ConditionExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
 
         def conditionExpr(self, i:int=None):
             if i is None:
@@ -1434,9 +1471,59 @@ class naiveCParser ( Parser ):
             else:
                 return self.getTypedRuleContext(naiveCParser.ConditionExprContext,i)
 
+        def LogicOR(self):
+            return self.getToken(naiveCParser.LogicOR, 0)
 
-        def RightParentheses(self):
-            return self.getToken(naiveCParser.RightParentheses, 0)
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterOr" ):
+                listener.enterOr(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitOr" ):
+                listener.exitOr(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitOr" ):
+                return visitor.visitOr(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class AndContext(ConditionExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.ConditionExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def conditionExpr(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(naiveCParser.ConditionExprContext)
+            else:
+                return self.getTypedRuleContext(naiveCParser.ConditionExprContext,i)
+
+        def LogicAnd(self):
+            return self.getToken(naiveCParser.LogicAnd, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterAnd" ):
+                listener.enterAnd(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitAnd" ):
+                listener.exitAnd(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitAnd" ):
+                return visitor.visitAnd(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class CondOpContext(ConditionExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.ConditionExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
 
         def expr(self, i:int=None):
             if i is None:
@@ -1444,31 +1531,50 @@ class naiveCParser ( Parser ):
             else:
                 return self.getTypedRuleContext(naiveCParser.ExprContext,i)
 
-
         def conditionOperator(self):
             return self.getTypedRuleContext(naiveCParser.ConditionOperatorContext,0)
 
 
-        def LogicAnd(self):
-            return self.getToken(naiveCParser.LogicAnd, 0)
-
-        def LogicOR(self):
-            return self.getToken(naiveCParser.LogicOR, 0)
-
-        def getRuleIndex(self):
-            return naiveCParser.RULE_conditionExpr
-
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterConditionExpr" ):
-                listener.enterConditionExpr(self)
+            if hasattr( listener, "enterCondOp" ):
+                listener.enterCondOp(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitConditionExpr" ):
-                listener.exitConditionExpr(self)
+            if hasattr( listener, "exitCondOp" ):
+                listener.exitCondOp(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitConditionExpr" ):
-                return visitor.visitConditionExpr(self)
+            if hasattr( visitor, "visitCondOp" ):
+                return visitor.visitCondOp(self)
+            else:
+                return visitor.visitChildren(self)
+
+
+    class CondParenContext(ConditionExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.ConditionExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def LeftParentheses(self):
+            return self.getToken(naiveCParser.LeftParentheses, 0)
+        def conditionExpr(self):
+            return self.getTypedRuleContext(naiveCParser.ConditionExprContext,0)
+
+        def RightParentheses(self):
+            return self.getToken(naiveCParser.RightParentheses, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterCondParen" ):
+                listener.enterCondParen(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitCondParen" ):
+                listener.exitCondParen(self)
+
+        def accept(self, visitor:ParseTreeVisitor):
+            if hasattr( visitor, "visitCondParen" ):
+                return visitor.visitCondParen(self)
             else:
                 return visitor.visitChildren(self)
 
@@ -1487,6 +1593,10 @@ class naiveCParser ( Parser ):
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
+                localctx = naiveCParser.CondParenContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+
                 self.state = 135
                 self.match(naiveCParser.LeftParentheses)
                 self.state = 136
@@ -1496,6 +1606,9 @@ class naiveCParser ( Parser ):
                 pass
 
             elif la_ == 2:
+                localctx = naiveCParser.CondOpContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
                 self.state = 139
                 self.expr(0)
                 self.state = 140
@@ -1505,6 +1618,9 @@ class naiveCParser ( Parser ):
                 pass
 
             elif la_ == 3:
+                localctx = naiveCParser.CondExpContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
                 self.state = 143
                 self.expr(0)
                 pass
@@ -1523,7 +1639,7 @@ class naiveCParser ( Parser ):
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
                     if la_ == 1:
-                        localctx = naiveCParser.ConditionExprContext(self, _parentctx, _parentState)
+                        localctx = naiveCParser.AndContext(self, naiveCParser.ConditionExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_conditionExpr)
                         self.state = 146
                         if not self.precpred(self._ctx, 5):
@@ -1536,7 +1652,7 @@ class naiveCParser ( Parser ):
                         pass
 
                     elif la_ == 2:
-                        localctx = naiveCParser.ConditionExprContext(self, _parentctx, _parentState)
+                        localctx = naiveCParser.OrContext(self, naiveCParser.ConditionExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_conditionExpr)
                         self.state = 149
                         if not self.precpred(self._ctx, 4):
@@ -2880,6 +2996,11 @@ class naiveCParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
+            self.if_cond = None # ConditionExprContext
+            self.if_block = None # BlockContext
+            self.elif_cond = None # ConditionExprContext
+            self.elif_block = None # BlockContext
+            self.else_block = None # BlockContext
 
         def If(self, i:int=None):
             if i is None:
@@ -2893,18 +3014,18 @@ class naiveCParser ( Parser ):
             else:
                 return self.getToken(naiveCParser.LeftParentheses, i)
 
+        def RightParentheses(self, i:int=None):
+            if i is None:
+                return self.getTokens(naiveCParser.RightParentheses)
+            else:
+                return self.getToken(naiveCParser.RightParentheses, i)
+
         def conditionExpr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(naiveCParser.ConditionExprContext)
             else:
                 return self.getTypedRuleContext(naiveCParser.ConditionExprContext,i)
 
-
-        def RightParentheses(self, i:int=None):
-            if i is None:
-                return self.getTokens(naiveCParser.RightParentheses)
-            else:
-                return self.getToken(naiveCParser.RightParentheses, i)
 
         def block(self, i:int=None):
             if i is None:
@@ -2951,11 +3072,11 @@ class naiveCParser ( Parser ):
             self.state = 275
             self.match(naiveCParser.LeftParentheses)
             self.state = 276
-            self.conditionExpr(0)
+            localctx.if_cond = self.conditionExpr(0)
             self.state = 277
             self.match(naiveCParser.RightParentheses)
             self.state = 278
-            self.block()
+            localctx.if_block = self.block()
             self.state = 288
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,26,self._ctx)
@@ -2968,11 +3089,11 @@ class naiveCParser ( Parser ):
                     self.state = 281
                     self.match(naiveCParser.LeftParentheses)
                     self.state = 282
-                    self.conditionExpr(0)
+                    localctx.elif_cond = self.conditionExpr(0)
                     self.state = 283
                     self.match(naiveCParser.RightParentheses)
                     self.state = 284
-                    self.block() 
+                    localctx.elif_block = self.block() 
                 self.state = 290
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,26,self._ctx)
@@ -2984,7 +3105,7 @@ class naiveCParser ( Parser ):
                 self.state = 291
                 self.match(naiveCParser.Else)
                 self.state = 292
-                self.block()
+                localctx.else_block = self.block()
 
 
         except RecognitionException as re:
