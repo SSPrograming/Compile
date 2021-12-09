@@ -1,6 +1,6 @@
 // Define a grammar called Hello
 grammar naiveC;
-stmt: r
+prog: r
     ;
 
 r  :  functionCall
@@ -10,6 +10,7 @@ r  :  functionCall
     | r functionDefine
     | r functionDeclare
 ;         // match keyword hello followed by an identifier
+
 Include: '#include'  ~[\r\n]* ->skip;
 typeIdentifier: TypeInt
                | TypeVoid
