@@ -9,6 +9,11 @@ else:
 
 class naiveCVisitor(ParseTreeVisitor):
 
+    # Visit a parse tree produced by naiveCParser#stmt.
+    def visitStmt(self, ctx:naiveCParser.StmtContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by naiveCParser#r.
     def visitR(self, ctx:naiveCParser.RContext):
         return self.visitChildren(ctx)
@@ -74,8 +79,8 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#return.
-    def visitReturn(self, ctx:naiveCParser.ReturnContext):
+    # Visit a parse tree produced by naiveCParser#returnLine.
+    def visitReturnLine(self, ctx:naiveCParser.ReturnLineContext):
         return self.visitChildren(ctx)
 
 
@@ -131,6 +136,11 @@ class naiveCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by naiveCParser#ifBlock.
     def visitIfBlock(self, ctx:naiveCParser.IfBlockContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#ifLoopBlock.
+    def visitIfLoopBlock(self, ctx:naiveCParser.IfLoopBlockContext):
         return self.visitChildren(ctx)
 
 

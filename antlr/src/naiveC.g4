@@ -215,9 +215,15 @@ statements: (assignment|definition|callProc|whileBlock|block|ifBlock)*;
 
 whileBlock: 'while' '(' conditionExpr ')' loopBlock;
 
-ifBlock: 'if' '(' conditionExpr ')' block;
+ifBlock: 'if' '(' conditionExpr ')' block
+        ('else' 'if' '(' conditionExpr ')' block)*
+        ('else' block)?
+        ;
 
-ifLoopBlock: 'if' '(' conditionExpr ')' loopBlock;
+ifLoopBlock: 'if' '(' conditionExpr ')'
+            loopBlock('else' 'if' '(' conditionExpr ')' loopBlock)*
+            ('else' loopBlock)?
+            ;
 
 BlockComment: '/*' .*? '*/' ->skip;
 LineComment: '//' ~[\r\n]* ->skip;
