@@ -26,12 +26,30 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#typeIdentifier.
-    def enterTypeIdentifier(self, ctx:naiveCParser.TypeIdentifierContext):
+    # Enter a parse tree produced by naiveCParser#TypeInt.
+    def enterTypeInt(self, ctx:naiveCParser.TypeIntContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#typeIdentifier.
-    def exitTypeIdentifier(self, ctx:naiveCParser.TypeIdentifierContext):
+    # Exit a parse tree produced by naiveCParser#TypeInt.
+    def exitTypeInt(self, ctx:naiveCParser.TypeIntContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#TypeVoid.
+    def enterTypeVoid(self, ctx:naiveCParser.TypeVoidContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#TypeVoid.
+    def exitTypeVoid(self, ctx:naiveCParser.TypeVoidContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#TypeChar.
+    def enterTypeChar(self, ctx:naiveCParser.TypeCharContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#TypeChar.
+    def exitTypeChar(self, ctx:naiveCParser.TypeCharContext):
         pass
 
 
@@ -80,12 +98,93 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#expr.
-    def enterExpr(self, ctx:naiveCParser.ExprContext):
+    # Enter a parse tree produced by naiveCParser#TrueFalse.
+    def enterTrueFalse(self, ctx:naiveCParser.TrueFalseContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#expr.
-    def exitExpr(self, ctx:naiveCParser.ExprContext):
+    # Exit a parse tree produced by naiveCParser#TrueFalse.
+    def exitTrueFalse(self, ctx:naiveCParser.TrueFalseContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#MulDiv.
+    def enterMulDiv(self, ctx:naiveCParser.MulDivContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#MulDiv.
+    def exitMulDiv(self, ctx:naiveCParser.MulDivContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#AddSub.
+    def enterAddSub(self, ctx:naiveCParser.AddSubContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#AddSub.
+    def exitAddSub(self, ctx:naiveCParser.AddSubContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Parens.
+    def enterParens(self, ctx:naiveCParser.ParensContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Parens.
+    def exitParens(self, ctx:naiveCParser.ParensContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Getp.
+    def enterGetp(self, ctx:naiveCParser.GetpContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Getp.
+    def exitGetp(self, ctx:naiveCParser.GetpContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Id.
+    def enterId(self, ctx:naiveCParser.IdContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Id.
+    def exitId(self, ctx:naiveCParser.IdContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#ArrayVisit.
+    def enterArrayVisit(self, ctx:naiveCParser.ArrayVisitContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#ArrayVisit.
+    def exitArrayVisit(self, ctx:naiveCParser.ArrayVisitContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Fcall.
+    def enterFcall(self, ctx:naiveCParser.FcallContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Fcall.
+    def exitFcall(self, ctx:naiveCParser.FcallContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Makp.
+    def enterMakp(self, ctx:naiveCParser.MakpContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Makp.
+    def exitMakp(self, ctx:naiveCParser.MakpContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Int.
+    def enterInt(self, ctx:naiveCParser.IntContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Int.
+    def exitInt(self, ctx:naiveCParser.IntContext):
         pass
 
 

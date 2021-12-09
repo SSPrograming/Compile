@@ -19,8 +19,18 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#typeIdentifier.
-    def visitTypeIdentifier(self, ctx:naiveCParser.TypeIdentifierContext):
+    # Visit a parse tree produced by naiveCParser#TypeInt.
+    def visitTypeInt(self, ctx:naiveCParser.TypeIntContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#TypeVoid.
+    def visitTypeVoid(self, ctx:naiveCParser.TypeVoidContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#TypeChar.
+    def visitTypeChar(self, ctx:naiveCParser.TypeCharContext):
         return self.visitChildren(ctx)
 
 
@@ -49,8 +59,53 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#expr.
-    def visitExpr(self, ctx:naiveCParser.ExprContext):
+    # Visit a parse tree produced by naiveCParser#TrueFalse.
+    def visitTrueFalse(self, ctx:naiveCParser.TrueFalseContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#MulDiv.
+    def visitMulDiv(self, ctx:naiveCParser.MulDivContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#AddSub.
+    def visitAddSub(self, ctx:naiveCParser.AddSubContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Parens.
+    def visitParens(self, ctx:naiveCParser.ParensContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Getp.
+    def visitGetp(self, ctx:naiveCParser.GetpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Id.
+    def visitId(self, ctx:naiveCParser.IdContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#ArrayVisit.
+    def visitArrayVisit(self, ctx:naiveCParser.ArrayVisitContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Fcall.
+    def visitFcall(self, ctx:naiveCParser.FcallContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Makp.
+    def visitMakp(self, ctx:naiveCParser.MakpContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Int.
+    def visitInt(self, ctx:naiveCParser.IntContext):
         return self.visitChildren(ctx)
 
 
