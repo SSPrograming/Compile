@@ -193,14 +193,12 @@ param:
      | String
      ;
 
-paramList: param ',' paramList
-         | param?
+paramList: param (',' param)*
          ;
 
 defineParam: (typeIdentifier|typeIdentifierPointer) ID;
 
-defineParamList: defineParam ',' defineParamList
-               | defineParam?
+defineParamList: defineParam (',' defineParam)*
                ;
 
 block:  '{' statements '}';
