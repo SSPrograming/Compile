@@ -6,9 +6,9 @@ from utils.llvm_construct import *
 
 
 class MyVisitor(naiveCVisitor):
-    def __init__(self):
-        self.ST = {}
-        self.module = ir.Module()
+    def __init__(self, ST: {}, module: ir.Module):
+        self.ST = ST
+        self.module = module
         self.builder = ir.IRBuilder()
         # Printf Function
         printf_ty = ir.FunctionType(int32, [ir.PointerType(char)], var_arg=True)
@@ -104,7 +104,7 @@ class MyVisitor(naiveCVisitor):
 
     def visitParamString(self, ctx: naiveCParser.ParamStringContext) -> ir.Value:
         string = ctx.String().getSymbol().text
-        g_string = add_global_string_constant(self.module, string)
+        g_string = self.ST[string]
         return self.builder.bitcast(self.builder.gep(g_string, [ir.Constant(int32, 0)], inbounds=True),
                                     ir.PointerType(char))
 
