@@ -42,7 +42,7 @@ class MyVisitor(naiveCVisitor):
         else:
             raise 'panic: visitDefinition'
         pointer_count = typeIdentifier.count('*')
-        ir_type = str2type[typeIdentifier.replace('*', '')]
+        ir_type = str2irType[typeIdentifier.replace('*', '')]
         for i in range(pointer_count):
             ir_type = ir.PointerType(ir_type)
         identity = ctx.ID().getSymbol().text
@@ -89,10 +89,10 @@ class MyVisitor(naiveCVisitor):
         self.builder.ret(value)
 
     def visitFunctionDefine(self, ctx: naiveCParser.FunctionDefineContext):
-        typeIdentifier = str2type[self.visit(ctx.typeIdentifier())]
+        typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
         identity = ctx.ID().getSymbol().text
         paramList = []
-        paramList = [str2type[item] for item in paramList]
+        paramList = [str2irType[item] for item in paramList]
         func_ty = ir.FunctionType(typeIdentifier, paramList)
         # TODO: 函数重定义
         func = ir.Function(self.module, func_ty, name=identity)

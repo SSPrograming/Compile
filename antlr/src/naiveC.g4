@@ -155,7 +155,7 @@ arithmeticOperator:   ADD
 
 expr: expr op=(MUL|DIV) expr    # MulDiv
     | expr op=(ADD|SUB) expr    # AddSub
-    | '&' expr                  # GetP
+    | '&' ID                    # GetP
     | '*' expr                  # MakP
     | INT                       # Int
     | ID                        # Id
