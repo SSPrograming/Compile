@@ -213,11 +213,19 @@ continueLine: 'continue' ';' ;
 
 statements: (assignment|definition|callProc|whileBlock|block|ifBlock)*;
 
+returnStatemts: (assignment|definition|callProc|whileBlock|block|ifBlock|returnLine)*;
+
 whileBlock: 'while' '(' conditionExpr ')' loopBlock;
 
-ifBlock: 'if' '(' conditionExpr ')' block;
+ifBlock: 'if' '(' conditionExpr ')' block
+        ('else' 'if' '(' conditionExpr ')' block)*
+        ('else' block)?
+        ;
 
-ifLoopBlock: 'if' '(' conditionExpr ')' loopBlock;
+ifLoopBlock: 'if' '(' conditionExpr ')'
+            loopBlock('else' 'if' '(' conditionExpr ')' loopBlock)*
+            ('else' loopBlock)?
+            ;
 
 BlockComment: '/*' .*? '*/' ->skip;
 LineComment: '//' ~[\r\n]* ->skip;
@@ -226,4 +234,4 @@ functionCall : ID '(' paramList ')'
              | sizeof '(' typeIdentifier ')'
              ;
 functionDeclare: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' ';';
-functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' '{' statements returnLine? '}';
+functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' '{' returnStatemts '}';

@@ -8,6 +8,15 @@ else:
 # This class defines a complete listener for a parse tree produced by naiveCParser.
 class naiveCListener(ParseTreeListener):
 
+    # Enter a parse tree produced by naiveCParser#stmt.
+    def enterStmt(self, ctx:naiveCParser.StmtContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#stmt.
+    def exitStmt(self, ctx:naiveCParser.StmtContext):
+        pass
+
+
     # Enter a parse tree produced by naiveCParser#r.
     def enterR(self, ctx:naiveCParser.RContext):
         pass
@@ -125,12 +134,12 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#return.
-    def enterReturn(self, ctx:naiveCParser.ReturnContext):
+    # Enter a parse tree produced by naiveCParser#returnLine.
+    def enterReturnLine(self, ctx:naiveCParser.ReturnLineContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#return.
-    def exitReturn(self, ctx:naiveCParser.ReturnContext):
+    # Exit a parse tree produced by naiveCParser#returnLine.
+    def exitReturnLine(self, ctx:naiveCParser.ReturnLineContext):
         pass
 
 
@@ -230,6 +239,15 @@ class naiveCListener(ParseTreeListener):
 
     # Exit a parse tree produced by naiveCParser#ifBlock.
     def exitIfBlock(self, ctx:naiveCParser.IfBlockContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#ifLoopBlock.
+    def enterIfLoopBlock(self, ctx:naiveCParser.IfLoopBlockContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#ifLoopBlock.
+    def exitIfLoopBlock(self, ctx:naiveCParser.IfLoopBlockContext):
         pass
 
 
