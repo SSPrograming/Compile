@@ -12,9 +12,9 @@ r  :  functionCall
 ;         // match keyword hello followed by an identifier
 
 Include: '#include'  ~[\r\n]* ->skip;
-typeIdentifier: TypeInt
-               | TypeVoid
-               | TypeChar
+typeIdentifier: TypeInt  # TypeInt
+               | TypeVoid # TypeVoid
+               | TypeChar # TypeChar
                ;
 
 typeIdentifierPointer: typeIdentifier '*';
@@ -153,16 +153,16 @@ arithmeticOperator:   ADD
                     | ArithmeticOR
                     ;
 
-expr: expr op=(MUL|DIV) expr
-    | expr op=(ADD|SUB) expr
-    | '&' expr
-    | '*' expr
-    | INT
-    | ID
-    | functionCall
-    | boolExpr
-    | expr '[' expr ']'
-    | '(' expr ')'
+expr: expr op=(MUL|DIV) expr    # MulDiv
+    | expr op=(ADD|SUB) expr    # AddSub
+    | '&' expr                  # Getp
+    | '*' expr                  # Makp
+    | INT                       # Int
+    | ID                        # Id
+    | functionCall              # Fcall
+    | boolExpr                  # TrueFalse
+    | expr '[' expr ']'         # ArrayVisit
+    | '(' expr ')'              # Parens
     ;
 
 conditionOperator: Greater

@@ -6,7 +6,7 @@ from antlr4 import FileStream
 from antlr4 import CommonTokenStream
 
 if __name__ == '__main__':
-    source = '../input/main.c'
+    source = '../input/basic_io.c'
     input_stream = FileStream(source)
     lexer = naiveCLexer(input_stream)
     token = CommonTokenStream(lexer)
