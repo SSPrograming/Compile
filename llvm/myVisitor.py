@@ -69,6 +69,7 @@ class MyVisitor(naiveCVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         if left.type != right.type:
+            print('类型不匹配')
             raise Exception('panic: visitMulDiv')
         if ctx.op.type == naiveCParser.MUL:
             return self.builder.mul(left, right)
@@ -79,6 +80,7 @@ class MyVisitor(naiveCVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         if left.type != right.type:
+            print('类型不匹配')
             raise Exception('panic: visitAddSub')
         if ctx.op.type == naiveCParser.ADD:
             return self.builder.add(left, right)
@@ -141,12 +143,12 @@ class MyVisitor(naiveCVisitor):
         value = self.visit(ctx.expr())
         return self.builder.icmp_signed('!=', value, ir.Constant(value.type, 0))
 
-    def visitReturnLine(self, ctx: naiveCParser.ReturnLineContext):
+    def visitReturnLine(self, ctx: naiveCParser.ReturnLineContext) -> None:
         value = self.visit(ctx.expr())
         self.builder.ret(value)
         self.ST = self.ST.prev()
 
-    def visitFunctionDefine(self, ctx: naiveCParser.FunctionDefineContext):
+    def visitFunctionDefine(self, ctx: naiveCParser.FunctionDefineContext) -> None:
         typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
         identity = ctx.ID().getSymbol().text
         paramList = []
