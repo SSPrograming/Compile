@@ -10,6 +10,7 @@ r  :  functionCall
     | r functionDefine
     | r functionDeclare
 ;         // match keyword hello followed by an identifier
+
 Include: '#include'  ~[\r\n]* ->skip;
 typeIdentifier: TypeInt
                | TypeVoid
@@ -123,16 +124,16 @@ LeftBrace: '{'
 RightBrace: '}'
     ;
 
-True: 'true'
+TRUE: 'true'
     ;
 
-False: 'false'
+FALSE: 'false'
     ;
 
 sizeof: 'sizeof'
     ;
 
-boolExpr: True | False
+boolExpr: TRUE | FALSE
         ;
 
 idList: ID ',' idList
@@ -184,7 +185,7 @@ definition: (typeIdentifier|typeIdentifierPointer) ID ('=' expr)? ';';
 
 callProc: functionCall ';';
 
-return: 'return' expr ';';
+returnLine: 'return' expr ';';
 
 param:
        expr
@@ -225,4 +226,4 @@ functionCall : ID '(' paramList ')'
              | sizeof '(' typeIdentifier ')'
              ;
 functionDeclare: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' ';';
-functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' '{' statements return? '}';
+functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' '{' statements returnLine? '}';
