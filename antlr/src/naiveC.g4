@@ -155,8 +155,8 @@ arithmeticOperator:   ADD
 
 expr: expr op=(MUL|DIV) expr    # MulDiv
     | expr op=(ADD|SUB) expr    # AddSub
-    | '&' expr                  # Getp
-    | '*' expr                  # Makp
+    | '&' expr                  # GetP
+    | '*' expr                  # MakP
     | INT                       # Int
     | ID                        # Id
     | functionCall              # Fcall
@@ -188,12 +188,12 @@ callProc: functionCall ';';
 returnLine: 'return' expr ';';
 
 param:
-       expr
-     | functionCall
-     | String
+       expr             # ParamExpr
+     | functionCall     # ParamFunc
+     | String           # ParamString
      ;
 
-paramList: param ',' paramList
+paramList: paramList ',' param
          | param?
          ;
 

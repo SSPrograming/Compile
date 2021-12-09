@@ -16,4 +16,4 @@ if __name__ == '__main__':
     visitor.visit(tree)
 
     print(visitor.module)
-    visitor.write('../output/main.ll')
+    visitor.write('../output/basic_io.ll')

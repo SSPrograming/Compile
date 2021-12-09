@@ -134,12 +134,12 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#Getp.
-    def enterGetp(self, ctx:naiveCParser.GetpContext):
+    # Enter a parse tree produced by naiveCParser#GetP.
+    def enterGetP(self, ctx:naiveCParser.GetPContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#Getp.
-    def exitGetp(self, ctx:naiveCParser.GetpContext):
+    # Exit a parse tree produced by naiveCParser#GetP.
+    def exitGetP(self, ctx:naiveCParser.GetPContext):
         pass
 
 
@@ -170,12 +170,12 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#Makp.
-    def enterMakp(self, ctx:naiveCParser.MakpContext):
+    # Enter a parse tree produced by naiveCParser#MakP.
+    def enterMakP(self, ctx:naiveCParser.MakPContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#Makp.
-    def exitMakp(self, ctx:naiveCParser.MakpContext):
+    # Exit a parse tree produced by naiveCParser#MakP.
+    def exitMakP(self, ctx:naiveCParser.MakPContext):
         pass
 
 
@@ -242,12 +242,30 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#param.
-    def enterParam(self, ctx:naiveCParser.ParamContext):
+    # Enter a parse tree produced by naiveCParser#ParamExpr.
+    def enterParamExpr(self, ctx:naiveCParser.ParamExprContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#param.
-    def exitParam(self, ctx:naiveCParser.ParamContext):
+    # Exit a parse tree produced by naiveCParser#ParamExpr.
+    def exitParamExpr(self, ctx:naiveCParser.ParamExprContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#ParamFunc.
+    def enterParamFunc(self, ctx:naiveCParser.ParamFuncContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#ParamFunc.
+    def exitParamFunc(self, ctx:naiveCParser.ParamFuncContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#ParamString.
+    def enterParamString(self, ctx:naiveCParser.ParamStringContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#ParamString.
+    def exitParamString(self, ctx:naiveCParser.ParamStringContext):
         pass
 
 
@@ -320,6 +338,15 @@ class naiveCListener(ParseTreeListener):
 
     # Exit a parse tree produced by naiveCParser#statements.
     def exitStatements(self, ctx:naiveCParser.StatementsContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#returnStatemts.
+    def enterReturnStatemts(self, ctx:naiveCParser.ReturnStatemtsContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#returnStatemts.
+    def exitReturnStatemts(self, ctx:naiveCParser.ReturnStatemtsContext):
         pass
 
 

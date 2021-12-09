@@ -79,8 +79,8 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#Getp.
-    def visitGetp(self, ctx:naiveCParser.GetpContext):
+    # Visit a parse tree produced by naiveCParser#GetP.
+    def visitGetP(self, ctx:naiveCParser.GetPContext):
         return self.visitChildren(ctx)
 
 
@@ -99,8 +99,8 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#Makp.
-    def visitMakp(self, ctx:naiveCParser.MakpContext):
+    # Visit a parse tree produced by naiveCParser#MakP.
+    def visitMakP(self, ctx:naiveCParser.MakPContext):
         return self.visitChildren(ctx)
 
 
@@ -139,8 +139,18 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#param.
-    def visitParam(self, ctx:naiveCParser.ParamContext):
+    # Visit a parse tree produced by naiveCParser#ParamExpr.
+    def visitParamExpr(self, ctx:naiveCParser.ParamExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#ParamFunc.
+    def visitParamFunc(self, ctx:naiveCParser.ParamFuncContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#ParamString.
+    def visitParamString(self, ctx:naiveCParser.ParamStringContext):
         return self.visitChildren(ctx)
 
 
@@ -181,6 +191,11 @@ class naiveCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by naiveCParser#statements.
     def visitStatements(self, ctx:naiveCParser.StatementsContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#returnStatemts.
+    def visitReturnStatemts(self, ctx:naiveCParser.ReturnStatemtsContext):
         return self.visitChildren(ctx)
 
 
