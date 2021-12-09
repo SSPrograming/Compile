@@ -1,6 +1,6 @@
 // Define a grammar called Hello
 grammar naiveC;
-stmt: r
+prog: r
     ;
 
 r  :  functionCall
