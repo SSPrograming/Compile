@@ -1,4 +1,4 @@
-# Generated from E:/Tsinghua/课程/大三上/汇编与编译原理/作业/编译/编译小组作业/src/Compile/antlr/src\naiveC.g4 by ANTLR 4.9.2
+# Generated from E:/Tsinghua/课程/大三上/汇编与编译原理/作业/编译/编译小组作业/src/LLVM/antlr/src\naiveC.g4 by ANTLR 4.9.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -65,14 +65,14 @@ def serializedATN():
         buf.write("W\7\3\2\2\2XY\5\6\4\2YZ\7\23\2\2Z\t\3\2\2\2[\\\7\3\2\2")
         buf.write("\\\13\3\2\2\2]^\t\2\2\2^\r\3\2\2\2_`\7,\2\2`a\7\4\2\2")
         buf.write("ad\5\16\b\2bd\7,\2\2c_\3\2\2\2cb\3\2\2\2d\17\3\2\2\2e")
-        buf.write("f\t\3\2\2f\21\3\2\2\2gh\b\n\1\2hi\7\36\2\2iu\5\22\n\n")
-        buf.write("jk\7\23\2\2ku\5\22\n\tlu\7+\2\2mu\7,\2\2nu\5:\36\2ou\5")
-        buf.write("\f\7\2pq\7#\2\2qr\5\22\n\2rs\7$\2\2su\3\2\2\2tg\3\2\2")
-        buf.write("\2tj\3\2\2\2tl\3\2\2\2tm\3\2\2\2tn\3\2\2\2to\3\2\2\2t")
-        buf.write("p\3\2\2\2u\u0083\3\2\2\2vw\f\f\2\2wx\t\4\2\2x\u0082\5")
-        buf.write("\22\n\ryz\f\13\2\2z{\t\5\2\2{\u0082\5\22\n\f|}\f\4\2\2")
-        buf.write("}~\7%\2\2~\177\5\22\n\2\177\u0080\7&\2\2\u0080\u0082\3")
-        buf.write("\2\2\2\u0081v\3\2\2\2\u0081y\3\2\2\2\u0081|\3\2\2\2\u0082")
+        buf.write("f\t\3\2\2f\21\3\2\2\2gh\b\n\1\2hi\7\36\2\2iu\7,\2\2jk")
+        buf.write("\7\23\2\2ku\5\22\n\tlu\7+\2\2mu\7,\2\2nu\5:\36\2ou\5\f")
+        buf.write("\7\2pq\7#\2\2qr\5\22\n\2rs\7$\2\2su\3\2\2\2tg\3\2\2\2")
+        buf.write("tj\3\2\2\2tl\3\2\2\2tm\3\2\2\2tn\3\2\2\2to\3\2\2\2tp\3")
+        buf.write("\2\2\2u\u0083\3\2\2\2vw\f\f\2\2wx\t\4\2\2x\u0082\5\22")
+        buf.write("\n\ryz\f\13\2\2z{\t\5\2\2{\u0082\5\22\n\f|}\f\4\2\2}~")
+        buf.write("\7%\2\2~\177\5\22\n\2\177\u0080\7&\2\2\u0080\u0082\3\2")
+        buf.write("\2\2\u0081v\3\2\2\2\u0081y\3\2\2\2\u0081|\3\2\2\2\u0082")
         buf.write("\u0085\3\2\2\2\u0083\u0081\3\2\2\2\u0083\u0084\3\2\2\2")
         buf.write("\u0084\23\3\2\2\2\u0085\u0083\3\2\2\2\u0086\u0087\t\6")
         buf.write("\2\2\u0087\25\3\2\2\2\u0088\u0089\b\f\1\2\u0089\u008a")
@@ -1044,9 +1044,8 @@ class naiveCParser ( Parser ):
 
         def ArithmeticAnd(self):
             return self.getToken(naiveCParser.ArithmeticAnd, 0)
-        def expr(self):
-            return self.getTypedRuleContext(naiveCParser.ExprContext,0)
-
+        def ID(self):
+            return self.getToken(naiveCParser.ID, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterGetP" ):
@@ -1217,7 +1216,7 @@ class naiveCParser ( Parser ):
                 self.state = 102
                 self.match(naiveCParser.ArithmeticAnd)
                 self.state = 103
-                self.expr(8)
+                self.match(naiveCParser.ID)
                 pass
 
             elif la_ == 2:

@@ -6,9 +6,9 @@ from utils.llvm_construct import *
 
 
 class MyVisitor(naiveCVisitor):
-    def __init__(self, ST: {}, module: ir.Module):
-        self.ST = ST
-        self.module = module
+    def __init__(self):
+        self.ST = {}
+        self.module = ir.Module()
         self.builder = ir.IRBuilder()
         # Printf Function
         printf_ty = ir.FunctionType(int32, [ir.PointerType(char)], var_arg=True)
@@ -64,8 +64,11 @@ class MyVisitor(naiveCVisitor):
             return left - right
 
     def visitGetP(self, ctx: naiveCParser.GetPContext):
-        l_value = self.visit(ctx.expr())
-        return l_value
+        identity = ctx.ID().getSymbol().text
+        if identity in self.ST:
+            return self.ST[identity]
+        else:
+            print('未定义的标识符: ' + identity)
 
     def visitInt(self, ctx: naiveCParser.IntContext) -> ir.Constant:
         return ir.Constant(int32, int(ctx.INT().getSymbol().text))
@@ -73,7 +76,7 @@ class MyVisitor(naiveCVisitor):
     def visitId(self, ctx: naiveCParser.IdContext) -> ir.Value:
         identity = ctx.ID().getSymbol().text
         if identity in self.ST:
-            return self.ST[identity]
+            return self.builder.load(self.ST[identity])
         else:
             print('未定义的标识符: ' + identity)
 
@@ -104,7 +107,7 @@ class MyVisitor(naiveCVisitor):
 
     def visitParamString(self, ctx: naiveCParser.ParamStringContext) -> ir.Value:
         string = ctx.String().getSymbol().text
-        g_string = self.ST[string]
+        g_string = add_global_string_constant(self.module, string.replace('"', '') + '\0')
         return self.builder.bitcast(self.builder.gep(g_string, [ir.Constant(int32, 0)], inbounds=True),
                                     ir.PointerType(char))
 
