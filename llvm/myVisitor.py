@@ -3,6 +3,7 @@ from naiveCVisitor import naiveCVisitor
 
 from utils.llvm_output import *
 from utils.llvm_construct import *
+from utils.string import *
 
 
 class MyVisitor(naiveCVisitor):
@@ -80,7 +81,7 @@ class MyVisitor(naiveCVisitor):
         else:
             print('未定义的标识符: ' + identity)
 
-    def visitParens(self, ctx: naiveCParser.ParensContext):
+    def visitParens(self, ctx: naiveCParser.ParensContext) -> ir.Value:
         return self.visit(ctx.expr())
 
     def visitReturnLine(self, ctx: naiveCParser.ReturnLineContext):
@@ -107,7 +108,7 @@ class MyVisitor(naiveCVisitor):
 
     def visitParamString(self, ctx: naiveCParser.ParamStringContext) -> ir.Value:
         string = ctx.String().getSymbol().text
-        g_string = add_global_string_constant(self.module, string.replace('"', '') + '\0')
+        g_string = add_global_string_constant(self.module, convert(string))
         return self.builder.bitcast(self.builder.gep(g_string, [ir.Constant(int32, 0)], inbounds=True),
                                     ir.PointerType(char))
 
@@ -126,5 +127,4 @@ class MyVisitor(naiveCVisitor):
         identity = ctx.ID().getSymbol().text
         func = self.module.get_global(identity)
         paramsList = self.visit(ctx.paramList())
-        print(paramsList)
         self.builder.call(func, paramsList)

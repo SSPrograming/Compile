@@ -4,7 +4,6 @@ from myVisitor import MyVisitor
 
 from antlr4 import FileStream
 from antlr4 import CommonTokenStream
-from llvmlite import ir
 
 if __name__ == '__main__':
     source = '../input/basic_io.c'
