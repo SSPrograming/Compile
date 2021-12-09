@@ -47,31 +47,41 @@ class MyVisitor(naiveCVisitor):
         for i in range(pointer_count):
             ir_type = ir.PointerType(ir_type)
         identity = ctx.ID().getSymbol().text
-        self.ST.insert(identity, self.builder.alloca(ir_type, name=identity))
+        l_value = self.builder.alloca(ir_type, name=identity)
+        self.ST.insert(identity, l_value)
+        # 如果有初值
+        if ctx.AssignOperator():
+            r_value = self.visit(ctx.expr())
+            self.builder.store(r_value, l_value)
 
-    def visitMulDiv(self, ctx: naiveCParser.MulDivContext):
+    def visitMulDiv(self, ctx: naiveCParser.MulDivContext) -> ir.Value:
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
+        if left.type != right.type:
+            raise 'panic: visitAddSub'
         if ctx.op.type == naiveCParser.MUL:
-            return left * right
+            return self.builder.mul(left, right)
         else:
-            return left / right
+            return self.builder.sdiv(left, right)
 
-    def visitAddSub(self, ctx: naiveCParser.AddSubContext):
+    def visitAddSub(self, ctx: naiveCParser.AddSubContext) -> ir.Value:
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
+        if left.type != right.type:
+            raise 'panic: visitAddSub'
         if ctx.op.type == naiveCParser.ADD:
-            return left + right
+            return self.builder.add(left, right)
         else:
-            return left - right
+            return self.builder.sub(left, right)
 
-    def visitGetP(self, ctx: naiveCParser.GetPContext):
+    def visitGetP(self, ctx: naiveCParser.GetPContext) -> ir.Value:
         identity = ctx.ID().getSymbol().text
         symbol = self.ST.get(identity)
         if symbol:
             return symbol
         else:
             print('未定义的标识符: ' + identity)
+            raise 'panic: visitGetP'
 
     def visitInt(self, ctx: naiveCParser.IntContext) -> ir.Constant:
         return ir.Constant(int32, int(ctx.INT().getSymbol().text))
@@ -83,6 +93,7 @@ class MyVisitor(naiveCVisitor):
             return self.builder.load(symbol)
         else:
             print('未定义的标识符: ' + identity)
+            raise 'panic: visitId'
 
     def visitParens(self, ctx: naiveCParser.ParensContext) -> ir.Value:
         return self.visit(ctx.expr())
