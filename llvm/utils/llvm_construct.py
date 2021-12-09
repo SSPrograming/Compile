@@ -1,4 +1,4 @@
-from llvm_definition import *
+from utils.llvm_definition import *
 
 
 def add_global_string_constant(module: ir.Module, string: str) -> ir.GlobalVariable:
