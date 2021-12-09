@@ -4,11 +4,12 @@ from naiveCVisitor import naiveCVisitor
 from utils.llvm_output import *
 from utils.llvm_construct import *
 from utils.string import *
+from utils.SymbolTable import *
 
 
 class MyVisitor(naiveCVisitor):
     def __init__(self):
-        self.ST = {}
+        self.ST = SymbolTable()
         self.module = ir.Module()
         self.builder = ir.IRBuilder()
         # Printf Function
@@ -46,7 +47,7 @@ class MyVisitor(naiveCVisitor):
         for i in range(pointer_count):
             ir_type = ir.PointerType(ir_type)
         identity = ctx.ID().getSymbol().text
-        self.ST[identity] = self.builder.alloca(ir_type, name=identity)
+        self.ST.insert(identity, self.builder.alloca(ir_type, name=identity))
 
     def visitMulDiv(self, ctx: naiveCParser.MulDivContext):
         left = self.visit(ctx.expr(0))
@@ -66,8 +67,9 @@ class MyVisitor(naiveCVisitor):
 
     def visitGetP(self, ctx: naiveCParser.GetPContext):
         identity = ctx.ID().getSymbol().text
-        if identity in self.ST:
-            return self.ST[identity]
+        symbol = self.ST.get(identity)
+        if symbol:
+            return symbol
         else:
             print('未定义的标识符: ' + identity)
 
@@ -76,8 +78,9 @@ class MyVisitor(naiveCVisitor):
 
     def visitId(self, ctx: naiveCParser.IdContext) -> ir.Value:
         identity = ctx.ID().getSymbol().text
-        if identity in self.ST:
-            return self.builder.load(self.ST[identity])
+        symbol = self.ST.get(identity)
+        if symbol:
+            return self.builder.load(symbol)
         else:
             print('未定义的标识符: ' + identity)
 
@@ -87,6 +90,7 @@ class MyVisitor(naiveCVisitor):
     def visitReturnLine(self, ctx: naiveCParser.ReturnLineContext):
         value = self.visit(ctx.expr())
         self.builder.ret(value)
+        self.ST = self.ST.prev()
 
     def visitFunctionDefine(self, ctx: naiveCParser.FunctionDefineContext):
         typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
@@ -97,6 +101,7 @@ class MyVisitor(naiveCVisitor):
         # TODO: 函数重定义
         func = ir.Function(self.module, func_ty, name=identity)
         block = func.append_basic_block(name='entry')
+        self.ST = SymbolTable(self.ST)
         self.builder.position_at_end(block)
         self.visit(ctx.returnStatemts())
 
