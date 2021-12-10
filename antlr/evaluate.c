@@ -89,7 +89,20 @@ int evaluate(char* S)
         }
         else
         {
-
+            int cmpResult = operatorCmp(optr[optr_p], *S);
+            if (cmpResult == -1) {
+                optr[++optr_p] = *S;
+                S = S + 1;
+            }
+            else if (cmpResult == 0) {
+                optr_p = optr_p - 1;
+                S = S + 1;
+            }
+            else if (cmpResult == 1) {
+                char op_top = optr[optr_p];
+                optr_p = optr_p - 1;
+                 
+            }
         }
     }
 }
