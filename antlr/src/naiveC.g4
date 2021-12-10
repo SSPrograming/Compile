@@ -140,7 +140,7 @@ idList: ID ',' idList
       | ID
       ;
 
-INT: [1-9][0-9]* | '0';
+INT: [-]?[1-9][0-9]* | '0';
 ID : [a-zA-Z_][a-z0-9A-Z_]* ;             // match lower-case identifiers
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
@@ -199,8 +199,7 @@ paramList: paramList ',' param
 
 defineParam: (typeIdentifier|typeIdentifierPointer) ID;
 
-defineParamList: defineParam ',' defineParamList
-               | defineParam?
+defineParamList: defineParam (',' defineParam)*
                ;
 
 block:  '{' statements '}';
