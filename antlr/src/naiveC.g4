@@ -166,6 +166,7 @@ expr: expr op=(MUL|DIV) expr
     | expr op=(ADD|SUB) expr
     | '&' expr
     | '*' expr
+    | PositiveINT
     | INT
     | ID
     | functionCall
