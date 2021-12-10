@@ -1,5 +1,3 @@
-from llvmlite.ir import PointerType
-
 from naiveCParser import naiveCParser
 from naiveCVisitor import naiveCVisitor
 
