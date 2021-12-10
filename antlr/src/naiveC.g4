@@ -15,6 +15,7 @@ Include: '#include'  ~[\r\n]* ->skip;
 
 realTypeID: TypeChar
           | TypeInt
+          | TypeLL
           ;
 
 realTypeIDPointer: realTypeID '*' ;
@@ -22,6 +23,7 @@ realTypeIDPointer: realTypeID '*' ;
 typeIdentifier: TypeInt
                | TypeVoid
                | TypeChar
+               | TypeLL
                ;
 
 typeIdentifierPointer: typeIdentifier '*';
@@ -35,6 +37,9 @@ TypeVoid: 'void'
 
 TypeChar: 'char'
     ;
+
+TypeLL: 'long long'
+      ;
 
 Break: 'break'
     ;
