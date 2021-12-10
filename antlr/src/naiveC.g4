@@ -163,11 +163,13 @@ arithmeticOperator:   ADD
                     | ArithmeticOR
                     ;
 
+<<<<<<< HEAD
 expr: expr op=(MUL|DIV) expr    # MulDiv
     | expr op=(ADD|SUB) expr    # AddSub
 	| '&' expr                  # GetP
 	| '*' expr                  # MakP
 	| '-' expr                  # Negative
+	| '(' (realTypeIDPointer | realTypeID) ')' expr # TypeCast
 	| PositiveINT               # PositiveINT
 	| Char                      # Char
     | INT                       # Int
@@ -176,6 +178,22 @@ expr: expr op=(MUL|DIV) expr    # MulDiv
     | boolExpr                  # TrueFalse
     | ID '[' expr ']'           # ArrayVisit
     | '(' expr ')'              # Parens
+=======
+expr: expr op=(MUL|DIV) expr
+    | expr op=(ADD|SUB) expr
+    | '&' expr
+    | '*' expr
+    | '-' expr
+    | '(' (realTypeIDPointer|realTypeID) ')' expr
+    | PositiveINT
+    | Char
+    | INT
+    | ID
+    | functionCall
+    | boolExpr
+    | expr '[' expr ']'
+    | '(' expr ')'
+>>>>>>> origin/zhouhang
     ;
 
 conditionOperator: Greater
@@ -192,7 +210,10 @@ conditionExpr: conditionExpr '&&' conditionExpr  # And
              | expr # CondExp
              ;
 
-assignment: (ID|ID '[' index=expr ']') AssignOperator value=expr ';';
+assignment: ID AssignOperator expr ';'
+          | '*' ID AssignOperator expr ';'
+          | ID '[' expr ']' AssignOperator expr ';'
+          ;
 
 definition: (realTypeID|realTypeIDPointer) ID ('=' expr)? ';'
           | (realTypeID|realTypeIDPointer) ID '[' PositiveINT ']' ';'
@@ -225,8 +246,6 @@ breakLine: 'break' ';' ;
 continueLine: 'continue' ';' ;
 
 statements: (assignment|definition|callProc|whileBlock|block|ifBlock|returnLine|breakLine|continueLine)*;
-
-returnStatemts: (assignment|definition|callProc|whileBlock|block|ifBlock|returnLine)*;
 
 whileBlock: 'while' '(' conditionExpr ')' block;
 
