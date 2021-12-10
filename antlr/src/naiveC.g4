@@ -163,7 +163,6 @@ arithmeticOperator:   ADD
                     | ArithmeticOR
                     ;
 
-<<<<<<< HEAD
 expr: expr op=(MUL|DIV) expr    # MulDiv
     | expr op=(ADD|SUB) expr    # AddSub
 	| '&' expr                  # GetP
@@ -178,22 +177,6 @@ expr: expr op=(MUL|DIV) expr    # MulDiv
     | boolExpr                  # TrueFalse
     | ID '[' expr ']'           # ArrayVisit
     | '(' expr ')'              # Parens
-=======
-expr: expr op=(MUL|DIV) expr
-    | expr op=(ADD|SUB) expr
-    | '&' expr
-    | '*' expr
-    | '-' expr
-    | '(' (realTypeIDPointer|realTypeID) ')' expr
-    | PositiveINT
-    | Char
-    | INT
-    | ID
-    | functionCall
-    | boolExpr
-    | expr '[' expr ']'
-    | '(' expr ')'
->>>>>>> origin/zhouhang
     ;
 
 conditionOperator: Greater
@@ -210,9 +193,9 @@ conditionExpr: conditionExpr '&&' conditionExpr  # And
              | expr # CondExp
              ;
 
-assignment: ID AssignOperator expr ';'
-          | '*' ID AssignOperator expr ';'
-          | ID '[' expr ']' AssignOperator expr ';'
+assignment: ID AssignOperator expr ';'              # CommonAssign
+          | '*' ID AssignOperator expr ';'          # MemoryAssign
+          | ID '[' expr ']' AssignOperator expr ';' # ArrayAssign
           ;
 
 definition: (realTypeID|realTypeIDPointer) ID ('=' expr)? ';'

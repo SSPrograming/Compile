@@ -17,6 +17,19 @@ class MyVisitor(naiveCVisitor):
         init_io(self.module)
         init_memory(self.module)
 
+    def _getIdentifier(self, ctx, real=True):
+        if ctx.realTypeID():
+            typeIdentifier = self.visit(ctx.realTypeID())
+        elif ctx.realTypeIDPointer():
+            typeIdentifier = self.visit(ctx.realTypeIDPointer())
+        else:
+            raise Exception('panic: visitDefinition')
+        pointer_count = typeIdentifier.count('*')
+        ir_type = str2irType[typeIdentifier.replace('*', '')]
+        for i in range(pointer_count):
+            ir_type = ir.PointerType(ir_type)
+        return ir_type
+
     def write(self, filename: str) -> None:
         write_ir(filename, str(self.module))
 
@@ -44,16 +57,7 @@ class MyVisitor(naiveCVisitor):
         return typeIdentifier + '*'
 
     def visitDefinition(self, ctx: naiveCParser.DefinitionContext) -> None:
-        if ctx.realTypeID():
-            typeIdentifier = self.visit(ctx.realTypeID())
-        elif ctx.realTypeIDPointer():
-            typeIdentifier = self.visit(ctx.realTypeIDPointer())
-        else:
-            raise Exception('panic: visitDefinition')
-        pointer_count = typeIdentifier.count('*')
-        ir_type = str2irType[typeIdentifier.replace('*', '')]
-        for i in range(pointer_count):
-            ir_type = ir.PointerType(ir_type)
+        ir_type = self._getIdentifier(ctx, real=True)
         identity = ctx.ID().getSymbol().text
         if ctx.LeftBracket() and ctx.RightBracket():
             size = int(ctx.PositiveINT().getSymbol().text)
@@ -66,16 +70,35 @@ class MyVisitor(naiveCVisitor):
             r_value = self.visit(ctx.expr())
             self.builder.store(r_value, l_value)
 
-    def visitAssignment(self, ctx: naiveCParser.AssignmentContext):
+    def visitCommonAssign(self, ctx: naiveCParser.CommonAssignContext):
         identity = ctx.ID().getSymbol().text
         l_value = self.ST.get(identity)
         if not l_value:
             print('未定义的标识符: ' + identity)
             raise Exception('panic: visitAssignment')
-        if ctx.index:
-            index = self.visit(ctx.index)
-            l_value = self.builder.gep(l_value, [ir.Constant(int32, 0), index])
-        r_value = self.visit(ctx.value)
+        r_value = self.visit(ctx.expr())
+        self.builder.store(r_value, l_value)
+
+    def visitTypeCast(self, ctx: naiveCParser.TypeCastContext):
+        ir_type = self._getIdentifier(ctx, real=True)
+        l_value = self.visit(ctx.expr())
+        return self.builder.bitcast(l_value, ir_type)
+
+    def visitArrayAssign(self, ctx: naiveCParser.ArrayAssignContext):
+        identity = ctx.ID().getSymbol().text
+        symbol = self.ST.get(identity)
+        if not symbol:
+            print('未定义的标识符: ' + identity)
+            raise Exception('panic: visitAssignment')
+        index = self.visit(ctx.expr(0))
+        if isinstance(symbol.type.pointee, ir.ArrayType):
+            # 数组
+            l_value = self.builder.gep(symbol, [ir.Constant(int32, 0), index])
+        else:
+            # 指针
+            symbol = self.builder.load(symbol)
+            l_value = self.builder.gep(symbol, [index])
+        r_value = self.visit(ctx.expr(1))
         self.builder.store(r_value, l_value)
 
     def visitMulDiv(self, ctx: naiveCParser.MulDivContext) -> ir.Value:
@@ -140,7 +163,13 @@ class MyVisitor(naiveCVisitor):
         symbol = self.ST.get(identity)
         if symbol:
             index = self.visit(ctx.expr())
-            l_value = self.builder.gep(symbol, [ir.Constant(int32, 0), index])
+            if isinstance(symbol.type.pointee, ir.ArrayType):
+                # 数组
+                l_value = self.builder.gep(symbol, [ir.Constant(int32, 0), index])
+            else:
+                # 指针
+                symbol = self.builder.load(symbol)
+                l_value = self.builder.gep(symbol, [index])
             return self.builder.load(l_value)
         else:
             print('未定义的标识符: ' + identity)

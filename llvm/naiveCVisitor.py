@@ -119,6 +119,11 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by naiveCParser#TypeCast.
+    def visitTypeCast(self, ctx:naiveCParser.TypeCastContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by naiveCParser#Id.
     def visitId(self, ctx:naiveCParser.IdContext):
         return self.visitChildren(ctx)
@@ -169,8 +174,18 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#assignment.
-    def visitAssignment(self, ctx:naiveCParser.AssignmentContext):
+    # Visit a parse tree produced by naiveCParser#CommonAssign.
+    def visitCommonAssign(self, ctx:naiveCParser.CommonAssignContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#MemoryAssign.
+    def visitMemoryAssign(self, ctx:naiveCParser.MemoryAssignContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#ArrayAssign.
+    def visitArrayAssign(self, ctx:naiveCParser.ArrayAssignContext):
         return self.visitChildren(ctx)
 
 
@@ -236,11 +251,6 @@ class naiveCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by naiveCParser#statements.
     def visitStatements(self, ctx:naiveCParser.StatementsContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by naiveCParser#returnStatemts.
-    def visitReturnStatemts(self, ctx:naiveCParser.ReturnStatemtsContext):
         return self.visitChildren(ctx)
 
 

@@ -206,6 +206,15 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by naiveCParser#TypeCast.
+    def enterTypeCast(self, ctx:naiveCParser.TypeCastContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#TypeCast.
+    def exitTypeCast(self, ctx:naiveCParser.TypeCastContext):
+        pass
+
+
     # Enter a parse tree produced by naiveCParser#Id.
     def enterId(self, ctx:naiveCParser.IdContext):
         pass
@@ -296,12 +305,30 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#assignment.
-    def enterAssignment(self, ctx:naiveCParser.AssignmentContext):
+    # Enter a parse tree produced by naiveCParser#CommonAssign.
+    def enterCommonAssign(self, ctx:naiveCParser.CommonAssignContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#assignment.
-    def exitAssignment(self, ctx:naiveCParser.AssignmentContext):
+    # Exit a parse tree produced by naiveCParser#CommonAssign.
+    def exitCommonAssign(self, ctx:naiveCParser.CommonAssignContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#MemoryAssign.
+    def enterMemoryAssign(self, ctx:naiveCParser.MemoryAssignContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#MemoryAssign.
+    def exitMemoryAssign(self, ctx:naiveCParser.MemoryAssignContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#ArrayAssign.
+    def enterArrayAssign(self, ctx:naiveCParser.ArrayAssignContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#ArrayAssign.
+    def exitArrayAssign(self, ctx:naiveCParser.ArrayAssignContext):
         pass
 
 
@@ -419,15 +446,6 @@ class naiveCListener(ParseTreeListener):
 
     # Exit a parse tree produced by naiveCParser#statements.
     def exitStatements(self, ctx:naiveCParser.StatementsContext):
-        pass
-
-
-    # Enter a parse tree produced by naiveCParser#returnStatemts.
-    def enterReturnStatemts(self, ctx:naiveCParser.ReturnStatemtsContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#returnStatemts.
-    def exitReturnStatemts(self, ctx:naiveCParser.ReturnStatemtsContext):
         pass
 
 
