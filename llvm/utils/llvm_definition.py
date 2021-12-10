@@ -9,6 +9,7 @@ int64 = ir.IntType(64)
 str2irType = {
     'void': void,
     'boolean': boolean,
+    'char': char,
     'int': int32,
-    'char': char
+    'long long': int64
 }

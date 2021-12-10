@@ -11,164 +11,161 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\62")
-        buf.write("\u015a\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\63")
+        buf.write("\u0155\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
         buf.write("\t\31\4\32\t\32\4\33\t\33\4\34\t\34\4\35\t\35\4\36\t\36")
         buf.write("\4\37\t\37\3\2\3\2\3\3\3\3\3\3\3\3\5\3E\n\3\3\3\3\3\3")
-        buf.write("\3\3\3\3\3\3\3\7\3M\n\3\f\3\16\3P\13\3\3\4\3\4\5\4T\n")
-        buf.write("\4\3\5\3\5\3\5\3\6\3\6\3\6\5\6\\\n\6\3\7\3\7\3\7\3\b\3")
-        buf.write("\b\3\t\3\t\3\n\3\n\3\n\3\n\5\ni\n\n\3\13\3\13\3\f\3\f")
-        buf.write("\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\fw\n\f\3\f\3\f\3\f")
-        buf.write("\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3")
-        buf.write("\f\3\f\5\f\u008b\n\f\3\f\3\f\3\f\3\f\3\f\3\f\7\f\u0093")
-        buf.write("\n\f\f\f\16\f\u0096\13\f\3\r\3\r\3\16\3\16\3\16\3\16\3")
-        buf.write("\16\3\16\3\16\3\16\3\16\3\16\5\16\u00a4\n\16\3\16\3\16")
-        buf.write("\3\16\3\16\3\16\3\16\7\16\u00ac\n\16\f\16\16\16\u00af")
-        buf.write("\13\16\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3")
-        buf.write("\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\5\17")
-        buf.write("\u00c4\n\17\3\20\3\20\5\20\u00c8\n\20\3\20\3\20\3\20\5")
-        buf.write("\20\u00cd\n\20\3\20\3\20\3\20\3\20\5\20\u00d3\n\20\3\20")
-        buf.write("\3\20\3\20\3\20\3\20\3\20\5\20\u00db\n\20\3\21\3\21\3")
-        buf.write("\21\3\22\3\22\3\22\3\22\3\23\3\23\3\23\5\23\u00e7\n\23")
-        buf.write("\3\24\3\24\5\24\u00eb\n\24\3\24\3\24\3\24\7\24\u00f0\n")
-        buf.write("\24\f\24\16\24\u00f3\13\24\3\25\3\25\5\25\u00f7\n\25\3")
-        buf.write("\25\3\25\3\26\3\26\5\26\u00fd\n\26\3\26\3\26\3\26\7\26")
-        buf.write("\u0102\n\26\f\26\16\26\u0105\13\26\3\27\3\27\3\27\3\27")
-        buf.write("\3\30\3\30\3\30\3\31\3\31\3\31\3\32\3\32\3\32\3\32\3\32")
-        buf.write("\3\32\3\32\3\32\3\32\7\32\u011a\n\32\f\32\16\32\u011d")
-        buf.write("\13\32\3\33\3\33\3\33\3\33\3\33\3\33\3\34\3\34\3\34\3")
-        buf.write("\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34\7\34\u0131")
-        buf.write("\n\34\f\34\16\34\u0134\13\34\3\34\3\34\5\34\u0138\n\34")
-        buf.write("\3\35\3\35\3\35\3\35\3\35\3\35\3\35\3\35\3\35\3\35\5\35")
-        buf.write("\u0144\n\35\3\36\3\36\5\36\u0148\n\36\3\36\3\36\3\36\3")
-        buf.write("\36\3\36\3\36\3\37\3\37\5\37\u0152\n\37\3\37\3\37\3\37")
-        buf.write("\3\37\3\37\3\37\3\37\2\7\4\26\32&* \2\4\6\b\n\f\16\20")
-        buf.write("\22\24\26\30\32\34\36 \"$&(*,.\60\62\64\668:<\2\7\3\2")
-        buf.write(")*\5\2\17\17\22\25\36\37\3\2\23\24\4\2\17\17\22\22\3\2")
-        buf.write("\26\32\2\u0171\2>\3\2\2\2\4D\3\2\2\2\6S\3\2\2\2\bU\3\2")
-        buf.write("\2\2\n[\3\2\2\2\f]\3\2\2\2\16`\3\2\2\2\20b\3\2\2\2\22")
-        buf.write("h\3\2\2\2\24j\3\2\2\2\26\u008a\3\2\2\2\30\u0097\3\2\2")
-        buf.write("\2\32\u00a3\3\2\2\2\34\u00c3\3\2\2\2\36\u00da\3\2\2\2")
-        buf.write(" \u00dc\3\2\2\2\"\u00df\3\2\2\2$\u00e6\3\2\2\2&\u00e8")
-        buf.write("\3\2\2\2(\u00f6\3\2\2\2*\u00fa\3\2\2\2,\u0106\3\2\2\2")
-        buf.write(".\u010a\3\2\2\2\60\u010d\3\2\2\2\62\u011b\3\2\2\2\64\u011e")
-        buf.write("\3\2\2\2\66\u0124\3\2\2\28\u0143\3\2\2\2:\u0147\3\2\2")
-        buf.write("\2<\u0151\3\2\2\2>?\5\4\3\2?\3\3\2\2\2@A\b\3\1\2AE\58")
-        buf.write("\35\2BE\5:\36\2CE\5<\37\2D@\3\2\2\2DB\3\2\2\2DC\3\2\2")
-        buf.write("\2EN\3\2\2\2FG\f\5\2\2GM\58\35\2HI\f\4\2\2IM\5<\37\2J")
-        buf.write("K\f\3\2\2KM\5:\36\2LF\3\2\2\2LH\3\2\2\2LJ\3\2\2\2MP\3")
-        buf.write("\2\2\2NL\3\2\2\2NO\3\2\2\2O\5\3\2\2\2PN\3\2\2\2QT\7\b")
-        buf.write("\2\2RT\7\6\2\2SQ\3\2\2\2SR\3\2\2\2T\7\3\2\2\2UV\5\6\4")
-        buf.write("\2VW\7\23\2\2W\t\3\2\2\2X\\\7\6\2\2Y\\\7\7\2\2Z\\\7\b")
-        buf.write("\2\2[X\3\2\2\2[Y\3\2\2\2[Z\3\2\2\2\\\13\3\2\2\2]^\5\n")
-        buf.write("\6\2^_\7\23\2\2_\r\3\2\2\2`a\7\3\2\2a\17\3\2\2\2bc\t\2")
-        buf.write("\2\2c\21\3\2\2\2de\7.\2\2ef\7\4\2\2fi\5\22\n\2gi\7.\2")
-        buf.write("\2hd\3\2\2\2hg\3\2\2\2i\23\3\2\2\2jk\t\3\2\2k\25\3\2\2")
-        buf.write("\2lm\b\f\1\2mn\7\36\2\2n\u008b\7.\2\2op\7\23\2\2p\u008b")
-        buf.write("\5\26\f\rqr\7\22\2\2r\u008b\5\26\f\fsv\7#\2\2tw\5\b\5")
-        buf.write("\2uw\5\6\4\2vt\3\2\2\2vu\3\2\2\2wx\3\2\2\2xy\7$\2\2yz")
-        buf.write("\5\26\f\13z\u008b\3\2\2\2{\u008b\7+\2\2|\u008b\7,\2\2")
-        buf.write("}\u008b\7-\2\2~\u008b\7.\2\2\177\u008b\58\35\2\u0080\u008b")
-        buf.write("\5\20\t\2\u0081\u0082\7.\2\2\u0082\u0083\7%\2\2\u0083")
-        buf.write("\u0084\5\26\f\2\u0084\u0085\7&\2\2\u0085\u008b\3\2\2\2")
-        buf.write("\u0086\u0087\7#\2\2\u0087\u0088\5\26\f\2\u0088\u0089\7")
-        buf.write("$\2\2\u0089\u008b\3\2\2\2\u008al\3\2\2\2\u008ao\3\2\2")
-        buf.write("\2\u008aq\3\2\2\2\u008as\3\2\2\2\u008a{\3\2\2\2\u008a")
-        buf.write("|\3\2\2\2\u008a}\3\2\2\2\u008a~\3\2\2\2\u008a\177\3\2")
-        buf.write("\2\2\u008a\u0080\3\2\2\2\u008a\u0081\3\2\2\2\u008a\u0086")
-        buf.write("\3\2\2\2\u008b\u0094\3\2\2\2\u008c\u008d\f\20\2\2\u008d")
-        buf.write("\u008e\t\4\2\2\u008e\u0093\5\26\f\21\u008f\u0090\f\17")
-        buf.write("\2\2\u0090\u0091\t\5\2\2\u0091\u0093\5\26\f\20\u0092\u008c")
-        buf.write("\3\2\2\2\u0092\u008f\3\2\2\2\u0093\u0096\3\2\2\2\u0094")
-        buf.write("\u0092\3\2\2\2\u0094\u0095\3\2\2\2\u0095\27\3\2\2\2\u0096")
-        buf.write("\u0094\3\2\2\2\u0097\u0098\t\6\2\2\u0098\31\3\2\2\2\u0099")
-        buf.write("\u009a\b\16\1\2\u009a\u009b\7#\2\2\u009b\u009c\5\32\16")
-        buf.write("\2\u009c\u009d\7$\2\2\u009d\u00a4\3\2\2\2\u009e\u009f")
-        buf.write("\5\26\f\2\u009f\u00a0\5\30\r\2\u00a0\u00a1\5\26\f\2\u00a1")
-        buf.write("\u00a4\3\2\2\2\u00a2\u00a4\5\26\f\2\u00a3\u0099\3\2\2")
-        buf.write("\2\u00a3\u009e\3\2\2\2\u00a3\u00a2\3\2\2\2\u00a4\u00ad")
-        buf.write("\3\2\2\2\u00a5\u00a6\f\7\2\2\u00a6\u00a7\7 \2\2\u00a7")
-        buf.write("\u00ac\5\32\16\b\u00a8\u00a9\f\6\2\2\u00a9\u00aa\7!\2")
-        buf.write("\2\u00aa\u00ac\5\32\16\7\u00ab\u00a5\3\2\2\2\u00ab\u00a8")
-        buf.write("\3\2\2\2\u00ac\u00af\3\2\2\2\u00ad\u00ab\3\2\2\2\u00ad")
-        buf.write("\u00ae\3\2\2\2\u00ae\33\3\2\2\2\u00af\u00ad\3\2\2\2\u00b0")
-        buf.write("\u00b1\7.\2\2\u00b1\u00b2\7\35\2\2\u00b2\u00b3\5\26\f")
-        buf.write("\2\u00b3\u00b4\7\"\2\2\u00b4\u00c4\3\2\2\2\u00b5\u00b6")
-        buf.write("\7\23\2\2\u00b6\u00b7\7.\2\2\u00b7\u00b8\7\35\2\2\u00b8")
-        buf.write("\u00b9\5\26\f\2\u00b9\u00ba\7\"\2\2\u00ba\u00c4\3\2\2")
-        buf.write("\2\u00bb\u00bc\7.\2\2\u00bc\u00bd\7%\2\2\u00bd\u00be\5")
-        buf.write("\26\f\2\u00be\u00bf\7&\2\2\u00bf\u00c0\7\35\2\2\u00c0")
-        buf.write("\u00c1\5\26\f\2\u00c1\u00c2\7\"\2\2\u00c2\u00c4\3\2\2")
-        buf.write("\2\u00c3\u00b0\3\2\2\2\u00c3\u00b5\3\2\2\2\u00c3\u00bb")
-        buf.write("\3\2\2\2\u00c4\35\3\2\2\2\u00c5\u00c8\5\6\4\2\u00c6\u00c8")
-        buf.write("\5\b\5\2\u00c7\u00c5\3\2\2\2\u00c7\u00c6\3\2\2\2\u00c8")
-        buf.write("\u00c9\3\2\2\2\u00c9\u00cc\7.\2\2\u00ca\u00cb\7\35\2\2")
-        buf.write("\u00cb\u00cd\5\26\f\2\u00cc\u00ca\3\2\2\2\u00cc\u00cd")
-        buf.write("\3\2\2\2\u00cd\u00ce\3\2\2\2\u00ce\u00cf\7\"\2\2\u00cf")
-        buf.write("\u00db\3\2\2\2\u00d0\u00d3\5\6\4\2\u00d1\u00d3\5\b\5\2")
-        buf.write("\u00d2\u00d0\3\2\2\2\u00d2\u00d1\3\2\2\2\u00d3\u00d4\3")
-        buf.write("\2\2\2\u00d4\u00d5\7.\2\2\u00d5\u00d6\7%\2\2\u00d6\u00d7")
-        buf.write("\7+\2\2\u00d7\u00d8\7&\2\2\u00d8\u00d9\7\"\2\2\u00d9\u00db")
-        buf.write("\3\2\2\2\u00da\u00c7\3\2\2\2\u00da\u00d2\3\2\2\2\u00db")
-        buf.write("\37\3\2\2\2\u00dc\u00dd\58\35\2\u00dd\u00de\7\"\2\2\u00de")
-        buf.write("!\3\2\2\2\u00df\u00e0\7\r\2\2\u00e0\u00e1\5\26\f\2\u00e1")
-        buf.write("\u00e2\7\"\2\2\u00e2#\3\2\2\2\u00e3\u00e7\5\26\f\2\u00e4")
-        buf.write("\u00e7\58\35\2\u00e5\u00e7\7\62\2\2\u00e6\u00e3\3\2\2")
-        buf.write("\2\u00e6\u00e4\3\2\2\2\u00e6\u00e5\3\2\2\2\u00e7%\3\2")
-        buf.write("\2\2\u00e8\u00ea\b\24\1\2\u00e9\u00eb\5$\23\2\u00ea\u00e9")
-        buf.write("\3\2\2\2\u00ea\u00eb\3\2\2\2\u00eb\u00f1\3\2\2\2\u00ec")
-        buf.write("\u00ed\f\4\2\2\u00ed\u00ee\7\4\2\2\u00ee\u00f0\5$\23\2")
-        buf.write("\u00ef\u00ec\3\2\2\2\u00f0\u00f3\3\2\2\2\u00f1\u00ef\3")
-        buf.write("\2\2\2\u00f1\u00f2\3\2\2\2\u00f2\'\3\2\2\2\u00f3\u00f1")
-        buf.write("\3\2\2\2\u00f4\u00f7\5\n\6\2\u00f5\u00f7\5\f\7\2\u00f6")
-        buf.write("\u00f4\3\2\2\2\u00f6\u00f5\3\2\2\2\u00f7\u00f8\3\2\2\2")
-        buf.write("\u00f8\u00f9\7.\2\2\u00f9)\3\2\2\2\u00fa\u00fc\b\26\1")
-        buf.write("\2\u00fb\u00fd\5(\25\2\u00fc\u00fb\3\2\2\2\u00fc\u00fd")
-        buf.write("\3\2\2\2\u00fd\u0103\3\2\2\2\u00fe\u00ff\f\4\2\2\u00ff")
-        buf.write("\u0100\7\4\2\2\u0100\u0102\5(\25\2\u0101\u00fe\3\2\2\2")
-        buf.write("\u0102\u0105\3\2\2\2\u0103\u0101\3\2\2\2\u0103\u0104\3")
-        buf.write("\2\2\2\u0104+\3\2\2\2\u0105\u0103\3\2\2\2\u0106\u0107")
-        buf.write("\7\'\2\2\u0107\u0108\5\62\32\2\u0108\u0109\7(\2\2\u0109")
-        buf.write("-\3\2\2\2\u010a\u010b\7\t\2\2\u010b\u010c\7\"\2\2\u010c")
-        buf.write("/\3\2\2\2\u010d\u010e\7\n\2\2\u010e\u010f\7\"\2\2\u010f")
-        buf.write("\61\3\2\2\2\u0110\u011a\5\34\17\2\u0111\u011a\5\36\20")
-        buf.write("\2\u0112\u011a\5 \21\2\u0113\u011a\5\64\33\2\u0114\u011a")
-        buf.write("\5,\27\2\u0115\u011a\5\66\34\2\u0116\u011a\5\"\22\2\u0117")
-        buf.write("\u011a\5.\30\2\u0118\u011a\5\60\31\2\u0119\u0110\3\2\2")
-        buf.write("\2\u0119\u0111\3\2\2\2\u0119\u0112\3\2\2\2\u0119\u0113")
-        buf.write("\3\2\2\2\u0119\u0114\3\2\2\2\u0119\u0115\3\2\2\2\u0119")
-        buf.write("\u0116\3\2\2\2\u0119\u0117\3\2\2\2\u0119\u0118\3\2\2\2")
-        buf.write("\u011a\u011d\3\2\2\2\u011b\u0119\3\2\2\2\u011b\u011c\3")
-        buf.write("\2\2\2\u011c\63\3\2\2\2\u011d\u011b\3\2\2\2\u011e\u011f")
-        buf.write("\7\16\2\2\u011f\u0120\7#\2\2\u0120\u0121\5\32\16\2\u0121")
-        buf.write("\u0122\7$\2\2\u0122\u0123\5,\27\2\u0123\65\3\2\2\2\u0124")
-        buf.write("\u0125\7\13\2\2\u0125\u0126\7#\2\2\u0126\u0127\5\32\16")
-        buf.write("\2\u0127\u0128\7$\2\2\u0128\u0132\5,\27\2\u0129\u012a")
-        buf.write("\7\f\2\2\u012a\u012b\7\13\2\2\u012b\u012c\7#\2\2\u012c")
-        buf.write("\u012d\5\32\16\2\u012d\u012e\7$\2\2\u012e\u012f\5,\27")
-        buf.write("\2\u012f\u0131\3\2\2\2\u0130\u0129\3\2\2\2\u0131\u0134")
-        buf.write("\3\2\2\2\u0132\u0130\3\2\2\2\u0132\u0133\3\2\2\2\u0133")
-        buf.write("\u0137\3\2\2\2\u0134\u0132\3\2\2\2\u0135\u0136\7\f\2\2")
-        buf.write("\u0136\u0138\5,\27\2\u0137\u0135\3\2\2\2\u0137\u0138\3")
-        buf.write("\2\2\2\u0138\67\3\2\2\2\u0139\u013a\7.\2\2\u013a\u013b")
-        buf.write("\7#\2\2\u013b\u013c\5&\24\2\u013c\u013d\7$\2\2\u013d\u0144")
-        buf.write("\3\2\2\2\u013e\u013f\5\16\b\2\u013f\u0140\7#\2\2\u0140")
-        buf.write("\u0141\5\n\6\2\u0141\u0142\7$\2\2\u0142\u0144\3\2\2\2")
-        buf.write("\u0143\u0139\3\2\2\2\u0143\u013e\3\2\2\2\u01449\3\2\2")
-        buf.write("\2\u0145\u0148\5\n\6\2\u0146\u0148\5\f\7\2\u0147\u0145")
-        buf.write("\3\2\2\2\u0147\u0146\3\2\2\2\u0148\u0149\3\2\2\2\u0149")
-        buf.write("\u014a\7.\2\2\u014a\u014b\7#\2\2\u014b\u014c\5*\26\2\u014c")
-        buf.write("\u014d\7$\2\2\u014d\u014e\7\"\2\2\u014e;\3\2\2\2\u014f")
-        buf.write("\u0152\5\n\6\2\u0150\u0152\5\f\7\2\u0151\u014f\3\2\2\2")
-        buf.write("\u0151\u0150\3\2\2\2\u0152\u0153\3\2\2\2\u0153\u0154\7")
-        buf.write(".\2\2\u0154\u0155\7#\2\2\u0155\u0156\5*\26\2\u0156\u0157")
-        buf.write("\7$\2\2\u0157\u0158\5,\27\2\u0158=\3\2\2\2!DLNS[hv\u008a")
-        buf.write("\u0092\u0094\u00a3\u00ab\u00ad\u00c3\u00c7\u00cc\u00d2")
-        buf.write("\u00da\u00e6\u00ea\u00f1\u00f6\u00fc\u0103\u0119\u011b")
-        buf.write("\u0132\u0137\u0143\u0147\u0151")
+        buf.write("\3\3\3\3\3\3\3\7\3M\n\3\f\3\16\3P\13\3\3\4\3\4\3\5\3\5")
+        buf.write("\3\5\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\t\3\t\3\n\3\n\3\n\3")
+        buf.write("\n\5\nd\n\n\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f")
+        buf.write("\3\f\3\f\5\fr\n\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f")
+        buf.write("\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\f\u0086\n\f\3\f")
+        buf.write("\3\f\3\f\3\f\3\f\3\f\7\f\u008e\n\f\f\f\16\f\u0091\13\f")
+        buf.write("\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16\3\16")
+        buf.write("\3\16\5\16\u009f\n\16\3\16\3\16\3\16\3\16\3\16\3\16\7")
+        buf.write("\16\u00a7\n\16\f\16\16\16\u00aa\13\16\3\17\3\17\3\17\3")
+        buf.write("\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17")
+        buf.write("\3\17\3\17\3\17\3\17\3\17\5\17\u00bf\n\17\3\20\3\20\5")
+        buf.write("\20\u00c3\n\20\3\20\3\20\3\20\5\20\u00c8\n\20\3\20\3\20")
+        buf.write("\3\20\3\20\5\20\u00ce\n\20\3\20\3\20\3\20\3\20\3\20\3")
+        buf.write("\20\5\20\u00d6\n\20\3\21\3\21\3\21\3\22\3\22\3\22\3\22")
+        buf.write("\3\23\3\23\3\23\5\23\u00e2\n\23\3\24\3\24\5\24\u00e6\n")
+        buf.write("\24\3\24\3\24\3\24\7\24\u00eb\n\24\f\24\16\24\u00ee\13")
+        buf.write("\24\3\25\3\25\5\25\u00f2\n\25\3\25\3\25\3\26\3\26\5\26")
+        buf.write("\u00f8\n\26\3\26\3\26\3\26\7\26\u00fd\n\26\f\26\16\26")
+        buf.write("\u0100\13\26\3\27\3\27\3\27\3\27\3\30\3\30\3\30\3\31\3")
+        buf.write("\31\3\31\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32")
+        buf.write("\7\32\u0115\n\32\f\32\16\32\u0118\13\32\3\33\3\33\3\33")
+        buf.write("\3\33\3\33\3\33\3\34\3\34\3\34\3\34\3\34\3\34\3\34\3\34")
+        buf.write("\3\34\3\34\3\34\3\34\7\34\u012c\n\34\f\34\16\34\u012f")
+        buf.write("\13\34\3\34\3\34\5\34\u0133\n\34\3\35\3\35\3\35\3\35\3")
+        buf.write("\35\3\35\3\35\3\35\3\35\3\35\5\35\u013f\n\35\3\36\3\36")
+        buf.write("\5\36\u0143\n\36\3\36\3\36\3\36\3\36\3\36\3\36\3\37\3")
+        buf.write("\37\5\37\u014d\n\37\3\37\3\37\3\37\3\37\3\37\3\37\3\37")
+        buf.write("\2\7\4\26\32&* \2\4\6\b\n\f\16\20\22\24\26\30\32\34\36")
+        buf.write(" \"$&(*,.\60\62\64\668:<\2\t\4\2\6\6\b\t\3\2\6\t\3\2*")
+        buf.write("+\5\2\20\20\23\26\37 \3\2\24\25\4\2\20\20\23\23\3\2\27")
+        buf.write("\33\2\u0169\2>\3\2\2\2\4D\3\2\2\2\6Q\3\2\2\2\bS\3\2\2")
+        buf.write("\2\nV\3\2\2\2\fX\3\2\2\2\16[\3\2\2\2\20]\3\2\2\2\22c\3")
+        buf.write("\2\2\2\24e\3\2\2\2\26\u0085\3\2\2\2\30\u0092\3\2\2\2\32")
+        buf.write("\u009e\3\2\2\2\34\u00be\3\2\2\2\36\u00d5\3\2\2\2 \u00d7")
+        buf.write("\3\2\2\2\"\u00da\3\2\2\2$\u00e1\3\2\2\2&\u00e3\3\2\2\2")
+        buf.write("(\u00f1\3\2\2\2*\u00f5\3\2\2\2,\u0101\3\2\2\2.\u0105\3")
+        buf.write("\2\2\2\60\u0108\3\2\2\2\62\u0116\3\2\2\2\64\u0119\3\2")
+        buf.write("\2\2\66\u011f\3\2\2\28\u013e\3\2\2\2:\u0142\3\2\2\2<\u014c")
+        buf.write("\3\2\2\2>?\5\4\3\2?\3\3\2\2\2@A\b\3\1\2AE\58\35\2BE\5")
+        buf.write(":\36\2CE\5<\37\2D@\3\2\2\2DB\3\2\2\2DC\3\2\2\2EN\3\2\2")
+        buf.write("\2FG\f\5\2\2GM\58\35\2HI\f\4\2\2IM\5<\37\2JK\f\3\2\2K")
+        buf.write("M\5:\36\2LF\3\2\2\2LH\3\2\2\2LJ\3\2\2\2MP\3\2\2\2NL\3")
+        buf.write("\2\2\2NO\3\2\2\2O\5\3\2\2\2PN\3\2\2\2QR\t\2\2\2R\7\3\2")
+        buf.write("\2\2ST\5\6\4\2TU\7\24\2\2U\t\3\2\2\2VW\t\3\2\2W\13\3\2")
+        buf.write("\2\2XY\5\n\6\2YZ\7\24\2\2Z\r\3\2\2\2[\\\7\3\2\2\\\17\3")
+        buf.write("\2\2\2]^\t\4\2\2^\21\3\2\2\2_`\7/\2\2`a\7\4\2\2ad\5\22")
+        buf.write("\n\2bd\7/\2\2c_\3\2\2\2cb\3\2\2\2d\23\3\2\2\2ef\t\5\2")
+        buf.write("\2f\25\3\2\2\2gh\b\f\1\2hi\7\37\2\2i\u0086\7/\2\2jk\7")
+        buf.write("\24\2\2k\u0086\5\26\f\rlm\7\23\2\2m\u0086\5\26\f\fnq\7")
+        buf.write("$\2\2or\5\b\5\2pr\5\6\4\2qo\3\2\2\2qp\3\2\2\2rs\3\2\2")
+        buf.write("\2st\7%\2\2tu\5\26\f\13u\u0086\3\2\2\2v\u0086\7,\2\2w")
+        buf.write("\u0086\7-\2\2x\u0086\7.\2\2y\u0086\7/\2\2z\u0086\58\35")
+        buf.write("\2{\u0086\5\20\t\2|}\7/\2\2}~\7&\2\2~\177\5\26\f\2\177")
+        buf.write("\u0080\7\'\2\2\u0080\u0086\3\2\2\2\u0081\u0082\7$\2\2")
+        buf.write("\u0082\u0083\5\26\f\2\u0083\u0084\7%\2\2\u0084\u0086\3")
+        buf.write("\2\2\2\u0085g\3\2\2\2\u0085j\3\2\2\2\u0085l\3\2\2\2\u0085")
+        buf.write("n\3\2\2\2\u0085v\3\2\2\2\u0085w\3\2\2\2\u0085x\3\2\2\2")
+        buf.write("\u0085y\3\2\2\2\u0085z\3\2\2\2\u0085{\3\2\2\2\u0085|\3")
+        buf.write("\2\2\2\u0085\u0081\3\2\2\2\u0086\u008f\3\2\2\2\u0087\u0088")
+        buf.write("\f\20\2\2\u0088\u0089\t\6\2\2\u0089\u008e\5\26\f\21\u008a")
+        buf.write("\u008b\f\17\2\2\u008b\u008c\t\7\2\2\u008c\u008e\5\26\f")
+        buf.write("\20\u008d\u0087\3\2\2\2\u008d\u008a\3\2\2\2\u008e\u0091")
+        buf.write("\3\2\2\2\u008f\u008d\3\2\2\2\u008f\u0090\3\2\2\2\u0090")
+        buf.write("\27\3\2\2\2\u0091\u008f\3\2\2\2\u0092\u0093\t\b\2\2\u0093")
+        buf.write("\31\3\2\2\2\u0094\u0095\b\16\1\2\u0095\u0096\7$\2\2\u0096")
+        buf.write("\u0097\5\32\16\2\u0097\u0098\7%\2\2\u0098\u009f\3\2\2")
+        buf.write("\2\u0099\u009a\5\26\f\2\u009a\u009b\5\30\r\2\u009b\u009c")
+        buf.write("\5\26\f\2\u009c\u009f\3\2\2\2\u009d\u009f\5\26\f\2\u009e")
+        buf.write("\u0094\3\2\2\2\u009e\u0099\3\2\2\2\u009e\u009d\3\2\2\2")
+        buf.write("\u009f\u00a8\3\2\2\2\u00a0\u00a1\f\7\2\2\u00a1\u00a2\7")
+        buf.write("!\2\2\u00a2\u00a7\5\32\16\b\u00a3\u00a4\f\6\2\2\u00a4")
+        buf.write("\u00a5\7\"\2\2\u00a5\u00a7\5\32\16\7\u00a6\u00a0\3\2\2")
+        buf.write("\2\u00a6\u00a3\3\2\2\2\u00a7\u00aa\3\2\2\2\u00a8\u00a6")
+        buf.write("\3\2\2\2\u00a8\u00a9\3\2\2\2\u00a9\33\3\2\2\2\u00aa\u00a8")
+        buf.write("\3\2\2\2\u00ab\u00ac\7/\2\2\u00ac\u00ad\7\36\2\2\u00ad")
+        buf.write("\u00ae\5\26\f\2\u00ae\u00af\7#\2\2\u00af\u00bf\3\2\2\2")
+        buf.write("\u00b0\u00b1\7\24\2\2\u00b1\u00b2\7/\2\2\u00b2\u00b3\7")
+        buf.write("\36\2\2\u00b3\u00b4\5\26\f\2\u00b4\u00b5\7#\2\2\u00b5")
+        buf.write("\u00bf\3\2\2\2\u00b6\u00b7\7/\2\2\u00b7\u00b8\7&\2\2\u00b8")
+        buf.write("\u00b9\5\26\f\2\u00b9\u00ba\7\'\2\2\u00ba\u00bb\7\36\2")
+        buf.write("\2\u00bb\u00bc\5\26\f\2\u00bc\u00bd\7#\2\2\u00bd\u00bf")
+        buf.write("\3\2\2\2\u00be\u00ab\3\2\2\2\u00be\u00b0\3\2\2\2\u00be")
+        buf.write("\u00b6\3\2\2\2\u00bf\35\3\2\2\2\u00c0\u00c3\5\6\4\2\u00c1")
+        buf.write("\u00c3\5\b\5\2\u00c2\u00c0\3\2\2\2\u00c2\u00c1\3\2\2\2")
+        buf.write("\u00c3\u00c4\3\2\2\2\u00c4\u00c7\7/\2\2\u00c5\u00c6\7")
+        buf.write("\36\2\2\u00c6\u00c8\5\26\f\2\u00c7\u00c5\3\2\2\2\u00c7")
+        buf.write("\u00c8\3\2\2\2\u00c8\u00c9\3\2\2\2\u00c9\u00ca\7#\2\2")
+        buf.write("\u00ca\u00d6\3\2\2\2\u00cb\u00ce\5\6\4\2\u00cc\u00ce\5")
+        buf.write("\b\5\2\u00cd\u00cb\3\2\2\2\u00cd\u00cc\3\2\2\2\u00ce\u00cf")
+        buf.write("\3\2\2\2\u00cf\u00d0\7/\2\2\u00d0\u00d1\7&\2\2\u00d1\u00d2")
+        buf.write("\7,\2\2\u00d2\u00d3\7\'\2\2\u00d3\u00d4\7#\2\2\u00d4\u00d6")
+        buf.write("\3\2\2\2\u00d5\u00c2\3\2\2\2\u00d5\u00cd\3\2\2\2\u00d6")
+        buf.write("\37\3\2\2\2\u00d7\u00d8\58\35\2\u00d8\u00d9\7#\2\2\u00d9")
+        buf.write("!\3\2\2\2\u00da\u00db\7\16\2\2\u00db\u00dc\5\26\f\2\u00dc")
+        buf.write("\u00dd\7#\2\2\u00dd#\3\2\2\2\u00de\u00e2\5\26\f\2\u00df")
+        buf.write("\u00e2\58\35\2\u00e0\u00e2\7\63\2\2\u00e1\u00de\3\2\2")
+        buf.write("\2\u00e1\u00df\3\2\2\2\u00e1\u00e0\3\2\2\2\u00e2%\3\2")
+        buf.write("\2\2\u00e3\u00e5\b\24\1\2\u00e4\u00e6\5$\23\2\u00e5\u00e4")
+        buf.write("\3\2\2\2\u00e5\u00e6\3\2\2\2\u00e6\u00ec\3\2\2\2\u00e7")
+        buf.write("\u00e8\f\4\2\2\u00e8\u00e9\7\4\2\2\u00e9\u00eb\5$\23\2")
+        buf.write("\u00ea\u00e7\3\2\2\2\u00eb\u00ee\3\2\2\2\u00ec\u00ea\3")
+        buf.write("\2\2\2\u00ec\u00ed\3\2\2\2\u00ed\'\3\2\2\2\u00ee\u00ec")
+        buf.write("\3\2\2\2\u00ef\u00f2\5\n\6\2\u00f0\u00f2\5\f\7\2\u00f1")
+        buf.write("\u00ef\3\2\2\2\u00f1\u00f0\3\2\2\2\u00f2\u00f3\3\2\2\2")
+        buf.write("\u00f3\u00f4\7/\2\2\u00f4)\3\2\2\2\u00f5\u00f7\b\26\1")
+        buf.write("\2\u00f6\u00f8\5(\25\2\u00f7\u00f6\3\2\2\2\u00f7\u00f8")
+        buf.write("\3\2\2\2\u00f8\u00fe\3\2\2\2\u00f9\u00fa\f\4\2\2\u00fa")
+        buf.write("\u00fb\7\4\2\2\u00fb\u00fd\5(\25\2\u00fc\u00f9\3\2\2\2")
+        buf.write("\u00fd\u0100\3\2\2\2\u00fe\u00fc\3\2\2\2\u00fe\u00ff\3")
+        buf.write("\2\2\2\u00ff+\3\2\2\2\u0100\u00fe\3\2\2\2\u0101\u0102")
+        buf.write("\7(\2\2\u0102\u0103\5\62\32\2\u0103\u0104\7)\2\2\u0104")
+        buf.write("-\3\2\2\2\u0105\u0106\7\n\2\2\u0106\u0107\7#\2\2\u0107")
+        buf.write("/\3\2\2\2\u0108\u0109\7\13\2\2\u0109\u010a\7#\2\2\u010a")
+        buf.write("\61\3\2\2\2\u010b\u0115\5\34\17\2\u010c\u0115\5\36\20")
+        buf.write("\2\u010d\u0115\5 \21\2\u010e\u0115\5\64\33\2\u010f\u0115")
+        buf.write("\5,\27\2\u0110\u0115\5\66\34\2\u0111\u0115\5\"\22\2\u0112")
+        buf.write("\u0115\5.\30\2\u0113\u0115\5\60\31\2\u0114\u010b\3\2\2")
+        buf.write("\2\u0114\u010c\3\2\2\2\u0114\u010d\3\2\2\2\u0114\u010e")
+        buf.write("\3\2\2\2\u0114\u010f\3\2\2\2\u0114\u0110\3\2\2\2\u0114")
+        buf.write("\u0111\3\2\2\2\u0114\u0112\3\2\2\2\u0114\u0113\3\2\2\2")
+        buf.write("\u0115\u0118\3\2\2\2\u0116\u0114\3\2\2\2\u0116\u0117\3")
+        buf.write("\2\2\2\u0117\63\3\2\2\2\u0118\u0116\3\2\2\2\u0119\u011a")
+        buf.write("\7\17\2\2\u011a\u011b\7$\2\2\u011b\u011c\5\32\16\2\u011c")
+        buf.write("\u011d\7%\2\2\u011d\u011e\5,\27\2\u011e\65\3\2\2\2\u011f")
+        buf.write("\u0120\7\f\2\2\u0120\u0121\7$\2\2\u0121\u0122\5\32\16")
+        buf.write("\2\u0122\u0123\7%\2\2\u0123\u012d\5,\27\2\u0124\u0125")
+        buf.write("\7\r\2\2\u0125\u0126\7\f\2\2\u0126\u0127\7$\2\2\u0127")
+        buf.write("\u0128\5\32\16\2\u0128\u0129\7%\2\2\u0129\u012a\5,\27")
+        buf.write("\2\u012a\u012c\3\2\2\2\u012b\u0124\3\2\2\2\u012c\u012f")
+        buf.write("\3\2\2\2\u012d\u012b\3\2\2\2\u012d\u012e\3\2\2\2\u012e")
+        buf.write("\u0132\3\2\2\2\u012f\u012d\3\2\2\2\u0130\u0131\7\r\2\2")
+        buf.write("\u0131\u0133\5,\27\2\u0132\u0130\3\2\2\2\u0132\u0133\3")
+        buf.write("\2\2\2\u0133\67\3\2\2\2\u0134\u0135\7/\2\2\u0135\u0136")
+        buf.write("\7$\2\2\u0136\u0137\5&\24\2\u0137\u0138\7%\2\2\u0138\u013f")
+        buf.write("\3\2\2\2\u0139\u013a\5\16\b\2\u013a\u013b\7$\2\2\u013b")
+        buf.write("\u013c\5\n\6\2\u013c\u013d\7%\2\2\u013d\u013f\3\2\2\2")
+        buf.write("\u013e\u0134\3\2\2\2\u013e\u0139\3\2\2\2\u013f9\3\2\2")
+        buf.write("\2\u0140\u0143\5\n\6\2\u0141\u0143\5\f\7\2\u0142\u0140")
+        buf.write("\3\2\2\2\u0142\u0141\3\2\2\2\u0143\u0144\3\2\2\2\u0144")
+        buf.write("\u0145\7/\2\2\u0145\u0146\7$\2\2\u0146\u0147\5*\26\2\u0147")
+        buf.write("\u0148\7%\2\2\u0148\u0149\7#\2\2\u0149;\3\2\2\2\u014a")
+        buf.write("\u014d\5\n\6\2\u014b\u014d\5\f\7\2\u014c\u014a\3\2\2\2")
+        buf.write("\u014c\u014b\3\2\2\2\u014d\u014e\3\2\2\2\u014e\u014f\7")
+        buf.write("/\2\2\u014f\u0150\7$\2\2\u0150\u0151\5*\26\2\u0151\u0152")
+        buf.write("\7%\2\2\u0152\u0153\5,\27\2\u0153=\3\2\2\2\37DLNcq\u0085")
+        buf.write("\u008d\u008f\u009e\u00a6\u00a8\u00be\u00c2\u00c7\u00cd")
+        buf.write("\u00d5\u00e1\u00e5\u00ec\u00f1\u00f7\u00fe\u0114\u0116")
+        buf.write("\u012d\u0132\u013e\u0142\u014c")
         return buf.getvalue()
 
 
@@ -183,18 +180,18 @@ class naiveCParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'sizeof'", "','", "<INVALID>", "'int'", 
-                     "'void'", "'char'", "'break'", "'continue'", "'if'", 
-                     "'else'", "'return'", "'while'", "'+'", "'++'", "'--'", 
-                     "'-'", "'*'", "'/'", "'%'", "'>'", "'<'", "'>='", "'<='", 
-                     "'=='", "'!='", "'!'", "'='", "'&'", "'|'", "'&&'", 
-                     "'||'", "';'", "'('", "')'", "'['", "']'", "'{'", "'}'", 
-                     "'true'", "'false'" ]
+                     "'void'", "'char'", "'long long'", "'break'", "'continue'", 
+                     "'if'", "'else'", "'return'", "'while'", "'+'", "'++'", 
+                     "'--'", "'-'", "'*'", "'/'", "'%'", "'>'", "'<'", "'>='", 
+                     "'<='", "'=='", "'!='", "'!'", "'='", "'&'", "'|'", 
+                     "'&&'", "'||'", "';'", "'('", "')'", "'['", "']'", 
+                     "'{'", "'}'", "'true'", "'false'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "Include", 
-                      "TypeInt", "TypeVoid", "TypeChar", "Break", "Continue", 
-                      "If", "Else", "Return", "While", "ADD", "ADDADD", 
-                      "SUBSUB", "SUB", "MUL", "DIV", "MOD", "Greater", "Less", 
-                      "GreaterEqual", "LessEqual", "Equal", "NotEqual", 
+                      "TypeInt", "TypeVoid", "TypeChar", "TypeLL", "Break", 
+                      "Continue", "If", "Else", "Return", "While", "ADD", 
+                      "ADDADD", "SUBSUB", "SUB", "MUL", "DIV", "MOD", "Greater", 
+                      "Less", "GreaterEqual", "LessEqual", "Equal", "NotEqual", 
                       "Not", "AssignOperator", "ArithmeticAnd", "ArithmeticOR", 
                       "LogicAnd", "LogicOR", "Semicolon", "LeftParentheses", 
                       "RightParentheses", "LeftBracket", "RightBracket", 
@@ -248,48 +245,49 @@ class naiveCParser ( Parser ):
     TypeInt=4
     TypeVoid=5
     TypeChar=6
-    Break=7
-    Continue=8
-    If=9
-    Else=10
-    Return=11
-    While=12
-    ADD=13
-    ADDADD=14
-    SUBSUB=15
-    SUB=16
-    MUL=17
-    DIV=18
-    MOD=19
-    Greater=20
-    Less=21
-    GreaterEqual=22
-    LessEqual=23
-    Equal=24
-    NotEqual=25
-    Not=26
-    AssignOperator=27
-    ArithmeticAnd=28
-    ArithmeticOR=29
-    LogicAnd=30
-    LogicOR=31
-    Semicolon=32
-    LeftParentheses=33
-    RightParentheses=34
-    LeftBracket=35
-    RightBracket=36
-    LeftBrace=37
-    RightBrace=38
-    TRUE=39
-    FALSE=40
-    PositiveINT=41
-    Char=42
-    INT=43
-    ID=44
-    WS=45
-    BlockComment=46
-    LineComment=47
-    String=48
+    TypeLL=7
+    Break=8
+    Continue=9
+    If=10
+    Else=11
+    Return=12
+    While=13
+    ADD=14
+    ADDADD=15
+    SUBSUB=16
+    SUB=17
+    MUL=18
+    DIV=19
+    MOD=20
+    Greater=21
+    Less=22
+    GreaterEqual=23
+    LessEqual=24
+    Equal=25
+    NotEqual=26
+    Not=27
+    AssignOperator=28
+    ArithmeticAnd=29
+    ArithmeticOR=30
+    LogicAnd=31
+    LogicOR=32
+    Semicolon=33
+    LeftParentheses=34
+    RightParentheses=35
+    LeftBracket=36
+    RightBracket=37
+    LeftBrace=38
+    RightBrace=39
+    TRUE=40
+    FALSE=41
+    PositiveINT=42
+    Char=43
+    INT=44
+    ID=45
+    WS=46
+    BlockComment=47
+    LineComment=48
+    String=49
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -484,62 +482,32 @@ class naiveCParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return naiveCParser.RULE_realTypeID
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class RealTypeIntContext(RealTypeIDContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.RealTypeIDContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
+        def TypeChar(self):
+            return self.getToken(naiveCParser.TypeChar, 0)
 
         def TypeInt(self):
             return self.getToken(naiveCParser.TypeInt, 0)
 
+        def TypeLL(self):
+            return self.getToken(naiveCParser.TypeLL, 0)
+
+        def getRuleIndex(self):
+            return naiveCParser.RULE_realTypeID
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRealTypeInt" ):
-                listener.enterRealTypeInt(self)
+            if hasattr( listener, "enterRealTypeID" ):
+                listener.enterRealTypeID(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRealTypeInt" ):
-                listener.exitRealTypeInt(self)
+            if hasattr( listener, "exitRealTypeID" ):
+                listener.exitRealTypeID(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRealTypeInt" ):
-                return visitor.visitRealTypeInt(self)
+            if hasattr( visitor, "visitRealTypeID" ):
+                return visitor.visitRealTypeID(self)
             else:
                 return visitor.visitChildren(self)
 
-
-    class RealTypeCharContext(RealTypeIDContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.RealTypeIDContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def TypeChar(self):
-            return self.getToken(naiveCParser.TypeChar, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterRealTypeChar" ):
-                listener.enterRealTypeChar(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitRealTypeChar" ):
-                listener.exitRealTypeChar(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitRealTypeChar" ):
-                return visitor.visitRealTypeChar(self)
-            else:
-                return visitor.visitChildren(self)
 
 
 
@@ -547,25 +515,16 @@ class naiveCParser ( Parser ):
 
         localctx = naiveCParser.RealTypeIDContext(self, self._ctx, self.state)
         self.enterRule(localctx, 4, self.RULE_realTypeID)
+        self._la = 0 # Token type
         try:
-            self.state = 81
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [naiveCParser.TypeChar]:
-                localctx = naiveCParser.RealTypeCharContext(self, localctx)
-                self.enterOuterAlt(localctx, 1)
-                self.state = 79
-                self.match(naiveCParser.TypeChar)
-                pass
-            elif token in [naiveCParser.TypeInt]:
-                localctx = naiveCParser.RealTypeIntContext(self, localctx)
-                self.enterOuterAlt(localctx, 2)
-                self.state = 80
-                self.match(naiveCParser.TypeInt)
-                pass
+            self.enterOuterAlt(localctx, 1)
+            self.state = 79
+            _la = self._input.LA(1)
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL))) != 0)):
+                self._errHandler.recoverInline(self)
             else:
-                raise NoViableAltException(self)
-
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -615,9 +574,9 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 6, self.RULE_realTypeIDPointer)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 83
+            self.state = 81
             self.realTypeID()
-            self.state = 84
+            self.state = 82
             self.match(naiveCParser.MUL)
         except RecognitionException as re:
             localctx.exception = re
@@ -635,86 +594,35 @@ class naiveCParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-
-        def getRuleIndex(self):
-            return naiveCParser.RULE_typeIdentifier
-
-     
-        def copyFrom(self, ctx:ParserRuleContext):
-            super().copyFrom(ctx)
-
-
-
-    class TypeCharContext(TypeIdentifierContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.TypeIdentifierContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def TypeChar(self):
-            return self.getToken(naiveCParser.TypeChar, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTypeChar" ):
-                listener.enterTypeChar(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTypeChar" ):
-                listener.exitTypeChar(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTypeChar" ):
-                return visitor.visitTypeChar(self)
-            else:
-                return visitor.visitChildren(self)
-
-
-    class TypeVoidContext(TypeIdentifierContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.TypeIdentifierContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
+        def TypeInt(self):
+            return self.getToken(naiveCParser.TypeInt, 0)
 
         def TypeVoid(self):
             return self.getToken(naiveCParser.TypeVoid, 0)
 
+        def TypeChar(self):
+            return self.getToken(naiveCParser.TypeChar, 0)
+
+        def TypeLL(self):
+            return self.getToken(naiveCParser.TypeLL, 0)
+
+        def getRuleIndex(self):
+            return naiveCParser.RULE_typeIdentifier
+
         def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTypeVoid" ):
-                listener.enterTypeVoid(self)
+            if hasattr( listener, "enterTypeIdentifier" ):
+                listener.enterTypeIdentifier(self)
 
         def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTypeVoid" ):
-                listener.exitTypeVoid(self)
+            if hasattr( listener, "exitTypeIdentifier" ):
+                listener.exitTypeIdentifier(self)
 
         def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTypeVoid" ):
-                return visitor.visitTypeVoid(self)
+            if hasattr( visitor, "visitTypeIdentifier" ):
+                return visitor.visitTypeIdentifier(self)
             else:
                 return visitor.visitChildren(self)
 
-
-    class TypeIntContext(TypeIdentifierContext):
-
-        def __init__(self, parser, ctx:ParserRuleContext): # actually a naiveCParser.TypeIdentifierContext
-            super().__init__(parser)
-            self.copyFrom(ctx)
-
-        def TypeInt(self):
-            return self.getToken(naiveCParser.TypeInt, 0)
-
-        def enterRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "enterTypeInt" ):
-                listener.enterTypeInt(self)
-
-        def exitRule(self, listener:ParseTreeListener):
-            if hasattr( listener, "exitTypeInt" ):
-                listener.exitTypeInt(self)
-
-        def accept(self, visitor:ParseTreeVisitor):
-            if hasattr( visitor, "visitTypeInt" ):
-                return visitor.visitTypeInt(self)
-            else:
-                return visitor.visitChildren(self)
 
 
 
@@ -722,31 +630,16 @@ class naiveCParser ( Parser ):
 
         localctx = naiveCParser.TypeIdentifierContext(self, self._ctx, self.state)
         self.enterRule(localctx, 8, self.RULE_typeIdentifier)
+        self._la = 0 # Token type
         try:
-            self.state = 89
-            self._errHandler.sync(self)
-            token = self._input.LA(1)
-            if token in [naiveCParser.TypeInt]:
-                localctx = naiveCParser.TypeIntContext(self, localctx)
-                self.enterOuterAlt(localctx, 1)
-                self.state = 86
-                self.match(naiveCParser.TypeInt)
-                pass
-            elif token in [naiveCParser.TypeVoid]:
-                localctx = naiveCParser.TypeVoidContext(self, localctx)
-                self.enterOuterAlt(localctx, 2)
-                self.state = 87
-                self.match(naiveCParser.TypeVoid)
-                pass
-            elif token in [naiveCParser.TypeChar]:
-                localctx = naiveCParser.TypeCharContext(self, localctx)
-                self.enterOuterAlt(localctx, 3)
-                self.state = 88
-                self.match(naiveCParser.TypeChar)
-                pass
+            self.enterOuterAlt(localctx, 1)
+            self.state = 84
+            _la = self._input.LA(1)
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeVoid) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL))) != 0)):
+                self._errHandler.recoverInline(self)
             else:
-                raise NoViableAltException(self)
-
+                self._errHandler.reportMatch(self)
+                self.consume()
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -796,9 +689,9 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 10, self.RULE_typeIdentifierPointer)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 91
+            self.state = 86
             self.typeIdentifier()
-            self.state = 92
+            self.state = 87
             self.match(naiveCParser.MUL)
         except RecognitionException as re:
             localctx.exception = re
@@ -843,7 +736,7 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_sizeof)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 94
+            self.state = 89
             self.match(naiveCParser.T__0)
         except RecognitionException as re:
             localctx.exception = re
@@ -894,7 +787,7 @@ class naiveCParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 96
+            self.state = 91
             _la = self._input.LA(1)
             if not(_la==naiveCParser.TRUE or _la==naiveCParser.FALSE):
                 self._errHandler.recoverInline(self)
@@ -949,22 +842,22 @@ class naiveCParser ( Parser ):
         localctx = naiveCParser.IdListContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_idList)
         try:
-            self.state = 102
+            self.state = 97
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 98
+                self.state = 93
                 self.match(naiveCParser.ID)
-                self.state = 99
+                self.state = 94
                 self.match(naiveCParser.T__1)
-                self.state = 100
+                self.state = 95
                 self.idList()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 101
+                self.state = 96
                 self.match(naiveCParser.ID)
                 pass
 
@@ -1033,7 +926,7 @@ class naiveCParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 104
+            self.state = 99
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.ADD) | (1 << naiveCParser.SUB) | (1 << naiveCParser.MUL) | (1 << naiveCParser.DIV) | (1 << naiveCParser.MOD) | (1 << naiveCParser.ArithmeticAnd) | (1 << naiveCParser.ArithmeticOR))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1463,17 +1356,17 @@ class naiveCParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 136
+            self.state = 131
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,7,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
                 localctx = naiveCParser.GetPContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 107
+                self.state = 102
                 self.match(naiveCParser.ArithmeticAnd)
-                self.state = 108
+                self.state = 103
                 self.match(naiveCParser.ID)
                 pass
 
@@ -1481,9 +1374,9 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.MakPContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 109
+                self.state = 104
                 self.match(naiveCParser.MUL)
-                self.state = 110
+                self.state = 105
                 self.expr(11)
                 pass
 
@@ -1491,9 +1384,9 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.NegativeContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 111
+                self.state = 106
                 self.match(naiveCParser.SUB)
-                self.state = 112
+                self.state = 107
                 self.expr(10)
                 pass
 
@@ -1501,25 +1394,25 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.TypeCastContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 113
+                self.state = 108
                 self.match(naiveCParser.LeftParentheses)
-                self.state = 116
+                self.state = 111
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,4,self._ctx)
                 if la_ == 1:
-                    self.state = 114
+                    self.state = 109
                     self.realTypeIDPointer()
                     pass
 
                 elif la_ == 2:
-                    self.state = 115
+                    self.state = 110
                     self.realTypeID()
                     pass
 
 
-                self.state = 118
+                self.state = 113
                 self.match(naiveCParser.RightParentheses)
-                self.state = 119
+                self.state = 114
                 self.expr(9)
                 pass
 
@@ -1527,7 +1420,7 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.PositiveINTContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 121
+                self.state = 116
                 self.match(naiveCParser.PositiveINT)
                 pass
 
@@ -1535,7 +1428,7 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.CharContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 122
+                self.state = 117
                 self.match(naiveCParser.Char)
                 pass
 
@@ -1543,7 +1436,7 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.IntContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 123
+                self.state = 118
                 self.match(naiveCParser.INT)
                 pass
 
@@ -1551,7 +1444,7 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.IdContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 124
+                self.state = 119
                 self.match(naiveCParser.ID)
                 pass
 
@@ -1559,7 +1452,7 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.FCallContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 125
+                self.state = 120
                 self.functionCall()
                 pass
 
@@ -1567,7 +1460,7 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.TrueFalseContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 126
+                self.state = 121
                 self.boolExpr()
                 pass
 
@@ -1575,13 +1468,13 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.ArrayVisitContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 127
+                self.state = 122
                 self.match(naiveCParser.ID)
-                self.state = 128
+                self.state = 123
                 self.match(naiveCParser.LeftBracket)
-                self.state = 129
+                self.state = 124
                 self.expr(0)
-                self.state = 130
+                self.state = 125
                 self.match(naiveCParser.RightBracket)
                 pass
 
@@ -1589,35 +1482,35 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.ParensContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 132
+                self.state = 127
                 self.match(naiveCParser.LeftParentheses)
-                self.state = 133
+                self.state = 128
                 self.expr(0)
-                self.state = 134
+                self.state = 129
                 self.match(naiveCParser.RightParentheses)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 146
+            self.state = 141
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 144
+                    self.state = 139
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
                     if la_ == 1:
                         localctx = naiveCParser.MulDivContext(self, naiveCParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 138
+                        self.state = 133
                         if not self.precpred(self._ctx, 14):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 14)")
-                        self.state = 139
+                        self.state = 134
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==naiveCParser.MUL or _la==naiveCParser.DIV):
@@ -1625,18 +1518,18 @@ class naiveCParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 140
+                        self.state = 135
                         self.expr(15)
                         pass
 
                     elif la_ == 2:
                         localctx = naiveCParser.AddSubContext(self, naiveCParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 141
+                        self.state = 136
                         if not self.precpred(self._ctx, 13):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 13)")
-                        self.state = 142
+                        self.state = 137
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==naiveCParser.ADD or _la==naiveCParser.SUB):
@@ -1644,14 +1537,14 @@ class naiveCParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 143
+                        self.state = 138
                         self.expr(14)
                         pass
 
              
-                self.state = 148
+                self.state = 143
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,7,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -1711,7 +1604,7 @@ class naiveCParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 149
+            self.state = 144
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.Greater) | (1 << naiveCParser.Less) | (1 << naiveCParser.GreaterEqual) | (1 << naiveCParser.LessEqual) | (1 << naiveCParser.Equal))) != 0)):
                 self._errHandler.recoverInline(self)
@@ -1898,19 +1791,19 @@ class naiveCParser ( Parser ):
         self.enterRecursionRule(localctx, 24, self.RULE_conditionExpr, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 161
+            self.state = 156
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,10,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,8,self._ctx)
             if la_ == 1:
                 localctx = naiveCParser.CondParenContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 152
+                self.state = 147
                 self.match(naiveCParser.LeftParentheses)
-                self.state = 153
+                self.state = 148
                 self.conditionExpr(0)
-                self.state = 154
+                self.state = 149
                 self.match(naiveCParser.RightParentheses)
                 pass
 
@@ -1918,11 +1811,11 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.CondOpContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 156
+                self.state = 151
                 self.expr(0)
-                self.state = 157
+                self.state = 152
                 self.conditionOperator()
-                self.state = 158
+                self.state = 153
                 self.expr(0)
                 pass
 
@@ -1930,53 +1823,53 @@ class naiveCParser ( Parser ):
                 localctx = naiveCParser.CondExpContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 160
+                self.state = 155
                 self.expr(0)
                 pass
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 171
+            self.state = 166
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 169
+                    self.state = 164
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,9,self._ctx)
                     if la_ == 1:
                         localctx = naiveCParser.AndContext(self, naiveCParser.ConditionExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_conditionExpr)
-                        self.state = 163
+                        self.state = 158
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 164
+                        self.state = 159
                         self.match(naiveCParser.LogicAnd)
-                        self.state = 165
+                        self.state = 160
                         self.conditionExpr(6)
                         pass
 
                     elif la_ == 2:
                         localctx = naiveCParser.OrContext(self, naiveCParser.ConditionExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_conditionExpr)
-                        self.state = 166
+                        self.state = 161
                         if not self.precpred(self._ctx, 4):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
-                        self.state = 167
+                        self.state = 162
                         self.match(naiveCParser.LogicOR)
-                        self.state = 168
+                        self.state = 163
                         self.conditionExpr(5)
                         pass
 
              
-                self.state = 173
+                self.state = 168
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,12,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2112,53 +2005,53 @@ class naiveCParser ( Parser ):
         localctx = naiveCParser.AssignmentContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_assignment)
         try:
-            self.state = 193
+            self.state = 188
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,13,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,11,self._ctx)
             if la_ == 1:
                 localctx = naiveCParser.CommonAssignContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 174
+                self.state = 169
                 self.match(naiveCParser.ID)
-                self.state = 175
+                self.state = 170
                 self.match(naiveCParser.AssignOperator)
-                self.state = 176
+                self.state = 171
                 self.expr(0)
-                self.state = 177
+                self.state = 172
                 self.match(naiveCParser.Semicolon)
                 pass
 
             elif la_ == 2:
                 localctx = naiveCParser.MemoryAssignContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 179
+                self.state = 174
                 self.match(naiveCParser.MUL)
-                self.state = 180
+                self.state = 175
                 self.match(naiveCParser.ID)
-                self.state = 181
+                self.state = 176
                 self.match(naiveCParser.AssignOperator)
-                self.state = 182
+                self.state = 177
                 self.expr(0)
-                self.state = 183
+                self.state = 178
                 self.match(naiveCParser.Semicolon)
                 pass
 
             elif la_ == 3:
                 localctx = naiveCParser.ArrayAssignContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 185
+                self.state = 180
                 self.match(naiveCParser.ID)
-                self.state = 186
+                self.state = 181
                 self.match(naiveCParser.LeftBracket)
-                self.state = 187
+                self.state = 182
                 self.expr(0)
-                self.state = 188
+                self.state = 183
                 self.match(naiveCParser.RightBracket)
-                self.state = 189
+                self.state = 184
                 self.match(naiveCParser.AssignOperator)
-                self.state = 190
+                self.state = 185
                 self.expr(0)
-                self.state = 191
+                self.state = 186
                 self.match(naiveCParser.Semicolon)
                 pass
 
@@ -2235,66 +2128,66 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 28, self.RULE_definition)
         self._la = 0 # Token type
         try:
-            self.state = 216
+            self.state = 211
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 197
+                self.state = 192
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,12,self._ctx)
                 if la_ == 1:
-                    self.state = 195
+                    self.state = 190
                     self.realTypeID()
                     pass
 
                 elif la_ == 2:
-                    self.state = 196
+                    self.state = 191
                     self.realTypeIDPointer()
                     pass
 
 
-                self.state = 199
+                self.state = 194
                 self.match(naiveCParser.ID)
-                self.state = 202
+                self.state = 197
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==naiveCParser.AssignOperator:
-                    self.state = 200
+                    self.state = 195
                     self.match(naiveCParser.AssignOperator)
-                    self.state = 201
+                    self.state = 196
                     self.expr(0)
 
 
-                self.state = 204
+                self.state = 199
                 self.match(naiveCParser.Semicolon)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 208
+                self.state = 203
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,14,self._ctx)
                 if la_ == 1:
-                    self.state = 206
+                    self.state = 201
                     self.realTypeID()
                     pass
 
                 elif la_ == 2:
-                    self.state = 207
+                    self.state = 202
                     self.realTypeIDPointer()
                     pass
 
 
-                self.state = 210
+                self.state = 205
                 self.match(naiveCParser.ID)
-                self.state = 211
+                self.state = 206
                 self.match(naiveCParser.LeftBracket)
-                self.state = 212
+                self.state = 207
                 self.match(naiveCParser.PositiveINT)
-                self.state = 213
+                self.state = 208
                 self.match(naiveCParser.RightBracket)
-                self.state = 214
+                self.state = 209
                 self.match(naiveCParser.Semicolon)
                 pass
 
@@ -2348,9 +2241,9 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 30, self.RULE_callProc)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 218
+            self.state = 213
             self.functionCall()
-            self.state = 219
+            self.state = 214
             self.match(naiveCParser.Semicolon)
         except RecognitionException as re:
             localctx.exception = re
@@ -2404,11 +2297,11 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 32, self.RULE_returnLine)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 221
+            self.state = 216
             self.match(naiveCParser.Return)
-            self.state = 222
+            self.state = 217
             self.expr(0)
-            self.state = 223
+            self.state = 218
             self.match(naiveCParser.Semicolon)
         except RecognitionException as re:
             localctx.exception = re
@@ -2516,27 +2409,27 @@ class naiveCParser ( Parser ):
         localctx = naiveCParser.ParamContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_param)
         try:
-            self.state = 228
+            self.state = 223
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,18,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,16,self._ctx)
             if la_ == 1:
                 localctx = naiveCParser.ParamExprContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 225
+                self.state = 220
                 self.expr(0)
                 pass
 
             elif la_ == 2:
                 localctx = naiveCParser.ParamFuncContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 226
+                self.state = 221
                 self.functionCall()
                 pass
 
             elif la_ == 3:
                 localctx = naiveCParser.ParamStringContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
-                self.state = 227
+                self.state = 222
                 self.match(naiveCParser.String)
                 pass
 
@@ -2593,18 +2486,18 @@ class naiveCParser ( Parser ):
         self.enterRecursionRule(localctx, 36, self.RULE_paramList, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 232
+            self.state = 227
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
             if la_ == 1:
-                self.state = 231
+                self.state = 226
                 self.param()
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 239
+            self.state = 234
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,20,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -2612,17 +2505,17 @@ class naiveCParser ( Parser ):
                     _prevctx = localctx
                     localctx = naiveCParser.ParamListContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_paramList)
-                    self.state = 234
+                    self.state = 229
                     if not self.precpred(self._ctx, 2):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                    self.state = 235
+                    self.state = 230
                     self.match(naiveCParser.T__1)
-                    self.state = 236
+                    self.state = 231
                     self.param() 
-                self.state = 241
+                self.state = 236
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,20,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,18,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2677,21 +2570,21 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 38, self.RULE_defineParam)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 244
+            self.state = 239
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
             if la_ == 1:
-                self.state = 242
+                self.state = 237
                 self.typeIdentifier()
                 pass
 
             elif la_ == 2:
-                self.state = 243
+                self.state = 238
                 self.typeIdentifierPointer()
                 pass
 
 
-            self.state = 246
+            self.state = 241
             self.match(naiveCParser.ID)
         except RecognitionException as re:
             localctx.exception = re
@@ -2745,18 +2638,18 @@ class naiveCParser ( Parser ):
         self.enterRecursionRule(localctx, 40, self.RULE_defineParamList, _p)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 250
+            self.state = 245
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
             if la_ == 1:
-                self.state = 249
+                self.state = 244
                 self.defineParam()
 
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 257
+            self.state = 252
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,23,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,21,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
@@ -2764,17 +2657,17 @@ class naiveCParser ( Parser ):
                     _prevctx = localctx
                     localctx = naiveCParser.DefineParamListContext(self, _parentctx, _parentState)
                     self.pushNewRecursionContext(localctx, _startState, self.RULE_defineParamList)
-                    self.state = 252
+                    self.state = 247
                     if not self.precpred(self._ctx, 2):
                         from antlr4.error.Errors import FailedPredicateException
                         raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
-                    self.state = 253
+                    self.state = 248
                     self.match(naiveCParser.T__1)
-                    self.state = 254
+                    self.state = 249
                     self.defineParam() 
-                self.state = 259
+                self.state = 254
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,23,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,21,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -2828,11 +2721,11 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 42, self.RULE_block)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 260
+            self.state = 255
             self.match(naiveCParser.LeftBrace)
-            self.state = 261
+            self.state = 256
             self.statements()
-            self.state = 262
+            self.state = 257
             self.match(naiveCParser.RightBrace)
         except RecognitionException as re:
             localctx.exception = re
@@ -2882,9 +2775,9 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 44, self.RULE_breakLine)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 264
+            self.state = 259
             self.match(naiveCParser.Break)
-            self.state = 265
+            self.state = 260
             self.match(naiveCParser.Semicolon)
         except RecognitionException as re:
             localctx.exception = re
@@ -2934,9 +2827,9 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 46, self.RULE_continueLine)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 267
+            self.state = 262
             self.match(naiveCParser.Continue)
-            self.state = 268
+            self.state = 263
             self.match(naiveCParser.Semicolon)
         except RecognitionException as re:
             localctx.exception = re
@@ -3044,60 +2937,60 @@ class naiveCParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 281
+            self.state = 276
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.T__0) | (1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.Break) | (1 << naiveCParser.Continue) | (1 << naiveCParser.If) | (1 << naiveCParser.Return) | (1 << naiveCParser.While) | (1 << naiveCParser.MUL) | (1 << naiveCParser.LeftBrace) | (1 << naiveCParser.ID))) != 0):
-                self.state = 279
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.T__0) | (1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL) | (1 << naiveCParser.Break) | (1 << naiveCParser.Continue) | (1 << naiveCParser.If) | (1 << naiveCParser.Return) | (1 << naiveCParser.While) | (1 << naiveCParser.MUL) | (1 << naiveCParser.LeftBrace) | (1 << naiveCParser.ID))) != 0):
+                self.state = 274
                 self._errHandler.sync(self)
-                la_ = self._interp.adaptivePredict(self._input,24,self._ctx)
+                la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
                 if la_ == 1:
-                    self.state = 270
+                    self.state = 265
                     self.assignment()
                     pass
 
                 elif la_ == 2:
-                    self.state = 271
+                    self.state = 266
                     self.definition()
                     pass
 
                 elif la_ == 3:
-                    self.state = 272
+                    self.state = 267
                     self.callProc()
                     pass
 
                 elif la_ == 4:
-                    self.state = 273
+                    self.state = 268
                     self.whileBlock()
                     pass
 
                 elif la_ == 5:
-                    self.state = 274
+                    self.state = 269
                     self.block()
                     pass
 
                 elif la_ == 6:
-                    self.state = 275
+                    self.state = 270
                     self.ifBlock()
                     pass
 
                 elif la_ == 7:
-                    self.state = 276
+                    self.state = 271
                     self.returnLine()
                     pass
 
                 elif la_ == 8:
-                    self.state = 277
+                    self.state = 272
                     self.breakLine()
                     pass
 
                 elif la_ == 9:
-                    self.state = 278
+                    self.state = 273
                     self.continueLine()
                     pass
 
 
-                self.state = 283
+                self.state = 278
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -3160,15 +3053,15 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 50, self.RULE_whileBlock)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 284
+            self.state = 279
             self.match(naiveCParser.While)
-            self.state = 285
+            self.state = 280
             self.match(naiveCParser.LeftParentheses)
-            self.state = 286
+            self.state = 281
             self.conditionExpr(0)
-            self.state = 287
+            self.state = 282
             self.match(naiveCParser.RightParentheses)
-            self.state = 288
+            self.state = 283
             self.block()
         except RecognitionException as re:
             localctx.exception = re
@@ -3253,44 +3146,44 @@ class naiveCParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 290
+            self.state = 285
             self.match(naiveCParser.If)
-            self.state = 291
+            self.state = 286
             self.match(naiveCParser.LeftParentheses)
-            self.state = 292
+            self.state = 287
             self.conditionExpr(0)
-            self.state = 293
+            self.state = 288
             self.match(naiveCParser.RightParentheses)
-            self.state = 294
+            self.state = 289
             self.block()
-            self.state = 304
+            self.state = 299
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,26,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,24,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 295
+                    self.state = 290
                     self.match(naiveCParser.Else)
-                    self.state = 296
+                    self.state = 291
                     self.match(naiveCParser.If)
-                    self.state = 297
+                    self.state = 292
                     self.match(naiveCParser.LeftParentheses)
-                    self.state = 298
+                    self.state = 293
                     localctx.elif_cond = self.conditionExpr(0)
-                    self.state = 299
+                    self.state = 294
                     self.match(naiveCParser.RightParentheses)
-                    self.state = 300
+                    self.state = 295
                     self.block() 
-                self.state = 306
+                self.state = 301
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,26,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,24,self._ctx)
 
-            self.state = 309
+            self.state = 304
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==naiveCParser.Else:
-                self.state = 307
+                self.state = 302
                 self.match(naiveCParser.Else)
-                self.state = 308
+                self.state = 303
                 localctx.else_block = self.block()
 
 
@@ -3356,29 +3249,29 @@ class naiveCParser ( Parser ):
         localctx = naiveCParser.FunctionCallContext(self, self._ctx, self.state)
         self.enterRule(localctx, 54, self.RULE_functionCall)
         try:
-            self.state = 321
+            self.state = 316
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [naiveCParser.ID]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 311
+                self.state = 306
                 self.match(naiveCParser.ID)
-                self.state = 312
+                self.state = 307
                 self.match(naiveCParser.LeftParentheses)
-                self.state = 313
+                self.state = 308
                 self.paramList(0)
-                self.state = 314
+                self.state = 309
                 self.match(naiveCParser.RightParentheses)
                 pass
             elif token in [naiveCParser.T__0]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 316
+                self.state = 311
                 self.sizeof()
-                self.state = 317
+                self.state = 312
                 self.match(naiveCParser.LeftParentheses)
-                self.state = 318
+                self.state = 313
                 self.typeIdentifier()
-                self.state = 319
+                self.state = 314
                 self.match(naiveCParser.RightParentheses)
                 pass
             else:
@@ -3450,29 +3343,29 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 56, self.RULE_functionDeclare)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 325
+            self.state = 320
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,29,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
             if la_ == 1:
-                self.state = 323
+                self.state = 318
                 self.typeIdentifier()
                 pass
 
             elif la_ == 2:
-                self.state = 324
+                self.state = 319
                 self.typeIdentifierPointer()
                 pass
 
 
-            self.state = 327
+            self.state = 322
             self.match(naiveCParser.ID)
-            self.state = 328
+            self.state = 323
             self.match(naiveCParser.LeftParentheses)
-            self.state = 329
+            self.state = 324
             self.defineParamList(0)
-            self.state = 330
+            self.state = 325
             self.match(naiveCParser.RightParentheses)
-            self.state = 331
+            self.state = 326
             self.match(naiveCParser.Semicolon)
         except RecognitionException as re:
             localctx.exception = re
@@ -3541,29 +3434,29 @@ class naiveCParser ( Parser ):
         self.enterRule(localctx, 58, self.RULE_functionDefine)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 335
+            self.state = 330
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,30,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,28,self._ctx)
             if la_ == 1:
-                self.state = 333
+                self.state = 328
                 self.typeIdentifier()
                 pass
 
             elif la_ == 2:
-                self.state = 334
+                self.state = 329
                 self.typeIdentifierPointer()
                 pass
 
 
-            self.state = 337
+            self.state = 332
             self.match(naiveCParser.ID)
-            self.state = 338
+            self.state = 333
             self.match(naiveCParser.LeftParentheses)
-            self.state = 339
+            self.state = 334
             self.defineParamList(0)
-            self.state = 340
+            self.state = 335
             self.match(naiveCParser.RightParentheses)
-            self.state = 341
+            self.state = 336
             self.block()
         except RecognitionException as re:
             localctx.exception = re

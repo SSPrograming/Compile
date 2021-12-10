@@ -26,21 +26,12 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#RealTypeChar.
-    def enterRealTypeChar(self, ctx:naiveCParser.RealTypeCharContext):
+    # Enter a parse tree produced by naiveCParser#realTypeID.
+    def enterRealTypeID(self, ctx:naiveCParser.RealTypeIDContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#RealTypeChar.
-    def exitRealTypeChar(self, ctx:naiveCParser.RealTypeCharContext):
-        pass
-
-
-    # Enter a parse tree produced by naiveCParser#RealTypeInt.
-    def enterRealTypeInt(self, ctx:naiveCParser.RealTypeIntContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#RealTypeInt.
-    def exitRealTypeInt(self, ctx:naiveCParser.RealTypeIntContext):
+    # Exit a parse tree produced by naiveCParser#realTypeID.
+    def exitRealTypeID(self, ctx:naiveCParser.RealTypeIDContext):
         pass
 
 
@@ -53,30 +44,12 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#TypeInt.
-    def enterTypeInt(self, ctx:naiveCParser.TypeIntContext):
+    # Enter a parse tree produced by naiveCParser#typeIdentifier.
+    def enterTypeIdentifier(self, ctx:naiveCParser.TypeIdentifierContext):
         pass
 
-    # Exit a parse tree produced by naiveCParser#TypeInt.
-    def exitTypeInt(self, ctx:naiveCParser.TypeIntContext):
-        pass
-
-
-    # Enter a parse tree produced by naiveCParser#TypeVoid.
-    def enterTypeVoid(self, ctx:naiveCParser.TypeVoidContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#TypeVoid.
-    def exitTypeVoid(self, ctx:naiveCParser.TypeVoidContext):
-        pass
-
-
-    # Enter a parse tree produced by naiveCParser#TypeChar.
-    def enterTypeChar(self, ctx:naiveCParser.TypeCharContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#TypeChar.
-    def exitTypeChar(self, ctx:naiveCParser.TypeCharContext):
+    # Exit a parse tree produced by naiveCParser#typeIdentifier.
+    def exitTypeIdentifier(self, ctx:naiveCParser.TypeIdentifierContext):
         pass
 
 

@@ -19,13 +19,8 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#RealTypeChar.
-    def visitRealTypeChar(self, ctx:naiveCParser.RealTypeCharContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by naiveCParser#RealTypeInt.
-    def visitRealTypeInt(self, ctx:naiveCParser.RealTypeIntContext):
+    # Visit a parse tree produced by naiveCParser#realTypeID.
+    def visitRealTypeID(self, ctx:naiveCParser.RealTypeIDContext):
         return self.visitChildren(ctx)
 
 
@@ -34,18 +29,8 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#TypeInt.
-    def visitTypeInt(self, ctx:naiveCParser.TypeIntContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by naiveCParser#TypeVoid.
-    def visitTypeVoid(self, ctx:naiveCParser.TypeVoidContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by naiveCParser#TypeChar.
-    def visitTypeChar(self, ctx:naiveCParser.TypeCharContext):
+    # Visit a parse tree produced by naiveCParser#typeIdentifier.
+    def visitTypeIdentifier(self, ctx:naiveCParser.TypeIdentifierContext):
         return self.visitChildren(ctx)
 
 

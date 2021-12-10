@@ -40,24 +40,33 @@ class MyVisitor(naiveCVisitor):
     def write(self, filename: str) -> None:
         write_ir(filename, str(self.module))
 
-    def visitRealTypeInt(self, ctx: naiveCParser.RealTypeIntContext) -> str:
-        return ctx.TypeInt().getSymbol().text
-
-    def visitRealTypeChar(self, ctx: naiveCParser.RealTypeCharContext) -> str:
-        return ctx.TypeChar().getSymbol().text
+    def visitRealTypeID(self, ctx: naiveCParser.RealTypeIDContext):
+        if ctx.TypeInt():
+            token = ctx.TypeInt()
+        elif ctx.TypeChar():
+            token = ctx.TypeChar()
+        elif ctx.TypeLL():
+            token = ctx.TypeLL()
+        else:
+            raise Exception('panic: visitRealTypeID')
+        return token.getSymbol().text
 
     def visitRealTypeIDPointer(self, ctx: naiveCParser.RealTypeIDPointerContext) -> str:
         realTypeIdentifier = self.visit(ctx.realTypeID())
         return realTypeIdentifier + '*'
 
-    def visitTypeInt(self, ctx: naiveCParser.TypeIntContext) -> str:
-        return ctx.TypeInt().getSymbol().text
-
-    def visitTypeChar(self, ctx: naiveCParser.TypeCharContext) -> str:
-        return ctx.TypeChar().getSymbol().text
-
-    def visitTypeVoid(self, ctx: naiveCParser.TypeVoidContext) -> str:
-        return ctx.TypeVoid().getSymbol().text
+    def visitTypeIdentifier(self, ctx: naiveCParser.TypeIdentifierContext):
+        if ctx.TypeInt():
+            token = ctx.TypeInt()
+        elif ctx.TypeChar():
+            token = ctx.TypeChar()
+        elif ctx.TypeVoid():
+            token = ctx.TypeVoid()
+        elif ctx.TypeLL():
+            token = ctx.TypeLL()
+        else:
+            raise Exception('panic: visitTypeIdentifier')
+        return token.getSymbol().text
 
     def visitTypeIdentifierPointer(self, ctx: naiveCParser.TypeIdentifierPointerContext) -> str:
         typeIdentifier = self.visit(ctx.typeIdentifier())
@@ -96,8 +105,15 @@ class MyVisitor(naiveCVisitor):
             cast = self.builder.inttoptr(l_value, ir_type)
         elif isinstance(ir_type, ir.IntType) and isinstance(l_value.type, ir.PointerType):
             cast = self.builder.ptrtoint(l_value, ir_type)
+        elif isinstance(ir_type, ir.IntType) and isinstance(l_value.type, ir.IntType):
+            if ir_type.width < l_value.type.width:
+                cast = self.builder.trunc(l_value, ir_type)
+            elif ir_type.width > l_value.type.width:
+                cast = self.builder.sext(l_value, ir_type)
+            else:
+                cast = l_value
         else:
-            cast = self.builder.trunc(l_value, ir_type)
+            raise Exception('panic: visitTypeCast')
         return cast
 
     def visitArrayAssign(self, ctx: naiveCParser.ArrayAssignContext):
@@ -132,7 +148,6 @@ class MyVisitor(naiveCVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         if left.type != right.type:
-            print(ctx.getText())
             print('类型不匹配')
             raise Exception('panic: visitAddSub')
         if ctx.op.type == naiveCParser.ADD:
