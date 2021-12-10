@@ -10,6 +10,10 @@ def add_global_string_constant(module: ir.Module, string: str) -> ir.GlobalVaria
     return g_string
 
 
+def change_array_pointer_to_pointer(builder: ir.IRBuilder, pointer: ir.AllocaInstr) -> ir.PointerType:
+    return builder.bitcast(pointer, pointer.type.pointee.element.as_pointer())
+
+
 def init_io(module: ir.Module) -> None:
     # Printf Function
     printf_ty = ir.FunctionType(int32, [ir.PointerType(char)], var_arg=True)

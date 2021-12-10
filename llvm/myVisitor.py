@@ -1,3 +1,5 @@
+from llvmlite.ir import PointerType
+
 from naiveCParser import naiveCParser
 from naiveCVisitor import naiveCVisitor
 
@@ -53,7 +55,11 @@ class MyVisitor(naiveCVisitor):
         for i in range(pointer_count):
             ir_type = ir.PointerType(ir_type)
         identity = ctx.ID().getSymbol().text
-        l_value = self.builder.alloca(ir_type, name=identity)
+        if ctx.LeftBracket() and ctx.RightBracket():
+            size = int(ctx.PositiveINT().getSymbol().text)
+            l_value = self.builder.alloca(ir.ArrayType(ir_type, size), name=identity)
+        else:
+            l_value = self.builder.alloca(ir_type, name=identity)
         self.ST.insert(identity, l_value)
         # 如果有初值
         if ctx.AssignOperator():
@@ -67,7 +73,9 @@ class MyVisitor(naiveCVisitor):
             print('未定义的标识符: ' + identity)
             raise Exception('panic: visitAssignment')
         if ctx.index:
-            pass
+            index = self.visit(ctx.index)
+            l_value = self.builder.gep(l_value, [index])
+            l_value = change_array_pointer_to_pointer(self.builder, l_value)
         r_value = self.visit(ctx.value)
         self.builder.store(r_value, l_value)
 
@@ -124,6 +132,17 @@ class MyVisitor(naiveCVisitor):
             return ir.Constant(boolean, False)
         raise Exception('panic: visitBoolExpr')
 
+    def visitArrayVisit(self, ctx: naiveCParser.ArrayVisitContext):
+        identity = ctx.ID().getSymbol().text
+        symbol = self.ST.get(identity)
+        if symbol:
+            index = self.visit(ctx.expr())
+            l_value = self.builder.gep(symbol, [index])
+            return self.builder.load(l_value)
+        else:
+            print('未定义的标识符: ' + identity)
+            raise Exception('panic: visitId')
+
     def visitParens(self, ctx: naiveCParser.ParensContext) -> ir.Value:
         return self.visit(ctx.expr())
 
@@ -176,11 +195,11 @@ class MyVisitor(naiveCVisitor):
     def visitParamFunc(self, ctx: naiveCParser.ParamFuncContext) -> ir.Value:
         return self.visit(ctx.functionCall())
 
-    def visitParamString(self, ctx: naiveCParser.ParamStringContext) -> ir.Value:
+    def visitParamString(self, ctx: naiveCParser.ParamStringContext) -> ir.PointerType:
         string = ctx.String().getSymbol().text
         g_string = add_global_string_constant(self.module, convert(string))
-        return self.builder.bitcast(self.builder.gep(g_string, [ir.Constant(int32, 0)], inbounds=True),
-                                    ir.PointerType(char))
+        return change_array_pointer_to_pointer(self.builder,
+                                               self.builder.gep(g_string, [ir.Constant(int32, 0)], inbounds=True))
 
     def visitParamList(self, ctx: naiveCParser.ParamListContext) -> []:
         if not ctx.param():
