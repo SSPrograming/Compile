@@ -12,16 +12,25 @@ class MyVisitor(naiveCVisitor):
         self.ST = SymbolTable()
         self.module = ir.Module()
         self.builder = ir.IRBuilder()
+        self.ret = False
         init_io(self.module)
         init_memory(self.module)
 
     def _getIdentifier(self, ctx, real=True):
-        if ctx.realTypeID():
-            typeIdentifier = self.visit(ctx.realTypeID())
-        elif ctx.realTypeIDPointer():
-            typeIdentifier = self.visit(ctx.realTypeIDPointer())
+        if real:
+            if ctx.realTypeID():
+                typeIdentifier = self.visit(ctx.realTypeID())
+            elif ctx.realTypeIDPointer():
+                typeIdentifier = self.visit(ctx.realTypeIDPointer())
+            else:
+                raise Exception('panic: _getIdentifier')
         else:
-            raise Exception('panic: visitDefinition')
+            if ctx.typeIdentifier():
+                typeIdentifier = self.visit(ctx.typeIdentifier())
+            elif ctx.typeIdentifierPointer():
+                typeIdentifier = self.visit(ctx.typeIdentifierPointer())
+            else:
+                raise Exception('panic: _getIdentifier')
         pointer_count = typeIdentifier.count('*')
         ir_type = str2irType[typeIdentifier.replace('*', '')]
         for i in range(pointer_count):
@@ -80,7 +89,16 @@ class MyVisitor(naiveCVisitor):
     def visitTypeCast(self, ctx: naiveCParser.TypeCastContext):
         ir_type = self._getIdentifier(ctx, real=True)
         l_value = self.visit(ctx.expr())
-        return self.builder.bitcast(l_value, ir_type)
+        print(ir_type, l_value.type)
+        if isinstance(ir_type, ir.PointerType) and isinstance(l_value.type, ir.PointerType):
+            cast = self.builder.bitcast(l_value, ir_type)
+        elif isinstance(ir_type, ir.PointerType) and isinstance(l_value.type, ir.IntType):
+            cast = self.builder.inttoptr(l_value, ir_type)
+        elif isinstance(ir_type, ir.IntType) and isinstance(l_value.type, ir.PointerType):
+            cast = self.builder.ptrtoint(l_value, ir_type)
+        else:
+            cast = self.builder.trunc(l_value, ir_type)
+        return cast
 
     def visitArrayAssign(self, ctx: naiveCParser.ArrayAssignContext):
         identity = ctx.ID().getSymbol().text
@@ -114,6 +132,7 @@ class MyVisitor(naiveCVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         if left.type != right.type:
+            print(ctx.getText())
             print('类型不匹配')
             raise Exception('panic: visitAddSub')
         if ctx.op.type == naiveCParser.ADD:
@@ -205,19 +224,35 @@ class MyVisitor(naiveCVisitor):
         value = self.visit(ctx.expr())
         self.builder.ret(value)
         self.ST = self.ST.prev()
+        self.ret = True
 
     def visitFunctionDefine(self, ctx: naiveCParser.FunctionDefineContext) -> None:
         typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
         identity = ctx.ID().getSymbol().text
-        paramList = []
-        paramList = [str2irType[item] for item in paramList]
-        func_ty = ir.FunctionType(typeIdentifier, paramList)
-        # TODO: 函数重定义
+        self.ST = SymbolTable(self.ST)
+        paramList = self.visit(ctx.defineParamList())
+        paramListType = [item['type'] for item in paramList]
+        func_ty = ir.FunctionType(typeIdentifier, paramListType)
+        if self.module.get_unique_name(identity) != identity:
+            print('函数重定义：' + identity)
+            raise Exception('panic: visitFunctionDefine')
         func = ir.Function(self.module, func_ty, name=identity)
         block = func.append_basic_block(name='entry')
-        self.ST = SymbolTable(self.ST)
+        if len(paramList) != len(func.args):
+            print('系统错误！')
+            raise Exception('panic: visitFunctionDefine')
         self.builder.position_at_end(block)
+        for i in range(len(func.args)):
+            param = self.builder.alloca(func.args[i].type)
+            self.builder.store(func.args[i], param)
+            self.ST.insert(paramList[i]['name'], param)
+        self.ret = False
         self.visit(ctx.block())
+        if not self.ret and func.return_value == 'void':
+            print('函数没有返回：' + identity)
+            raise Exception('panic: functionDefine')
+        if not self.ret:
+            self.builder.ret_void()
 
     def visitParamExpr(self, ctx: naiveCParser.ParamExprContext) -> ir.Value:
         return self.visit(ctx.expr())
@@ -241,10 +276,34 @@ class MyVisitor(naiveCVisitor):
         else:
             return [param]
 
+    def visitDefineParam(self, ctx: naiveCParser.DefineParamContext):
+        typeIdentifier = self._getIdentifier(ctx, real=False)
+        identity = ctx.ID().getSymbol().text
+        return {'type': typeIdentifier, 'name': identity}
+
+    def visitDefineParamList(self, ctx: naiveCParser.DefineParamListContext):
+        if not ctx.defineParam():
+            return []
+        param = self.visit(ctx.defineParam())
+        if ctx.defineParamList():
+            paramList = self.visit(ctx.defineParamList())
+            paramList.append(param)
+            return paramList
+        else:
+            return [param]
+
     def visitFunctionCall(self, ctx: naiveCParser.FunctionCallContext) -> ir.Value:
         identity = ctx.ID().getSymbol().text
         func = self.module.get_global(identity)
-        paramsList = self.visit(ctx.paramList())
+        _paramsList = self.visit(ctx.paramList())
+        paramsList = []
+        for param in _paramsList:
+            if isinstance(param.type, ir.ArrayType):
+                temp = self.builder.alloca(param.type)
+                self.builder.store(param, temp)
+                paramsList.append(self.builder.gep(temp, [ir.Constant(int32, 0), ir.Constant(int32, 0)]))
+            else:
+                paramsList.append(param)
         return self.builder.call(func, paramsList)
 
     def visitBlock(self, ctx: naiveCParser.BlockContext) -> None:
@@ -268,12 +327,15 @@ class MyVisitor(naiveCVisitor):
         self._visitIfBlock(ctx, 0)
 
     def visitWhileBlock(self, ctx: naiveCParser.WhileBlockContext) -> None:
-        cond = self.visit(ctx.conditionExpr())
+        while_cond = self.builder.append_basic_block(name='while_cond')
+        self.builder.branch(while_cond)
         while_begin = self.builder.append_basic_block(name='while_begin')
-        while_end = self.builder.append_basic_block(name='while_end')
-        self.builder.cbranch(self.builder.not_(cond), while_end, while_begin)
-        self.builder.position_at_end(while_begin)
+        self.builder.position_at_start(while_begin)
         self.visit(ctx.block())
+        while_end = self.builder.append_basic_block(name='while_end')
         cond = self.visit(ctx.conditionExpr())
         self.builder.cbranch(cond, while_begin, while_end)
+        self.builder.position_at_start(while_cond)
+        cond = self.visit(ctx.conditionExpr())
+        self.builder.cbranch(self.builder.not_(cond), while_end, while_begin)
         self.builder.position_at_end(while_end)

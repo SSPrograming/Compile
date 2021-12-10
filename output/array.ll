@@ -79,6 +79,9 @@ while_begin:
   %".61" = icmp sgt i32 %".60", 0
   br i1 %".61", label %"while_begin", label %"while_end"
 while_end:
+  %".63" = load i32*, i32** %"b"
+  %".64" = bitcast i32* %".63" to i8*
+  call void @"free"(i8* %".64")
   ret i32 0
 }
 

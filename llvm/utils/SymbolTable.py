@@ -7,6 +7,9 @@ class SymbolTable:
         return str(self._ST)
 
     def insert(self, name: str, value):
+        if name in self._ST:
+            print('变量重定义：' + name)
+            raise Exception('panic: insert')
         self._ST[name] = value
 
     def get(self, name: str):

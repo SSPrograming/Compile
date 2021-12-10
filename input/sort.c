@@ -26,10 +26,11 @@ int main()
 {
     int n;
     scanf("%d", &n);
-    int* arr = malloc(sizeof(int) * n);
+    int* arr = (int*)malloc(4 * n);
     int i = 0;
+    printf("n = %d\n", n);
     while (i < n) {
-        scanf("%d", arr + i);
+        scanf("%d ", (int *)(((int)arr) + 4 * i));
         i = i + 1;
     }
     sort(arr, n);
@@ -39,6 +40,6 @@ int main()
         i = i + 1;
     }
     printf("\n");
-    free(arr);
+    free((char*)arr);
     return 0;
 }

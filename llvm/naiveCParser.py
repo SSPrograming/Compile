@@ -67,7 +67,7 @@ def serializedATN():
         buf.write("\6\2^_\7\23\2\2_\r\3\2\2\2`a\7\3\2\2a\17\3\2\2\2bc\t\2")
         buf.write("\2\2c\21\3\2\2\2de\7.\2\2ef\7\4\2\2fi\5\22\n\2gi\7.\2")
         buf.write("\2hd\3\2\2\2hg\3\2\2\2i\23\3\2\2\2jk\t\3\2\2k\25\3\2\2")
-        buf.write("\2lm\b\f\1\2mn\7\36\2\2n\u008b\5\26\f\16op\7\23\2\2p\u008b")
+        buf.write("\2lm\b\f\1\2mn\7\36\2\2n\u008b\7.\2\2op\7\23\2\2p\u008b")
         buf.write("\5\26\f\rqr\7\22\2\2r\u008b\5\26\f\fsv\7#\2\2tw\5\b\5")
         buf.write("\2uw\5\6\4\2vt\3\2\2\2vu\3\2\2\2wx\3\2\2\2xy\7$\2\2yz")
         buf.write("\5\26\f\13z\u008b\3\2\2\2{\u008b\7+\2\2|\u008b\7,\2\2")
@@ -1292,9 +1292,8 @@ class naiveCParser ( Parser ):
 
         def ArithmeticAnd(self):
             return self.getToken(naiveCParser.ArithmeticAnd, 0)
-        def expr(self):
-            return self.getTypedRuleContext(naiveCParser.ExprContext,0)
-
+        def ID(self):
+            return self.getToken(naiveCParser.ID, 0)
 
         def enterRule(self, listener:ParseTreeListener):
             if hasattr( listener, "enterGetP" ):
@@ -1475,7 +1474,7 @@ class naiveCParser ( Parser ):
                 self.state = 107
                 self.match(naiveCParser.ArithmeticAnd)
                 self.state = 108
-                self.expr(12)
+                self.match(naiveCParser.ID)
                 pass
 
             elif la_ == 2:

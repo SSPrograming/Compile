@@ -165,7 +165,7 @@ arithmeticOperator:   ADD
 
 expr: expr op=(MUL|DIV) expr    # MulDiv
     | expr op=(ADD|SUB) expr    # AddSub
-	| '&' expr                  # GetP
+	| '&' ID                    # GetP
 	| '*' expr                  # MakP
 	| '-' expr                  # Negative
 	| '(' (realTypeIDPointer | realTypeID) ')' expr # TypeCast

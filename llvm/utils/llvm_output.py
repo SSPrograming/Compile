@@ -40,5 +40,6 @@ def compile_ir(engine: ExecutionEngine, llvm_ir: str) -> ModuleRef:
 def write_ir(filename: str, llvm_ir: str) -> None:
     with open(filename, 'w') as out:
         # target triple = x86_64-pc-linux-gnu
-        llvm_ir = llvm_ir.replace('unknown-unknown-unknown', 'x86_64-pc-linux-gnu')
+        llvm_ir = llvm_ir.replace('unknown-unknown-unknown', 'x86_64-linux-gnu')
+        # llvm_ir = llvm_ir.replace('unknown-unknown-unknown', 'i386-win32')
         out.write(llvm_ir)

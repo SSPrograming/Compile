@@ -23,6 +23,6 @@ int main()
         printf("b[%d] = %d\n", n, b[n]);
         n = n - 1;
     }
-
+    free((char*)b);
     return 0;
 }
