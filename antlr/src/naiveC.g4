@@ -12,12 +12,20 @@ r  :  functionCall
 ;         // match keyword hello followed by an identifier
 
 Include: '#include'  ~[\r\n]* -> skip;
-typeIdentifier: TypeInt  # TypeInt
+
+realTypeID: TypeChar
+          | TypeInt
+          ;
+
+realTypeIDPointer: realTypeID '*' ;
+
+typeIdentifier: TypeInt   # TypeInt
                | TypeVoid # TypeVoid
                | TypeChar # TypeChar
                ;
 
 typeIdentifierPointer: typeIdentifier '*';
+
 TypeInt: 'int'
     ;
 
@@ -140,6 +148,7 @@ idList: ID ',' idList
       | ID
       ;
 
+PositiveINT: [1-9][0-9]*;
 INT: [-]?[1-9][0-9]* | '0';
 ID : [a-zA-Z_][a-z0-9A-Z_]* ;             // match lower-case identifiers
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
@@ -181,7 +190,9 @@ conditionExpr: conditionExpr '&&' conditionExpr  # And
 
 assignment: (ID|ID '[' index=expr ']') AssignOperator value=expr ';';
 
-definition: (typeIdentifier|typeIdentifierPointer) ID ('=' expr)? ';';
+definition: (realTypeID|realTypeID) ID ('=' expr)? ';'
+          | (realTypeID|realTypeIDPointer) ID '[' PositiveINT ']' ';'
+          ;
 
 callProc: functionCall ';';
 
@@ -199,7 +210,7 @@ paramList: paramList ',' param
 
 defineParam: (typeIdentifier|typeIdentifierPointer) ID;
 
-defineParamList: defineParam ',' defineParamList
+defineParamList: defineParamList ',' defineParam
                | defineParam?
                ;
 
