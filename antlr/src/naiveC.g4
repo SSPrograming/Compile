@@ -149,6 +149,7 @@ idList: ID ',' idList
       ;
 
 PositiveINT: [1-9][0-9]*;
+Char: '\'' ([\u0000-\u007f]|'\\0') '\'';
 INT: [-]?[1-9][0-9]* | '0';
 ID : [a-zA-Z_][a-z0-9A-Z_]* ;             // match lower-case identifiers
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
@@ -166,7 +167,9 @@ expr: expr op=(MUL|DIV) expr
     | expr op=(ADD|SUB) expr
     | '&' expr
     | '*' expr
+    | '-' expr
     | PositiveINT
+    | Char
     | INT
     | ID
     | functionCall
@@ -217,27 +220,20 @@ defineParamList: defineParamList ',' defineParam
 
 block:  '{' statements '}';
 
-loopBlock: '{' (assignment|definition|callProc|whileBlock|loopBlock|ifLoopBlock|breakLine|continueLine)* '}';
-
 breakLine: 'break' ';' ;
 
 continueLine: 'continue' ';' ;
 
-statements: (assignment|definition|callProc|whileBlock|block|ifBlock)*;
+statements: (assignment|definition|callProc|whileBlock|block|ifBlock|returnLine|breakLine|continueLine)*;
 
 returnStatemts: (assignment|definition|callProc|whileBlock|block|ifBlock|returnLine)*;
 
-whileBlock: 'while' '(' conditionExpr ')' loopBlock;
+whileBlock: 'while' '(' conditionExpr ')' block;
 
 ifBlock: 'if' '(' conditionExpr ')' block
         ('else' 'if' '(' conditionExpr ')' block)*
         ('else' block)?
         ;
-
-ifLoopBlock: 'if' '(' conditionExpr ')'
-            loopBlock('else' 'if' '(' conditionExpr ')' loopBlock)*
-            ('else' loopBlock)?
-            ;
 
 BlockComment: '/*' .*? '*/' ->skip;
 LineComment: '//' ~[\r\n]* ->skip;
@@ -246,4 +242,4 @@ functionCall : ID '(' paramList ')'
              | sizeof '(' typeIdentifier ')'
              ;
 functionDeclare: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' ';';
-functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' '{' returnStatemts '}';
+functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' block;

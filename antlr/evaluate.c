@@ -66,7 +66,8 @@ int evaluate(char* S)
     char optr[1024];
     int opnd_p = 0;     //运算数栈指针
     int optr_p = 0;     //运算符栈指针
-    optr[++optr_p] = '\0';
+    optr_p = optr_p + 1;
+    optr[optr_p] = '\0';
     while (optr_p > 0) 
     {
         if(isdigit(*S))
@@ -95,9 +96,9 @@ int evaluate(char* S)
                 char op_top = optr[optr_p];
                 optr_p = optr_p - 1;
                 int number_2 = opnd[opnd_p];
-                opnd_p = opnd_p -1;
+                opnd_p = opnd_p - 1;
                 int number_1 = opnd[opnd_p];
-                opnd_p = opnd_p -1;  
+                opnd_p = opnd_p - 1;  
                 int cal_res = calculate(number_1, op_top, number_2);
                 opnd_p = opnd_p + 1;
                 opnd[opnd_p] = cal_res;
