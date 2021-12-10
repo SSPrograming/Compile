@@ -11,7 +11,8 @@ r  :  functionCall
     | r functionDeclare
 ;         // match keyword hello followed by an identifier
 
-Include: '#include'  ~[\r\n]* ->skip;
+Include: '#include'  ~[\r\n]* -> skip;
+
 
 realTypeID: TypeChar
           | TypeInt
@@ -19,6 +20,7 @@ realTypeID: TypeChar
           ;
 
 realTypeIDPointer: realTypeID '*' ;
+
 
 typeIdentifier: TypeInt
                | TypeVoid
@@ -168,20 +170,20 @@ arithmeticOperator:   ADD
                     | ArithmeticOR
                     ;
 
-expr: expr op=(MUL|DIV) expr
-    | expr op=(ADD|SUB) expr
-    | '&' expr
-    | '*' expr
-    | '-' expr
-    | '(' (realTypeIDPointer|realTypeID) ')' expr
-    | PositiveINT
-    | Char
-    | INT
-    | ID
-    | functionCall
-    | boolExpr
-    | expr '[' expr ']'
-    | '(' expr ')'
+expr: expr op=(MUL|DIV) expr    # MulDiv
+    | expr op=(ADD|SUB) expr    # AddSub
+	| '&' expr                  # GetP
+	| '*' expr                  # MakP
+	| '-' expr                  # Negative
+	| '(' (realTypeIDPointer | realTypeID) ')' expr # TypeCast
+	| PositiveINT               # PositiveINT
+	| Char                      # Char
+    | INT                       # Int
+    | ID                        # Id
+    | functionCall              # FCall
+    | boolExpr                  # TrueFalse
+    | ID '[' expr ']'           # ArrayVisit
+    | '(' expr ')'              # Parens
     ;
 
 conditionOperator: Greater
@@ -191,19 +193,19 @@ conditionOperator: Greater
                  | Equal
                  ;
 
-conditionExpr: conditionExpr '&&' conditionExpr
-             | conditionExpr '||'  conditionExpr
-             | '(' conditionExpr ')'
-             | expr conditionOperator expr
-             | expr
+conditionExpr: conditionExpr '&&' conditionExpr  # And
+             | conditionExpr '||'  conditionExpr # Or
+             | '(' conditionExpr ')' # CondParen
+             | expr conditionOperator expr # CondOp
+             | expr # CondExp
              ;
 
-assignment: ID AssignOperator expr ';'
-          | '*' ID AssignOperator expr ';'
-          | ID '[' expr ']' AssignOperator expr ';'
+assignment: ID AssignOperator expr ';'              # CommonAssign
+          | '*' ID AssignOperator expr ';'          # MemoryAssign
+          | ID '[' expr ']' AssignOperator expr ';' # ArrayAssign
           ;
 
-definition: (realTypeID|realTypeID) ID ('=' expr)? ';'
+definition: (realTypeID|realTypeIDPointer) ID ('=' expr)? ';'
           | (realTypeID|realTypeIDPointer) ID '[' PositiveINT ']' ';'
           ;
 
@@ -212,9 +214,9 @@ callProc: functionCall ';';
 returnLine: 'return' expr ';';
 
 param:
-       expr
-     | functionCall
-     | String
+       expr             # ParamExpr
+     | functionCall     # ParamFunc
+     | String           # ParamString
      ;
 
 paramList: paramList ',' param
@@ -238,8 +240,8 @@ statements: (assignment|definition|callProc|whileBlock|block|ifBlock|returnLine|
 whileBlock: 'while' '(' conditionExpr ')' block;
 
 ifBlock: 'if' '(' conditionExpr ')' block
-        ('else' 'if' '(' conditionExpr ')' block)*
-        ('else' block)?
+        ('else' 'if' '(' elif_cond=conditionExpr ')' block)*
+        ('else' else_block=block)?
         ;
 
 BlockComment: '/*' .*? '*/' ->skip;

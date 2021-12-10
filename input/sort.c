@@ -39,5 +39,6 @@ int main()
         i = i + 1;
     }
     printf("\n");
+    free(arr);
     return 0;
 }
