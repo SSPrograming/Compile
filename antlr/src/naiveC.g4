@@ -171,7 +171,7 @@ expr: expr op=(MUL|DIV) expr    # MulDiv
     | ID                        # Id
     | functionCall              # FCall
     | boolExpr                  # TrueFalse
-    | expr '[' expr ']'         # ArrayVisit
+    | ID '[' expr ']'         # ArrayVisit
     | '(' expr ')'              # Parens
     ;
 
