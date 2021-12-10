@@ -13,15 +13,19 @@ r  :  functionCall
 
 Include: '#include'  ~[\r\n]* -> skip;
 
-realTypeID: TypeChar  # RealTypeChar
-          | TypeInt  # RealTypeInt
+
+realTypeID: TypeChar
+          | TypeInt
+          | TypeLL
           ;
 
 realTypeIDPointer: realTypeID '*' ;
 
-typeIdentifier: TypeInt   # TypeInt
-               | TypeVoid # TypeVoid
-               | TypeChar # TypeChar
+
+typeIdentifier: TypeInt
+               | TypeVoid
+               | TypeChar
+               | TypeLL
                ;
 
 typeIdentifierPointer: typeIdentifier '*';
@@ -35,6 +39,9 @@ TypeVoid: 'void'
 
 TypeChar: 'char'
     ;
+
+TypeLL: 'long long'
+      ;
 
 Break: 'break'
     ;
