@@ -1,30 +1,21 @@
-#include<stdio.h>
-#include<ctype.h>
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
 
-int operatorOrder(char operator)
-{
+int calculate(int number_1, char operator, int number_2) {
     if (operator == '+') {
-        return 0;
+        return number_1 + number_2;
     }
     else if (operator == '-') {
-        return 1;
+        return number_1 - number_2;
     }
     else if (operator == '*') {
-        return 2;
+        return number_1 * number_2;
     }
     else if (operator == '/') {
-        return 3;
+        return number_1 / number_2;
     }
-    else if (operator == '(') {
-        return 4;
-    }
-    else if (operator == ')') {
-        return 5;
-    }
-    else if (operator == '\0') {
-        return 6;
-    }
-    exit(1);
+    exit(-1);
 }
 
 //-1表示小于，0表示等于，1表示大于
@@ -85,14 +76,16 @@ int evaluate(char* S)
                 number = number * 10 + *S - '0';
                 S = S + 1;
             }
-            opnd[++opnd_p] = number;
+            opnd_p = opnd_p + 1;
+            opnd[opnd_p] = number;
         }
         else
         {
             int cmpResult = operatorCmp(optr[optr_p], *S);
             if (cmpResult == -1) {
-                optr[++optr_p] = *S;
-                S = S + 1;
+                optr_p = optr_p + 1;
+                optr[optr_p] = *S;
+                S = S + 1 ;
             }
             else if (cmpResult == 0) {
                 optr_p = optr_p - 1;
@@ -101,8 +94,24 @@ int evaluate(char* S)
             else if (cmpResult == 1) {
                 char op_top = optr[optr_p];
                 optr_p = optr_p - 1;
-                 
+                int number_2 = opnd[opnd_p];
+                opnd_p = opnd_p -1;
+                int number_1 = opnd[opnd_p];
+                opnd_p = opnd_p -1;  
+                int cal_res = calculate(number_1, op_top, number_2);
+                opnd_p = opnd_p + 1;
+                opnd[opnd_p] = cal_res;
             }
         }
     }
+    return opnd[opnd_p];
+}
+
+int main()
+{
+    char str [1024];
+    scanf("%s", str);
+    int res = evaluate(str);
+    printf("%d\n", res);
+    return 0;
 }
