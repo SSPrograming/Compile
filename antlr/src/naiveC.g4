@@ -194,7 +194,7 @@ conditionExpr: conditionExpr '&&' conditionExpr  # And
 
 assignment: (ID|ID '[' index=expr ']') AssignOperator value=expr ';';
 
-definition: (realTypeID|realTypeID) ID ('=' expr)? ';'
+definition: (realTypeID|realTypeIDPointer) ID ('=' expr)? ';'
           | (realTypeID|realTypeIDPointer) ID '[' PositiveINT ']' ';'
           ;
 

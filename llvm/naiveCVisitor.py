@@ -99,6 +99,21 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by naiveCParser#Int.
+    def visitInt(self, ctx:naiveCParser.IntContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Negative.
+    def visitNegative(self, ctx:naiveCParser.NegativeContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Char.
+    def visitChar(self, ctx:naiveCParser.CharContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by naiveCParser#GetP.
     def visitGetP(self, ctx:naiveCParser.GetPContext):
         return self.visitChildren(ctx)
@@ -116,11 +131,6 @@ class naiveCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by naiveCParser#MakP.
     def visitMakP(self, ctx:naiveCParser.MakPContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by naiveCParser#Int.
-    def visitInt(self, ctx:naiveCParser.IntContext):
         return self.visitChildren(ctx)
 
 
@@ -214,11 +224,6 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#loopBlock.
-    def visitLoopBlock(self, ctx:naiveCParser.LoopBlockContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by naiveCParser#breakLine.
     def visitBreakLine(self, ctx:naiveCParser.BreakLineContext):
         return self.visitChildren(ctx)
@@ -246,11 +251,6 @@ class naiveCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by naiveCParser#ifBlock.
     def visitIfBlock(self, ctx:naiveCParser.IfBlockContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by naiveCParser#ifLoopBlock.
-    def visitIfLoopBlock(self, ctx:naiveCParser.IfLoopBlockContext):
         return self.visitChildren(ctx)
 
 

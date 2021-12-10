@@ -74,8 +74,7 @@ class MyVisitor(naiveCVisitor):
             raise Exception('panic: visitAssignment')
         if ctx.index:
             index = self.visit(ctx.index)
-            l_value = self.builder.gep(l_value, [index])
-            l_value = change_array_pointer_to_pointer(self.builder, l_value)
+            l_value = self.builder.gep(l_value, [ir.Constant(int32, 0), index])
         r_value = self.visit(ctx.value)
         self.builder.store(r_value, l_value)
 
@@ -100,6 +99,10 @@ class MyVisitor(naiveCVisitor):
             return self.builder.add(left, right)
         else:
             return self.builder.sub(left, right)
+
+    def visitNegative(self, ctx: naiveCParser.NegativeContext) -> ir.Value:
+        value = self.visit(ctx.expr())
+        return self.builder.neg(value)
 
     def visitGetP(self, ctx: naiveCParser.GetPContext) -> ir.Value:
         identity = ctx.ID().getSymbol().text
@@ -137,7 +140,7 @@ class MyVisitor(naiveCVisitor):
         symbol = self.ST.get(identity)
         if symbol:
             index = self.visit(ctx.expr())
-            l_value = self.builder.gep(symbol, [index])
+            l_value = self.builder.gep(symbol, [ir.Constant(int32, 0), index])
             return self.builder.load(l_value)
         else:
             print('未定义的标识符: ' + identity)
@@ -187,7 +190,7 @@ class MyVisitor(naiveCVisitor):
         block = func.append_basic_block(name='entry')
         self.ST = SymbolTable(self.ST)
         self.builder.position_at_end(block)
-        self.visit(ctx.returnStatemts())
+        self.visit(ctx.block())
 
     def visitParamExpr(self, ctx: naiveCParser.ParamExprContext) -> ir.Value:
         return self.visit(ctx.expr())
@@ -195,11 +198,10 @@ class MyVisitor(naiveCVisitor):
     def visitParamFunc(self, ctx: naiveCParser.ParamFuncContext) -> ir.Value:
         return self.visit(ctx.functionCall())
 
-    def visitParamString(self, ctx: naiveCParser.ParamStringContext) -> ir.PointerType:
+    def visitParamString(self, ctx: naiveCParser.ParamStringContext) -> ir.Value:
         string = ctx.String().getSymbol().text
         g_string = add_global_string_constant(self.module, convert(string))
-        return change_array_pointer_to_pointer(self.builder,
-                                               self.builder.gep(g_string, [ir.Constant(int32, 0)], inbounds=True))
+        return self.builder.gep(g_string, [ir.Constant(int32, 0), ir.Constant(int32, 0)], inbounds=True)
 
     def visitParamList(self, ctx: naiveCParser.ParamListContext) -> []:
         if not ctx.param():
@@ -212,11 +214,11 @@ class MyVisitor(naiveCVisitor):
         else:
             return [param]
 
-    def visitFunctionCall(self, ctx: naiveCParser.FunctionCallContext) -> None:
+    def visitFunctionCall(self, ctx: naiveCParser.FunctionCallContext) -> ir.Value:
         identity = ctx.ID().getSymbol().text
         func = self.module.get_global(identity)
         paramsList = self.visit(ctx.paramList())
-        self.builder.call(func, paramsList)
+        return self.builder.call(func, paramsList)
 
     def visitBlock(self, ctx: naiveCParser.BlockContext) -> None:
         self.ST = SymbolTable(self.ST)
@@ -237,3 +239,14 @@ class MyVisitor(naiveCVisitor):
 
     def visitIfBlock(self, ctx: naiveCParser.IfBlockContext) -> None:
         self._visitIfBlock(ctx, 0)
+
+    def visitWhileBlock(self, ctx: naiveCParser.WhileBlockContext) -> None:
+        cond = self.visit(ctx.conditionExpr())
+        while_begin = self.builder.append_basic_block(name='while_begin')
+        while_end = self.builder.append_basic_block(name='while_end')
+        self.builder.cbranch(self.builder.not_(cond), while_end, while_begin)
+        self.builder.position_at_end(while_begin)
+        self.visit(ctx.block())
+        cond = self.visit(ctx.conditionExpr())
+        self.builder.cbranch(cond, while_begin, while_end)
+        self.builder.position_at_end(while_end)

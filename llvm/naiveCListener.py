@@ -170,6 +170,33 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by naiveCParser#Int.
+    def enterInt(self, ctx:naiveCParser.IntContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Int.
+    def exitInt(self, ctx:naiveCParser.IntContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Negative.
+    def enterNegative(self, ctx:naiveCParser.NegativeContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Negative.
+    def exitNegative(self, ctx:naiveCParser.NegativeContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#Char.
+    def enterChar(self, ctx:naiveCParser.CharContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#Char.
+    def exitChar(self, ctx:naiveCParser.CharContext):
+        pass
+
+
     # Enter a parse tree produced by naiveCParser#GetP.
     def enterGetP(self, ctx:naiveCParser.GetPContext):
         pass
@@ -203,15 +230,6 @@ class naiveCListener(ParseTreeListener):
 
     # Exit a parse tree produced by naiveCParser#MakP.
     def exitMakP(self, ctx:naiveCParser.MakPContext):
-        pass
-
-
-    # Enter a parse tree produced by naiveCParser#Int.
-    def enterInt(self, ctx:naiveCParser.IntContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#Int.
-    def exitInt(self, ctx:naiveCParser.IntContext):
         pass
 
 
@@ -377,15 +395,6 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#loopBlock.
-    def enterLoopBlock(self, ctx:naiveCParser.LoopBlockContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#loopBlock.
-    def exitLoopBlock(self, ctx:naiveCParser.LoopBlockContext):
-        pass
-
-
     # Enter a parse tree produced by naiveCParser#breakLine.
     def enterBreakLine(self, ctx:naiveCParser.BreakLineContext):
         pass
@@ -437,15 +446,6 @@ class naiveCListener(ParseTreeListener):
 
     # Exit a parse tree produced by naiveCParser#ifBlock.
     def exitIfBlock(self, ctx:naiveCParser.IfBlockContext):
-        pass
-
-
-    # Enter a parse tree produced by naiveCParser#ifLoopBlock.
-    def enterIfLoopBlock(self, ctx:naiveCParser.IfLoopBlockContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#ifLoopBlock.
-    def exitIfLoopBlock(self, ctx:naiveCParser.IfLoopBlockContext):
         pass
 
 
