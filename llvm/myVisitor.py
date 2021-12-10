@@ -12,12 +12,8 @@ class MyVisitor(naiveCVisitor):
         self.ST = SymbolTable()
         self.module = ir.Module()
         self.builder = ir.IRBuilder()
-        # Printf Function
-        printf_ty = ir.FunctionType(int32, [ir.PointerType(char)], var_arg=True)
-        ir.Function(self.module, printf_ty, name='printf')
-        # Scanf Function
-        scanf_ty = ir.FunctionType(int32, [ir.PointerType(char)], var_arg=True)
-        ir.Function(self.module, scanf_ty, name='scanf')
+        init_io(self.module)
+        init_memory(self.module)
 
     def write(self, filename: str) -> None:
         write_ir(filename, str(self.module))

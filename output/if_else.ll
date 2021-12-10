@@ -6,6 +6,10 @@ declare i32 @"printf"(i8* %".1", ...)
 
 declare i32 @"scanf"(i8* %".1", ...) 
 
+declare i8* @"malloc"(i32 %".1") 
+
+declare void @"free"(i8* %".1") 
+
 define i32 @"main"() 
 {
 entry:
@@ -54,7 +58,7 @@ entry.else.else.if:
   br label %"entry.else.else.endif"
 entry.else.else.else:
   %".35" = load i32, i32* %"a"
-  %".36" = icmp ne i32 %".35", 0
+  %".36" = icmp eq i32 %".35", 1
   br i1 %".36", label %"entry.else.else.else.if", label %"entry.else.else.else.else"
 entry.else.else.endif:
   br label %"entry.else.endif"
@@ -66,12 +70,24 @@ entry.else.else.else.if:
   br label %"entry.else.else.else.endif"
 entry.else.else.else.else:
   %".43" = load i32, i32* %"a"
-  %".44" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.6", i32 0
-  %".45" = bitcast [8 x i8]* %".44" to i8*
-  %".46" = call i32 (i8*, ...) @"printf"(i8* %".45", i32 %".43")
-  br label %"entry.else.else.else.endif"
+  %".44" = icmp sle i32 %".43", -1
+  br i1 %".44", label %"entry.else.else.else.else.if", label %"entry.else.else.else.else.else"
 entry.else.else.else.endif:
   br label %"entry.else.else.endif"
+entry.else.else.else.else.if:
+  %".46" = load i32, i32* %"a"
+  %".47" = getelementptr inbounds [10 x i8], [10 x i8]* @"str.6", i32 0
+  %".48" = bitcast [10 x i8]* %".47" to i8*
+  %".49" = call i32 (i8*, ...) @"printf"(i8* %".48", i32 %".46")
+  br label %"entry.else.else.else.else.endif"
+entry.else.else.else.else.else:
+  %".51" = load i32, i32* %"a"
+  %".52" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.7", i32 0
+  %".53" = bitcast [8 x i8]* %".52" to i8*
+  %".54" = call i32 (i8*, ...) @"printf"(i8* %".53", i32 %".51")
+  br label %"entry.else.else.else.else.endif"
+entry.else.else.else.else.endif:
+  br label %"entry.else.else.else.endif"
 }
 
 @"str" = constant [20 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e6\95\b0\e5\ad\97a = \00"
@@ -80,4 +96,5 @@ entry.else.else.else.endif:
 @"str.3" = constant [8 x i8] c"%d > 5\0a\00"
 @"str.4" = constant [8 x i8] c"%d > 1\0a\00"
 @"str.5" = constant [8 x i8] c"%d > 0\0a\00"
-@"str.6" = constant [8 x i8] c"%d = 0\0a\00"
+@"str.6" = constant [10 x i8] c"%d <= -1\0a\00"
+@"str.7" = constant [8 x i8] c"%d = 0\0a\00"
