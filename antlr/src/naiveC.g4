@@ -168,6 +168,7 @@ expr: expr op=(MUL|DIV) expr
     | '&' expr
     | '*' expr
     | '-' expr
+    | '(' (realTypeIDPointer|realTypeID) ')' expr
     | PositiveINT
     | Char
     | INT
@@ -192,7 +193,10 @@ conditionExpr: conditionExpr '&&' conditionExpr
              | expr
              ;
 
-assignment: (ID|ID '[' expr ']') AssignOperator expr ';';
+assignment: ID AssignOperator expr ';'
+          | '*' ID AssignOperator expr ';'
+          | ID '[' expr ']' AssignOperator expr ';'
+          ;
 
 definition: (realTypeID|realTypeID) ID ('=' expr)? ';'
           | (realTypeID|realTypeIDPointer) ID '[' PositiveINT ']' ';'
@@ -225,8 +229,6 @@ breakLine: 'break' ';' ;
 continueLine: 'continue' ';' ;
 
 statements: (assignment|definition|callProc|whileBlock|block|ifBlock|returnLine|breakLine|continueLine)*;
-
-returnStatemts: (assignment|definition|callProc|whileBlock|block|ifBlock|returnLine)*;
 
 whileBlock: 'while' '(' conditionExpr ')' block;
 
