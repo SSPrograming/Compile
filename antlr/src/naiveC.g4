@@ -162,16 +162,18 @@ arithmeticOperator:   ADD
                     | ArithmeticOR
                     ;
 
-expr: expr op=(MUL|DIV) expr    # MulDiv
-    | expr op=(ADD|SUB) expr    # AddSub
-    | '&' ID                    # GetP
-    | '*' expr                  # MakP
-    | INT                       # Int
-    | ID                        # Id
-    | functionCall              # FCall
-    | boolExpr                  # TrueFalse
-    | expr '[' expr ']'         # ArrayVisit
-    | '(' expr ')'              # Parens
+
+expr: expr op=(MUL|DIV) expr
+    | expr op=(ADD|SUB) expr
+    | '&' expr
+    | '*' expr
+    | PositiveINT
+    | INT
+    | ID
+    | functionCall
+    | boolExpr
+    | expr '[' expr ']'
+    | '(' expr ')'
     ;
 
 conditionOperator: Greater
