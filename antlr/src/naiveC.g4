@@ -11,7 +11,7 @@ r  :  functionCall
     | r functionDeclare
 ;         // match keyword hello followed by an identifier
 
-Include: '#include'  ~[\r\n]* ->skip;
+Include: '#include'  ~[\r\n]* -> skip;
 typeIdentifier: TypeInt  # TypeInt
                | TypeVoid # TypeVoid
                | TypeChar # TypeChar
@@ -199,7 +199,8 @@ paramList: paramList ',' param
 
 defineParam: (typeIdentifier|typeIdentifierPointer) ID;
 
-defineParamList: defineParam (',' defineParam)*
+defineParamList: defineParam ',' defineParamList
+               | defineParam?
                ;
 
 block:  '{' statements '}';

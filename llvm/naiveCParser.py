@@ -2996,10 +2996,7 @@ class naiveCParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.if_cond = None # ConditionExprContext
-            self.if_block = None # BlockContext
             self.elif_cond = None # ConditionExprContext
-            self.elif_block = None # BlockContext
             self.else_block = None # BlockContext
 
         def If(self, i:int=None):
@@ -3014,18 +3011,18 @@ class naiveCParser ( Parser ):
             else:
                 return self.getToken(naiveCParser.LeftParentheses, i)
 
-        def RightParentheses(self, i:int=None):
-            if i is None:
-                return self.getTokens(naiveCParser.RightParentheses)
-            else:
-                return self.getToken(naiveCParser.RightParentheses, i)
-
         def conditionExpr(self, i:int=None):
             if i is None:
                 return self.getTypedRuleContexts(naiveCParser.ConditionExprContext)
             else:
                 return self.getTypedRuleContext(naiveCParser.ConditionExprContext,i)
 
+
+        def RightParentheses(self, i:int=None):
+            if i is None:
+                return self.getTokens(naiveCParser.RightParentheses)
+            else:
+                return self.getToken(naiveCParser.RightParentheses, i)
 
         def block(self, i:int=None):
             if i is None:
@@ -3072,11 +3069,11 @@ class naiveCParser ( Parser ):
             self.state = 275
             self.match(naiveCParser.LeftParentheses)
             self.state = 276
-            localctx.if_cond = self.conditionExpr(0)
+            self.conditionExpr(0)
             self.state = 277
             self.match(naiveCParser.RightParentheses)
             self.state = 278
-            localctx.if_block = self.block()
+            self.block()
             self.state = 288
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,26,self._ctx)
@@ -3093,7 +3090,7 @@ class naiveCParser ( Parser ):
                     self.state = 283
                     self.match(naiveCParser.RightParentheses)
                     self.state = 284
-                    localctx.elif_block = self.block() 
+                    self.block() 
                 self.state = 290
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,26,self._ctx)
