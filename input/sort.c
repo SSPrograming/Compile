@@ -31,7 +31,6 @@ int main()
     printf("n = %d\n", n);
     while (i < n) {
         scanf("%d", (int *)(((long long)arr) + (long long)(4 * i)));
-        printf("%d\n", arr[i]);
         i = i + 1;
     }
     sort(arr, n);
