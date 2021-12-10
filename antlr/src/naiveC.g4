@@ -13,8 +13,8 @@ r  :  functionCall
 
 Include: '#include'  ~[\r\n]* -> skip;
 
-realTypeID: TypeChar
-          | TypeInt
+realTypeID: TypeChar  # RealTypeChar
+          | TypeInt  # RealTypeInt
           ;
 
 realTypeIDPointer: realTypeID '*' ;
@@ -166,6 +166,7 @@ expr: expr op=(MUL|DIV) expr    # MulDiv
     | expr op=(ADD|SUB) expr    # AddSub
     | '&' ID                    # GetP
     | '*' expr                  # MakP
+    | PositiveINT               # PositiveINT
     | INT                       # Int
     | ID                        # Id
     | functionCall              # FCall

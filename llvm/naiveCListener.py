@@ -26,6 +26,33 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by naiveCParser#RealTypeChar.
+    def enterRealTypeChar(self, ctx:naiveCParser.RealTypeCharContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#RealTypeChar.
+    def exitRealTypeChar(self, ctx:naiveCParser.RealTypeCharContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#RealTypeInt.
+    def enterRealTypeInt(self, ctx:naiveCParser.RealTypeIntContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#RealTypeInt.
+    def exitRealTypeInt(self, ctx:naiveCParser.RealTypeIntContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#realTypeIDPointer.
+    def enterRealTypeIDPointer(self, ctx:naiveCParser.RealTypeIDPointerContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#realTypeIDPointer.
+    def exitRealTypeIDPointer(self, ctx:naiveCParser.RealTypeIDPointerContext):
+        pass
+
+
     # Enter a parse tree produced by naiveCParser#TypeInt.
     def enterTypeInt(self, ctx:naiveCParser.TypeIntContext):
         pass
@@ -95,6 +122,15 @@ class naiveCListener(ParseTreeListener):
 
     # Exit a parse tree produced by naiveCParser#arithmeticOperator.
     def exitArithmeticOperator(self, ctx:naiveCParser.ArithmeticOperatorContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#PositiveINT.
+    def enterPositiveINT(self, ctx:naiveCParser.PositiveINTContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#PositiveINT.
+    def exitPositiveINT(self, ctx:naiveCParser.PositiveINTContext):
         pass
 
 

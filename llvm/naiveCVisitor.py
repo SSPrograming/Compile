@@ -19,6 +19,21 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by naiveCParser#RealTypeChar.
+    def visitRealTypeChar(self, ctx:naiveCParser.RealTypeCharContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#RealTypeInt.
+    def visitRealTypeInt(self, ctx:naiveCParser.RealTypeIntContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#realTypeIDPointer.
+    def visitRealTypeIDPointer(self, ctx:naiveCParser.RealTypeIDPointerContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by naiveCParser#TypeInt.
     def visitTypeInt(self, ctx:naiveCParser.TypeIntContext):
         return self.visitChildren(ctx)
@@ -56,6 +71,11 @@ class naiveCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by naiveCParser#arithmeticOperator.
     def visitArithmeticOperator(self, ctx:naiveCParser.ArithmeticOperatorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#PositiveINT.
+    def visitPositiveINT(self, ctx:naiveCParser.PositiveINTContext):
         return self.visitChildren(ctx)
 
 

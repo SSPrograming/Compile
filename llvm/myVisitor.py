@@ -18,6 +18,16 @@ class MyVisitor(naiveCVisitor):
     def write(self, filename: str) -> None:
         write_ir(filename, str(self.module))
 
+    def visitRealTypeInt(self, ctx: naiveCParser.RealTypeIntContext) -> str:
+        return ctx.TypeInt().getSymbol().text
+
+    def visitRealTypeChar(self, ctx: naiveCParser.RealTypeCharContext) -> str:
+        return ctx.TypeChar().getSymbol().text
+
+    def visitRealTypeIDPointer(self, ctx: naiveCParser.RealTypeIDPointerContext) -> str:
+        realTypeIdentifier = self.visit(ctx.realTypeID())
+        return realTypeIdentifier + '*'
+
     def visitTypeInt(self, ctx: naiveCParser.TypeIntContext) -> str:
         return ctx.TypeInt().getSymbol().text
 
@@ -32,10 +42,10 @@ class MyVisitor(naiveCVisitor):
         return typeIdentifier + '*'
 
     def visitDefinition(self, ctx: naiveCParser.DefinitionContext) -> None:
-        if ctx.typeIdentifier():
-            typeIdentifier = self.visit(ctx.typeIdentifier())
-        elif ctx.typeIdentifierPointer():
-            typeIdentifier = self.visit(ctx.typeIdentifierPointer())
+        if ctx.realTypeID():
+            typeIdentifier = self.visit(ctx.realTypeID())
+        elif ctx.realTypeIDPointer():
+            typeIdentifier = self.visit(ctx.realTypeIDPointer())
         else:
             raise Exception('panic: visitDefinition')
         pointer_count = typeIdentifier.count('*')
@@ -91,6 +101,9 @@ class MyVisitor(naiveCVisitor):
         else:
             print('未定义的标识符: ' + identity)
             raise Exception('panic: visitGetP')
+
+    def visitPositiveINT(self, ctx: naiveCParser.PositiveINTContext):
+        return ir.Constant(int32, int(ctx.PositiveINT().getSymbol().text))
 
     def visitInt(self, ctx: naiveCParser.IntContext) -> ir.Constant:
         return ir.Constant(int32, int(ctx.INT().getSymbol().text))
