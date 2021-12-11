@@ -166,21 +166,10 @@ INT: [-]?[1-9][0-9]* | '0';
 ID : [a-zA-Z_][a-z0-9A-Z_]* ;             // match lower-case identifiers
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
-arithmeticOperator:   ADD
-                    | SUB
-                    | MUL
-                    | DIV
-                    | MOD
-                    | ArithmeticAnd
-                    | ArithmeticOR
-                    ;
-
-expr: expr op=(MUL|DIV) expr    # MulDiv
-    | expr op=(ADD|SUB) expr    # AddSub
-	| '&' ID                    # GetP
-	| '*' expr                  # MakP
-	| '-' expr                  # Negative
-	| '(' (realTypeIDPointer | realTypeID) ')' expr # TypeCast
+expr: '(' (realTypeIDPointer | realTypeID) ')' expr # TypeCast
+    | '-' expr                  # Negative
+    | '*' expr                  # MakP
+    | '&' ID                    # GetP
 	| PositiveINT               # PositiveINT
 	| Char                      # Char
     | INT                       # Int
@@ -190,6 +179,8 @@ expr: expr op=(MUL|DIV) expr    # MulDiv
     | boolExpr                  # TrueFalse
     | ID '[' expr ']'           # ArrayVisit
     | '(' expr ')'              # Parens
+    | expr op=(MUL|DIV) expr    # MulDiv
+    | expr op=(ADD|SUB) expr    # AddSub
     ;
 
 conditionOperator: Greater
