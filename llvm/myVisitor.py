@@ -17,6 +17,7 @@ class MyVisitor(naiveCVisitor):
         self.ret = False
         init_io(self.module)
         init_memory(self.module)
+        init_system(self.module)
 
     def _getIdentifier(self, ctx, real=True):
         if real:
@@ -102,7 +103,6 @@ class MyVisitor(naiveCVisitor):
     def visitTypeCast(self, ctx: naiveCParser.TypeCastContext):
         ir_type = self._getIdentifier(ctx, real=True)
         l_value = self.visit(ctx.expr())
-        print(ir_type, l_value.type)
         if isinstance(ir_type, ir.PointerType) and isinstance(l_value.type, ir.PointerType):
             cast = self.builder.bitcast(l_value, ir_type)
         elif isinstance(ir_type, ir.PointerType) and isinstance(l_value.type, ir.IntType):
@@ -155,9 +155,18 @@ class MyVisitor(naiveCVisitor):
     def visitAddSub(self, ctx: naiveCParser.AddSubContext) -> ir.Value:
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
+        if isinstance(left.type, ir.PointerType) and isinstance(left.type.pointee, ir.IntType) and \
+                isinstance(right.type, ir.IntType):
+            temp_l = self.builder.ptrtoint(left, int64)
+            if right.type.width < 64:
+                temp_r = self.builder.sext(right, int64)
+            else:
+                temp_r = right
+            temp = self.builder.add(temp_l, self.builder.mul(ir.Constant(int64, left.type.pointee.width // 8), temp_r))
+            return self.builder.inttoptr(temp, left.type)
         if left.type != right.type:
             position = 'line ' + str(ctx.start.line) + ': '
-            error = '类型不匹配 -- ' + 'can\'t compute between ' + left.type + ' and ' + right.type
+            error = '类型不匹配 -- ' + 'can\'t compute between ' + str(left.type) + ' and ' + str(right.type)
             print(position + error)
             raise Exception('panic: visitAddSub')
         if ctx.op.type == naiveCParser.ADD:
@@ -180,6 +189,10 @@ class MyVisitor(naiveCVisitor):
             print(position + error)
             raise Exception('panic: visitGetP')
 
+    def visitMakP(self, ctx: naiveCParser.MakPContext):
+        r_value = self.visit(ctx.expr())
+        return self.builder.load(r_value)
+
     def visitPositiveINT(self, ctx: naiveCParser.PositiveINTContext):
         return ir.Constant(int32, int(ctx.PositiveINT().getSymbol().text))
 
@@ -198,8 +211,8 @@ class MyVisitor(naiveCVisitor):
             raise Exception('panic: visitId')
 
     def visitChar(self, ctx: naiveCParser.CharContext):
-        symbol = ctx.Char().getSymbol().text.replace('\'', '')
-        return ir.Constant(char, ord(symbol))
+        symbol = ctx.Char().getSymbol().text
+        return ir.Constant(char, ord(convert_char(symbol)))
 
     def visitBoolExpr(self, ctx: naiveCParser.BoolExprContext) -> ir.Constant:
         if ctx.TRUE():
@@ -271,7 +284,7 @@ class MyVisitor(naiveCVisitor):
 
     def visitParamString(self, ctx: naiveCParser.ParamStringContext) -> ir.Value:
         string = ctx.String().getSymbol().text
-        g_string = add_global_string_constant(self.module, convert(string))
+        g_string = add_global_string_constant(self.module, convert_str(string))
         return self.builder.gep(g_string, [ir.Constant(int32, 0), ir.Constant(int32, 0)], inbounds=True)
 
     def visitParamList(self, ctx: naiveCParser.ParamListContext) -> []:

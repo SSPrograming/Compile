@@ -26,3 +26,12 @@ def init_memory(module: ir.Module) -> None:
     # Free Function
     free_ty = ir.FunctionType(void, [ir.PointerType(char)])
     ir.Function(module, free_ty, name='free')
+
+
+def init_system(module: ir.Module) -> None:
+    # Exit Function
+    exit_ty = ir.FunctionType(void, [int32])
+    ir.Function(module, exit_ty, name='exit')
+    # IsDigit Function
+    isdigit_ty = ir.FunctionType(int32, [int32])
+    ir.Function(module, isdigit_ty, name='isdigit')
