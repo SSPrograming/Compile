@@ -188,9 +188,11 @@ conditionOperator: Greater
                  | Less
                  | LessEqual
                  | Equal
+                 | NotEqual
                  ;
 
-conditionExpr: conditionExpr '&&' conditionExpr  # And
+conditionExpr: '!' conditionExpr # Neg
+             | conditionExpr '&&' conditionExpr  # And
              | conditionExpr '||'  conditionExpr # Or
              | '(' conditionExpr ')' # CondParen
              | expr conditionOperator expr # CondOp

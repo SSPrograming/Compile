@@ -274,6 +274,10 @@ class MyVisitor(naiveCVisitor):
     def visitConditionOperator(self, ctx: naiveCParser.ConditionOperatorContext) -> str:
         return ctx.getChild(0).getSymbol().text
 
+    def visitNeg(self, ctx: naiveCParser.NegContext) -> boolean:
+        cond = self.visit(ctx.conditionExpr())
+        return self.builder.not_(cond)
+
     def visitAnd(self, ctx: naiveCParser.AndContext) -> boolean:
         value0 = self.visit(ctx.conditionExpr(0))
         value1 = self.visit(ctx.conditionExpr(1))

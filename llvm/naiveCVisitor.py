@@ -1,4 +1,4 @@
-# Generated from naiveC.g4 by ANTLR 4.9.3
+# Generated from E:/Tsinghua/课程/大三上/汇编与编译原理/作业/编译/编译小组作业/src/Compile/antlr/src\naiveC.g4 by ANTLR 4.9.2
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .naiveCParser import naiveCParser
@@ -126,6 +126,11 @@ class naiveCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by naiveCParser#conditionOperator.
     def visitConditionOperator(self, ctx:naiveCParser.ConditionOperatorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#Neg.
+    def visitNeg(self, ctx:naiveCParser.NegContext):
         return self.visitChildren(ctx)
 
 
