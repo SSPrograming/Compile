@@ -141,9 +141,9 @@ define i32 @"main"()
 {
 entry:
   %"n" = alloca i32
-  %".2" = getelementptr inbounds [34 x i8], [34 x i8]* @"str", i32 0, i32 0
+  %".2" = getelementptr inbounds [34 x i8], [34 x i8]* @"string", i32 0, i32 0
   %".3" = call i32 (i8*, ...) @"printf"(i8* %".2")
-  %".4" = getelementptr inbounds [3 x i8], [3 x i8]* @"str.1", i32 0, i32 0
+  %".4" = getelementptr inbounds [3 x i8], [3 x i8]* @"string.1", i32 0, i32 0
   %".5" = call i32 (i8*, ...) @"scanf"(i8* %".4", i32* %"n")
   %"arr" = alloca i32*
   %".6" = load i32, i32* %"n"
@@ -154,9 +154,9 @@ entry:
   %"i" = alloca i32
   store i32 0, i32* %"i"
   %".12" = load i32, i32* %"n"
-  %".13" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.2", i32 0, i32 0
+  %".13" = getelementptr inbounds [8 x i8], [8 x i8]* @"string.2", i32 0, i32 0
   %".14" = call i32 (i8*, ...) @"printf"(i8* %".13", i32 %".12")
-  %".15" = getelementptr inbounds [19 x i8], [19 x i8]* @"str.3", i32 0, i32 0
+  %".15" = getelementptr inbounds [19 x i8], [19 x i8]* @"string.3", i32 0, i32 0
   %".16" = call i32 (i8*, ...) @"printf"(i8* %".15")
   br label %"while_cond"
 while_cond:
@@ -172,7 +172,7 @@ while_begin:
   %".26" = mul i64 4, %".25"
   %".27" = add i64 %".24", %".26"
   %".28" = inttoptr i64 %".27" to i32*
-  %".29" = getelementptr inbounds [3 x i8], [3 x i8]* @"str.4", i32 0, i32 0
+  %".29" = getelementptr inbounds [3 x i8], [3 x i8]* @"string.4", i32 0, i32 0
   %".30" = call i32 (i8*, ...) @"scanf"(i8* %".29", i32* %".28")
   %".31" = load i32, i32* %"i"
   %".32" = add i32 %".31", 1
@@ -185,7 +185,7 @@ while_end:
   %".38" = load i32, i32* %"n"
   %".39" = load i32*, i32** %"arr"
   call void @"sort"(i32* %".39", i32 %".38")
-  %".41" = getelementptr inbounds [22 x i8], [22 x i8]* @"str.5", i32 0, i32 0
+  %".41" = getelementptr inbounds [22 x i8], [22 x i8]* @"string.5", i32 0, i32 0
   %".42" = call i32 (i8*, ...) @"printf"(i8* %".41")
   store i32 0, i32* %"i"
   br label %"while_cond.1"
@@ -199,7 +199,7 @@ while_begin.1:
   %".50" = load i32*, i32** %"arr"
   %".51" = getelementptr i32, i32* %".50", i32 %".49"
   %".52" = load i32, i32* %".51"
-  %".53" = getelementptr inbounds [4 x i8], [4 x i8]* @"str.6", i32 0, i32 0
+  %".53" = getelementptr inbounds [4 x i8], [4 x i8]* @"string.6", i32 0, i32 0
   %".54" = call i32 (i8*, ...) @"printf"(i8* %".53", i32 %".52")
   %".55" = load i32, i32* %"i"
   %".56" = add i32 %".55", 1
@@ -209,7 +209,7 @@ while_begin.1:
   %".60" = icmp slt i32 %".58", %".59"
   br i1 %".60", label %"while_begin.1", label %"while_end.1"
 while_end.1:
-  %".62" = getelementptr inbounds [2 x i8], [2 x i8]* @"str.7", i32 0, i32 0
+  %".62" = getelementptr inbounds [2 x i8], [2 x i8]* @"string.7", i32 0, i32 0
   %".63" = call i32 (i8*, ...) @"printf"(i8* %".62")
   %".64" = load i32*, i32** %"arr"
   %".65" = bitcast i32* %".64" to i8*
@@ -217,11 +217,11 @@ while_end.1:
   ret i32 0
 }
 
-@"str" = constant [34 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e6\95\b0\e7\bb\84\e7\9a\84\e5\85\83\e7\b4\a0\e4\b8\aa\e6\95\b0\ef\bc\9a\00"
-@"str.1" = constant [3 x i8] c"%d\00"
-@"str.2" = constant [8 x i8] c"n = %d\0a\00"
-@"str.3" = constant [19 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e5\85\83\e7\b4\a0\ef\bc\9a\00"
-@"str.4" = constant [3 x i8] c"%d\00"
-@"str.5" = constant [22 x i8] c"\e6\95\b0\e7\bb\84\e6\8e\92\e5\ba\8f\e7\bb\93\e6\9e\9c\ef\bc\9a\00"
-@"str.6" = constant [4 x i8] c"%d \00"
-@"str.7" = constant [2 x i8] c"\0a\00"
+@"string" = constant [34 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e6\95\b0\e7\bb\84\e7\9a\84\e5\85\83\e7\b4\a0\e4\b8\aa\e6\95\b0\ef\bc\9a\00"
+@"string.1" = constant [3 x i8] c"%d\00"
+@"string.2" = constant [8 x i8] c"n = %d\0a\00"
+@"string.3" = constant [19 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e5\85\83\e7\b4\a0\ef\bc\9a\00"
+@"string.4" = constant [3 x i8] c"%d\00"
+@"string.5" = constant [22 x i8] c"\e6\95\b0\e7\bb\84\e6\8e\92\e5\ba\8f\e7\bb\93\e6\9e\9c\ef\bc\9a\00"
+@"string.6" = constant [4 x i8] c"%d \00"
+@"string.7" = constant [2 x i8] c"\0a\00"
