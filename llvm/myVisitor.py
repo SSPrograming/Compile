@@ -187,7 +187,7 @@ class MyVisitor(naiveCVisitor):
             return self.builder.add(left, right)
         else:
             if isinstance(left.type, ir.DoubleType):
-                return self.builder.fadd(left, right)
+                return self.builder.fsub(left, right)
             return self.builder.sub(left, right)
 
     def visitNegative(self, ctx: naiveCParser.NegativeContext) -> ir.Value:

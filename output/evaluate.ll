@@ -135,7 +135,7 @@ entry.endif:
 entry.endif.if:
   %".22" = load double, double* %".5"
   %".23" = load double, double* %".9"
-  %".24" = fadd double %".22", %".23"
+  %".24" = fsub double %".22", %".23"
   ret double %".24"
 entry.endif.else:
   br label %"entry.endif.endif"
@@ -371,4 +371,4 @@ entry:
 
 @"str" = constant [3 x i8] c"%s\00"
 @"str.1" = constant [4 x i8] c"%s\0a\00"
-@"str.2" = constant [4 x i8] c"%d\0a\00"
+@"str.2" = constant [4 x i8] c"%f\0a\00"
