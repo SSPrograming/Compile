@@ -100,7 +100,7 @@ class MyVisitor(naiveCVisitor):
             position = 'line ' + str(ctx.start.line) + ': '
             error = '未定义的标识符: ' + identity
             print(position + error)
-            raise Exception('panic: visitAssignment')
+            raise Exception('panic: visitCommonAssignment')
         r_value = self.visit(ctx.expr())
         self.builder.store(r_value, l_value)
 
@@ -133,7 +133,7 @@ class MyVisitor(naiveCVisitor):
             position = 'line ' + str(ctx.start.line) + ': '
             error = '未定义的标识符: ' + identity
             print(position + error)
-            raise Exception('panic: visitAssignment')
+            raise Exception('panic: visitArrayAssign')
         index = self.visit(ctx.expr(0))
         if isinstance(symbol.type.pointee, ir.ArrayType):
             # 数组
@@ -259,7 +259,7 @@ class MyVisitor(naiveCVisitor):
             position = 'line ' + str(ctx.start.line) + ': '
             error = '未定义的标识符: ' + identity
             print(position + error)
-            raise Exception('panic: visitId')
+            raise Exception('panic: visitArrayVisit')
 
     def visitParens(self, ctx: naiveCParser.ParensContext) -> ir.Value:
         return self.visit(ctx.expr())
@@ -304,14 +304,14 @@ class MyVisitor(naiveCVisitor):
                 error = '错误的函数返回值 -- expect "' + str(self.builder.function.return_value) + '" but get "' + \
                         str(value.type)
                 print(position + error)
-                raise Exception('panic: visitId')
+                raise Exception('panic: visitReturnLine')
             self.builder.ret(value)
         else:
             if not isinstance(self.builder.function.return_value.type, ir.VoidType):
                 position = 'line ' + str(ctx.start.line) + ': '
                 error = '错误的函数返回值 -- expect "' + str(self.builder.function.return_value) + '" but get "void"'
                 print(position + error)
-                raise Exception('panic: visitId')
+                raise Exception('panic: visitReturnLine')
             self.builder.ret_void()
 
     def visitParamExpr(self, ctx: naiveCParser.ParamExprContext) -> ir.Value:
@@ -365,18 +365,29 @@ class MyVisitor(naiveCVisitor):
                     position = 'line ' + str(ctx.start.line) + ': '
                     error = '未定义的标识符: ' + _identity
                     print(position + error)
-                    raise Exception('panic: visitId')
+                    raise Exception('panic: visitFunctionCall')
                 paramsList.append(self.builder.gep(symbol, [ir.Constant(int32, 0), ir.Constant(int32, 0)]))
             else:
                 paramsList.append(param)
-        try:
-            ret = self.builder.call(func, paramsList)
-        except TypeError:
+        paramsListType = func.ftype.args
+        if len(paramsListType) > len(paramsList):
             position = 'line ' + str(ctx.start.line) + ': '
-            error = '参数类型不匹配'
+            error = '参数不足 -- expect ' + str(len(paramsListType)) + ' but get ' + str(len(paramsList))
             print(position + error)
-            raise 'panic: visitFunctionCall'
-        return ret
+            raise Exception('panic: visitFunctionCall')
+        if len(paramsListType) < len(paramsList) and not func.ftype.var_arg:
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = '参数过多 -- expect ' + str(len(paramsListType)) + ' but get ' + str(len(paramsList))
+            print(position + error)
+            raise Exception('panic: visitFunctionCall')
+        for i in range(len(paramsListType)):
+            if paramsList[i].type != paramsListType[i]:
+                position = 'line ' + str(ctx.start.line) + ': '
+                error = '参数类型不匹配 -- in pos ' + str(i) + ', expect "' + str(paramsListType[i]) + '" but get "' \
+                        + str(paramsList[i].type)
+                print(position + error)
+                raise Exception('panic: visitFunctionCall')
+        return self.builder.call(func, paramsList)
 
     def visitFunctionDeclare(self, ctx: naiveCParser.FunctionDeclareContext) -> None:
         typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
