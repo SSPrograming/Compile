@@ -1,10 +1,18 @@
 ; ModuleID = ""
-target triple = "x86_64-pc-linux-gnu"
+target triple = "x86_64-linux-gnu"
 target datalayout = ""
 
 declare i32 @"printf"(i8* %".1", ...) 
 
 declare i32 @"scanf"(i8* %".1", ...) 
+
+declare i8* @"malloc"(i32 %".1") 
+
+declare void @"free"(i8* %".1") 
+
+declare void @"exit"(i32 %".1") 
+
+declare i32 @"isdigit"(i32 %".1") 
 
 define i32 @"main"() 
 {
@@ -18,39 +26,35 @@ entry:
   %".6" = add i32 %".4", %".5"
   %".7" = load i32, i32* %"b"
   %".8" = load i32, i32* %"a"
-  %".9" = getelementptr inbounds [14 x i8], [14 x i8]* @"str", i32 0
-  %".10" = bitcast [14 x i8]* %".9" to i8*
-  %".11" = call i32 (i8*, ...) @"printf"(i8* %".10", i32 %".8", i32 %".7", i32 %".6")
+  %".9" = getelementptr inbounds [14 x i8], [14 x i8]* @"str", i32 0, i32 0
+  %".10" = call i32 (i8*, ...) @"printf"(i8* %".9", i32 %".8", i32 %".7", i32 %".6")
   store i32 4, i32* %"a"
   store i32 2, i32* %"b"
-  %".14" = load i32, i32* %"a"
-  %".15" = load i32, i32* %"b"
-  %".16" = sub i32 %".14", %".15"
-  %".17" = load i32, i32* %"b"
-  %".18" = load i32, i32* %"a"
-  %".19" = getelementptr inbounds [14 x i8], [14 x i8]* @"str.1", i32 0
-  %".20" = bitcast [14 x i8]* %".19" to i8*
-  %".21" = call i32 (i8*, ...) @"printf"(i8* %".20", i32 %".18", i32 %".17", i32 %".16")
+  %".13" = load i32, i32* %"a"
+  %".14" = load i32, i32* %"b"
+  %".15" = sub i32 %".13", %".14"
+  %".16" = load i32, i32* %"b"
+  %".17" = load i32, i32* %"a"
+  %".18" = getelementptr inbounds [14 x i8], [14 x i8]* @"str.1", i32 0, i32 0
+  %".19" = call i32 (i8*, ...) @"printf"(i8* %".18", i32 %".17", i32 %".16", i32 %".15")
   store i32 3, i32* %"a"
   store i32 4, i32* %"b"
-  %".24" = load i32, i32* %"a"
+  %".22" = load i32, i32* %"a"
+  %".23" = load i32, i32* %"b"
+  %".24" = mul i32 %".22", %".23"
   %".25" = load i32, i32* %"b"
-  %".26" = mul i32 %".24", %".25"
-  %".27" = load i32, i32* %"b"
-  %".28" = load i32, i32* %"a"
-  %".29" = getelementptr inbounds [14 x i8], [14 x i8]* @"str.2", i32 0
-  %".30" = bitcast [14 x i8]* %".29" to i8*
-  %".31" = call i32 (i8*, ...) @"printf"(i8* %".30", i32 %".28", i32 %".27", i32 %".26")
+  %".26" = load i32, i32* %"a"
+  %".27" = getelementptr inbounds [14 x i8], [14 x i8]* @"str.2", i32 0, i32 0
+  %".28" = call i32 (i8*, ...) @"printf"(i8* %".27", i32 %".26", i32 %".25", i32 %".24")
   store i32 10000, i32* %"a"
   store i32 5000, i32* %"b"
-  %".34" = load i32, i32* %"a"
-  %".35" = load i32, i32* %"b"
-  %".36" = sdiv i32 %".34", %".35"
-  %".37" = load i32, i32* %"b"
-  %".38" = load i32, i32* %"a"
-  %".39" = getelementptr inbounds [14 x i8], [14 x i8]* @"str.3", i32 0
-  %".40" = bitcast [14 x i8]* %".39" to i8*
-  %".41" = call i32 (i8*, ...) @"printf"(i8* %".40", i32 %".38", i32 %".37", i32 %".36")
+  %".31" = load i32, i32* %"a"
+  %".32" = load i32, i32* %"b"
+  %".33" = sdiv i32 %".31", %".32"
+  %".34" = load i32, i32* %"b"
+  %".35" = load i32, i32* %"a"
+  %".36" = getelementptr inbounds [14 x i8], [14 x i8]* @"str.3", i32 0, i32 0
+  %".37" = call i32 (i8*, ...) @"printf"(i8* %".36", i32 %".35", i32 %".34", i32 %".33")
   ret i32 0
 }
 

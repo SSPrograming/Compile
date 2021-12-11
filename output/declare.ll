@@ -10,6 +10,10 @@ declare i8* @"malloc"(i32 %".1")
 
 declare void @"free"(i8* %".1") 
 
+declare void @"exit"(i32 %".1") 
+
+declare i32 @"isdigit"(i32 %".1") 
+
 define void @"test"() 
 {
 entry:

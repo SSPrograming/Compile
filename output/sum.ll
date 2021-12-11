@@ -1,5 +1,5 @@
 ; ModuleID = ""
-target triple = "x86_64-pc-linux-gnu"
+target triple = "x86_64-linux-gnu"
 target datalayout = ""
 
 declare i32 @"printf"(i8* %".1", ...) 
@@ -9,6 +9,10 @@ declare i32 @"scanf"(i8* %".1", ...)
 declare i8* @"malloc"(i32 %".1") 
 
 declare void @"free"(i8* %".1") 
+
+declare void @"exit"(i32 %".1") 
+
+declare i32 @"isdigit"(i32 %".1") 
 
 define i32 @"sum"(i32* %".1", i32 %".2") 
 {
@@ -22,10 +26,11 @@ entry:
   %".9" = load i32, i32* %".6"
   %".10" = sub i32 %".9", 1
   store i32 %".10", i32* %".6"
-  %".12" = load i32, i32* %".6"
-  %".13" = icmp sge i32 %".12", 0
-  %".14" = xor i1 %".13", -1
-  br i1 %".14", label %"while_end", label %"while_begin"
+  br label %"while_cond"
+while_cond:
+  %".13" = load i32, i32* %".6"
+  %".14" = icmp sge i32 %".13", 0
+  br i1 %".14", label %"while_begin", label %"while_end"
 while_begin:
   %".16" = load i32, i32* %"_sum"
   %".17" = load i32, i32* %".6"
@@ -56,12 +61,10 @@ entry:
   %".6" = getelementptr [3 x i32], [3 x i32]* %"a", i32 0, i32 2
   store i32 2, i32* %".6"
   %".8" = load [3 x i32], [3 x i32]* %"a"
-  %".9" = alloca [3 x i32]
-  store [3 x i32] %".8", [3 x i32]* %".9"
-  %".11" = getelementptr inbounds [3 x i32], [3 x i32]* %".9", i32 0, i32 0
-  %".12" = call i32 @"sum"(i32* %".11", i32 3)
-  %".13" = getelementptr inbounds [19 x i8], [19 x i8]* @"str", i32 0, i32 0
-  %".14" = call i32 (i8*, ...) @"printf"(i8* %".13", i32 %".12")
+  %".9" = getelementptr [3 x i32], [3 x i32]* %"a", i32 0, i32 0
+  %".10" = call i32 @"sum"(i32* %".9", i32 3)
+  %".11" = getelementptr inbounds [19 x i8], [19 x i8]* @"str", i32 0, i32 0
+  %".12" = call i32 (i8*, ...) @"printf"(i8* %".11", i32 %".10")
   ret i32 0
 }
 

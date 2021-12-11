@@ -1,5 +1,5 @@
 ; ModuleID = ""
-target triple = "x86_64-pc-linux-gnu"
+target triple = "x86_64-linux-gnu"
 target datalayout = ""
 
 declare i32 @"printf"(i8* %".1", ...) 
@@ -9,6 +9,10 @@ declare i32 @"scanf"(i8* %".1", ...)
 declare i8* @"malloc"(i32 %".1") 
 
 declare void @"free"(i8* %".1") 
+
+declare void @"exit"(i32 %".1") 
+
+declare i32 @"isdigit"(i32 %".1") 
 
 define i32 @"main"() 
 {
@@ -58,11 +62,12 @@ entry:
   %".41" = load i32*, i32** %"b"
   %".42" = getelementptr i32, i32* %".41", i32 5
   store i32 6, i32* %".42"
-  %".44" = load i32, i32* %"n"
-  %".45" = add i32 %".44", 1
-  %".46" = icmp sgt i32 %".45", 0
-  %".47" = xor i1 %".46", -1
-  br i1 %".47", label %"while_end", label %"while_begin"
+  br label %"while_cond"
+while_cond:
+  %".45" = load i32, i32* %"n"
+  %".46" = add i32 %".45", 1
+  %".47" = icmp sgt i32 %".46", 0
+  br i1 %".47", label %"while_begin", label %"while_end"
 while_begin:
   %".49" = load i32, i32* %"n"
   %".50" = load i32*, i32** %"b"

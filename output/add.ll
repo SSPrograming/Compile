@@ -1,30 +1,35 @@
 ; ModuleID = ""
-target triple = "x86_64-pc-linux-gnu"
+target triple = "x86_64-linux-gnu"
 target datalayout = ""
 
 declare i32 @"printf"(i8* %".1", ...) 
 
 declare i32 @"scanf"(i8* %".1", ...) 
 
+declare i8* @"malloc"(i32 %".1") 
+
+declare void @"free"(i8* %".1") 
+
+declare void @"exit"(i32 %".1") 
+
+declare i32 @"isdigit"(i32 %".1") 
+
 define i32 @"main"() 
 {
 entry:
   %"a" = alloca i32
   %"b" = alloca i32
-  %".2" = getelementptr inbounds [25 x i8], [25 x i8]* @"str", i32 0
-  %".3" = bitcast [25 x i8]* %".2" to i8*
-  %".4" = call i32 (i8*, ...) @"printf"(i8* %".3")
-  %".5" = getelementptr inbounds [6 x i8], [6 x i8]* @"str.1", i32 0
-  %".6" = bitcast [6 x i8]* %".5" to i8*
-  %".7" = call i32 (i8*, ...) @"scanf"(i8* %".6", i32* %"a", i32* %"b")
-  %".8" = load i32, i32* %"a"
+  %".2" = getelementptr inbounds [25 x i8], [25 x i8]* @"str", i32 0, i32 0
+  %".3" = call i32 (i8*, ...) @"printf"(i8* %".2")
+  %".4" = getelementptr inbounds [6 x i8], [6 x i8]* @"str.1", i32 0, i32 0
+  %".5" = call i32 (i8*, ...) @"scanf"(i8* %".4", i32* %"a", i32* %"b")
+  %".6" = load i32, i32* %"a"
+  %".7" = load i32, i32* %"b"
+  %".8" = add i32 %".6", %".7"
   %".9" = load i32, i32* %"b"
-  %".10" = add i32 %".8", %".9"
-  %".11" = load i32, i32* %"b"
-  %".12" = load i32, i32* %"a"
-  %".13" = getelementptr inbounds [44 x i8], [44 x i8]* @"str.2", i32 0
-  %".14" = bitcast [44 x i8]* %".13" to i8*
-  %".15" = call i32 (i8*, ...) @"printf"(i8* %".14", i32 %".12", i32 %".11", i32 %".10")
+  %".10" = load i32, i32* %"a"
+  %".11" = getelementptr inbounds [44 x i8], [44 x i8]* @"str.2", i32 0, i32 0
+  %".12" = call i32 (i8*, ...) @"printf"(i8* %".11", i32 %".10", i32 %".9", i32 %".8")
   ret i32 0
 }
 
