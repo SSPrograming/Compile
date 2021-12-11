@@ -1,5 +1,5 @@
 ; ModuleID = ""
-target triple = "x86_64-pc-linux-gnu"
+target triple = "x86_64-linux-gnu"
 target datalayout = ""
 
 declare i32 @"printf"(i8* %".1", ...) 
@@ -14,77 +14,69 @@ define i32 @"main"()
 {
 entry:
   %"a" = alloca i32
-  %".2" = getelementptr inbounds [20 x i8], [20 x i8]* @"str", i32 0
-  %".3" = bitcast [20 x i8]* %".2" to i8*
-  %".4" = call i32 (i8*, ...) @"printf"(i8* %".3")
-  %".5" = getelementptr inbounds [3 x i8], [3 x i8]* @"str.1", i32 0
-  %".6" = bitcast [3 x i8]* %".5" to i8*
-  %".7" = call i32 (i8*, ...) @"scanf"(i8* %".6", i32* %"a")
-  %".8" = load i32, i32* %"a"
-  %".9" = icmp sgt i32 %".8", 10
-  br i1 %".9", label %"entry.if", label %"entry.else"
+  %".2" = getelementptr inbounds [20 x i8], [20 x i8]* @"str", i32 0, i32 0
+  %".3" = call i32 (i8*, ...) @"printf"(i8* %".2")
+  %".4" = getelementptr inbounds [3 x i8], [3 x i8]* @"str.1", i32 0, i32 0
+  %".5" = call i32 (i8*, ...) @"scanf"(i8* %".4", i32* %"a")
+  %".6" = load i32, i32* %"a"
+  %".7" = icmp sgt i32 %".6", 10
+  br i1 %".7", label %"entry.if", label %"entry.else"
 entry.if:
-  %".11" = load i32, i32* %"a"
-  %".12" = getelementptr inbounds [9 x i8], [9 x i8]* @"str.2", i32 0
-  %".13" = bitcast [9 x i8]* %".12" to i8*
-  %".14" = call i32 (i8*, ...) @"printf"(i8* %".13", i32 %".11")
+  %".9" = load i32, i32* %"a"
+  %".10" = getelementptr inbounds [9 x i8], [9 x i8]* @"str.2", i32 0, i32 0
+  %".11" = call i32 (i8*, ...) @"printf"(i8* %".10", i32 %".9")
   br label %"entry.endif"
 entry.else:
-  %".16" = load i32, i32* %"a"
-  %".17" = icmp sle i32 %".16", 10
-  %".18" = load i32, i32* %"a"
-  %".19" = icmp sgt i32 %".18", 5
-  %".20" = and i1 %".17", %".19"
-  br i1 %".20", label %"entry.else.if", label %"entry.else.else"
+  %".13" = load i32, i32* %"a"
+  %".14" = icmp sle i32 %".13", 10
+  %".15" = load i32, i32* %"a"
+  %".16" = icmp sgt i32 %".15", 5
+  %".17" = and i1 %".14", %".16"
+  br i1 %".17", label %"entry.else.if", label %"entry.else.else"
 entry.endif:
   ret i32 0
 entry.else.if:
-  %".22" = load i32, i32* %"a"
-  %".23" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.3", i32 0
-  %".24" = bitcast [8 x i8]* %".23" to i8*
-  %".25" = call i32 (i8*, ...) @"printf"(i8* %".24", i32 %".22")
+  %".19" = load i32, i32* %"a"
+  %".20" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.3", i32 0, i32 0
+  %".21" = call i32 (i8*, ...) @"printf"(i8* %".20", i32 %".19")
   br label %"entry.else.endif"
 entry.else.else:
-  %".27" = load i32, i32* %"a"
-  %".28" = icmp sgt i32 %".27", 1
-  br i1 %".28", label %"entry.else.else.if", label %"entry.else.else.else"
+  %".23" = load i32, i32* %"a"
+  %".24" = icmp sgt i32 %".23", 1
+  br i1 %".24", label %"entry.else.else.if", label %"entry.else.else.else"
 entry.else.endif:
   br label %"entry.endif"
 entry.else.else.if:
-  %".30" = load i32, i32* %"a"
-  %".31" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.4", i32 0
-  %".32" = bitcast [8 x i8]* %".31" to i8*
-  %".33" = call i32 (i8*, ...) @"printf"(i8* %".32", i32 %".30")
+  %".26" = load i32, i32* %"a"
+  %".27" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.4", i32 0, i32 0
+  %".28" = call i32 (i8*, ...) @"printf"(i8* %".27", i32 %".26")
   br label %"entry.else.else.endif"
 entry.else.else.else:
-  %".35" = load i32, i32* %"a"
-  %".36" = icmp eq i32 %".35", 1
-  br i1 %".36", label %"entry.else.else.else.if", label %"entry.else.else.else.else"
+  %".30" = load i32, i32* %"a"
+  %".31" = icmp eq i32 %".30", 1
+  br i1 %".31", label %"entry.else.else.else.if", label %"entry.else.else.else.else"
 entry.else.else.endif:
   br label %"entry.else.endif"
 entry.else.else.else.if:
-  %".38" = load i32, i32* %"a"
-  %".39" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.5", i32 0
-  %".40" = bitcast [8 x i8]* %".39" to i8*
-  %".41" = call i32 (i8*, ...) @"printf"(i8* %".40", i32 %".38")
+  %".33" = load i32, i32* %"a"
+  %".34" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.5", i32 0, i32 0
+  %".35" = call i32 (i8*, ...) @"printf"(i8* %".34", i32 %".33")
   br label %"entry.else.else.else.endif"
 entry.else.else.else.else:
-  %".43" = load i32, i32* %"a"
-  %".44" = icmp sle i32 %".43", -1
-  br i1 %".44", label %"entry.else.else.else.else.if", label %"entry.else.else.else.else.else"
+  %".37" = load i32, i32* %"a"
+  %".38" = icmp sle i32 %".37", -1
+  br i1 %".38", label %"entry.else.else.else.else.if", label %"entry.else.else.else.else.else"
 entry.else.else.else.endif:
   br label %"entry.else.else.endif"
 entry.else.else.else.else.if:
-  %".46" = load i32, i32* %"a"
-  %".47" = getelementptr inbounds [10 x i8], [10 x i8]* @"str.6", i32 0
-  %".48" = bitcast [10 x i8]* %".47" to i8*
-  %".49" = call i32 (i8*, ...) @"printf"(i8* %".48", i32 %".46")
+  %".40" = load i32, i32* %"a"
+  %".41" = getelementptr inbounds [10 x i8], [10 x i8]* @"str.6", i32 0, i32 0
+  %".42" = call i32 (i8*, ...) @"printf"(i8* %".41", i32 %".40")
   br label %"entry.else.else.else.else.endif"
 entry.else.else.else.else.else:
-  %".51" = load i32, i32* %"a"
-  %".52" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.7", i32 0
-  %".53" = bitcast [8 x i8]* %".52" to i8*
-  %".54" = call i32 (i8*, ...) @"printf"(i8* %".53", i32 %".51")
+  %".44" = load i32, i32* %"a"
+  %".45" = getelementptr inbounds [8 x i8], [8 x i8]* @"str.7", i32 0, i32 0
+  %".46" = call i32 (i8*, ...) @"printf"(i8* %".45", i32 %".44")
   br label %"entry.else.else.else.else.endif"
 entry.else.else.else.else.endif:
   br label %"entry.else.else.else.endif"
