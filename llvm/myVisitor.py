@@ -197,6 +197,10 @@ class MyVisitor(naiveCVisitor):
             print(position + error)
             raise Exception('panic: visitId')
 
+    def visitChar(self, ctx: naiveCParser.CharContext):
+        symbol = ctx.Char().getSymbol().text.replace('\'', '')
+        return ir.Constant(char, ord(symbol))
+
     def visitBoolExpr(self, ctx: naiveCParser.BoolExprContext) -> ir.Constant:
         if ctx.TRUE():
             return ir.Constant(boolean, True)
@@ -257,7 +261,6 @@ class MyVisitor(naiveCVisitor):
             self.builder.ret(value)
         else:
             self.builder.ret_void()
-        self.ST = self.ST.prev()
         self.ret = True
 
     def visitParamExpr(self, ctx: naiveCParser.ParamExprContext) -> ir.Value:
@@ -363,6 +366,7 @@ class MyVisitor(naiveCVisitor):
             raise Exception('panic: functionDefine')
         if not self.ret:
             self.builder.ret_void()
+        self.ST = self.ST.prev()
 
     def visitBlock(self, ctx: naiveCParser.BlockContext) -> None:
         self.ST = SymbolTable(self.ST)
