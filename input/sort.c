@@ -43,7 +43,6 @@ int main()
     while (i < n)
     {
         scanf("%d", arr + i);
-        printf("%d\n", arr[i]);
         i = i + 1;
     }
     sort(arr, n);

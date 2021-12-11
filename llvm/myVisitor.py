@@ -414,7 +414,8 @@ class MyVisitor(naiveCVisitor):
         self.while_block = {
             'cond': while_cond,
             'begin': while_begin,
-            'end': while_end
+            'end': while_end,
+            'outer': self.while_block
         }
         self.builder.branch(while_cond)
         self.builder.position_at_start(while_cond)
@@ -425,7 +426,7 @@ class MyVisitor(naiveCVisitor):
         cond = self.visit(ctx.conditionExpr())
         self.builder.cbranch(cond, while_begin, while_end)
         self.builder.position_at_end(while_end)
-        self.while_block = None
+        self.while_block = self.while_block['outer']
 
     def visitBreakLine(self, ctx: naiveCParser.BreakLineContext) -> None:
         if not self.while_block:
