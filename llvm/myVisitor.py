@@ -98,7 +98,7 @@ class MyVisitor(naiveCVisitor):
         l_value = self.ST.get(identity)
         if not l_value:
             position = 'line ' + str(ctx.start.line) + ': '
-            error = position + '未定义的标识符: ' + identity
+            error = '未定义的标识符: ' + identity
             print(position + error)
             raise Exception('panic: visitAssignment')
         r_value = self.visit(ctx.expr())
@@ -131,7 +131,7 @@ class MyVisitor(naiveCVisitor):
         symbol = self.ST.get(identity)
         if not symbol:
             position = 'line ' + str(ctx.start.line) + ': '
-            error = position + '未定义的标识符: ' + identity
+            error = '未定义的标识符: ' + identity
             print(position + error)
             raise Exception('panic: visitAssignment')
         index = self.visit(ctx.expr(0))
@@ -203,7 +203,7 @@ class MyVisitor(naiveCVisitor):
             return symbol
         else:
             position = 'line ' + str(ctx.start.line) + ': '
-            error = position + '未定义的标识符: ' + identity
+            error = '未定义的标识符: ' + identity
             print(position + error)
             raise Exception('panic: visitGetP')
 
@@ -211,7 +211,7 @@ class MyVisitor(naiveCVisitor):
         r_value = self.visit(ctx.expr())
         if not isinstance(r_value.type, ir.PointerType):
             position = 'line ' + str(ctx.start.line) + ': '
-            error = position + '不是指针类型，解引用失败'
+            error = '不是指针类型，解引用失败'
             print(position + error)
             raise Exception('panic: visitMakP')
         return self.builder.load(r_value)
@@ -233,7 +233,7 @@ class MyVisitor(naiveCVisitor):
             return self.builder.load(symbol)
         else:
             position = 'line ' + str(ctx.start.line) + ': '
-            error = position + '未定义的标识符: ' + identity
+            error = '未定义的标识符: ' + identity
             print(position + error)
             raise Exception('panic: visitId')
 
@@ -257,7 +257,7 @@ class MyVisitor(naiveCVisitor):
             return self.builder.load(l_value)
         else:
             position = 'line ' + str(ctx.start.line) + ': '
-            error = position + '未定义的标识符: ' + identity
+            error = '未定义的标识符: ' + identity
             print(position + error)
             raise Exception('panic: visitId')
 
@@ -299,8 +299,19 @@ class MyVisitor(naiveCVisitor):
     def visitReturnLine(self, ctx: naiveCParser.ReturnLineContext) -> None:
         if ctx.expr():
             value = self.visit(ctx.expr())
+            if self.builder.function.return_value.type != value.type:
+                position = 'line ' + str(ctx.start.line) + ': '
+                error = '错误的函数返回值 -- expect "' + str(self.builder.function.return_value) + '" but get "' + \
+                        str(value.type)
+                print(position + error)
+                raise Exception('panic: visitId')
             self.builder.ret(value)
         else:
+            if not isinstance(self.builder.function.return_value.type, ir.VoidType):
+                position = 'line ' + str(ctx.start.line) + ': '
+                error = '错误的函数返回值 -- expect "' + str(self.builder.function.return_value) + '" but get "void"'
+                print(position + error)
+                raise Exception('panic: visitId')
             self.builder.ret_void()
 
     def visitParamExpr(self, ctx: naiveCParser.ParamExprContext) -> ir.Value:
@@ -352,7 +363,7 @@ class MyVisitor(naiveCVisitor):
                 symbol = self.ST.get(_identity)
                 if not symbol:
                     position = 'line ' + str(ctx.start.line) + ': '
-                    error = position + '未定义的标识符: ' + _identity
+                    error = '未定义的标识符: ' + _identity
                     print(position + error)
                     raise Exception('panic: visitId')
                 paramsList.append(self.builder.gep(symbol, [ir.Constant(int32, 0), ir.Constant(int32, 0)]))
