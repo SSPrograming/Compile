@@ -1,3 +1,5 @@
+import re
+
 import antlr4.Token
 
 from naiveCParser import naiveCParser
@@ -14,7 +16,7 @@ class MyVisitor(naiveCVisitor):
         self.ST = SymbolTable()
         self.module = ir.Module()
         self.builder = ir.IRBuilder()
-        self.ret = False
+        self.while_block = None
         init_io(self.module)
         init_memory(self.module)
         init_system(self.module)
@@ -274,7 +276,6 @@ class MyVisitor(naiveCVisitor):
             self.builder.ret(value)
         else:
             self.builder.ret_void()
-        self.ret = True
 
     def visitParamExpr(self, ctx: naiveCParser.ParamExprContext) -> ir.Value:
         return self.visit(ctx.expr())
@@ -321,9 +322,14 @@ class MyVisitor(naiveCVisitor):
         paramsList = []
         for param in _paramsList:
             if isinstance(param.type, ir.ArrayType):
-                temp = self.builder.alloca(param.type)
-                self.builder.store(param, temp)
-                paramsList.append(self.builder.gep(temp, [ir.Constant(int32, 0), ir.Constant(int32, 0)]))
+                _identity = re.findall('%"(.*?)"', str(param))[1]
+                symbol = self.ST.get(_identity)
+                if not symbol:
+                    position = 'line ' + str(ctx.start.line) + ': '
+                    error = position + '未定义的标识符: ' + _identity
+                    print(position + error)
+                    raise Exception('panic: visitId')
+                paramsList.append(self.builder.gep(symbol, [ir.Constant(int32, 0), ir.Constant(int32, 0)]))
             else:
                 paramsList.append(param)
         try:
@@ -378,15 +384,7 @@ class MyVisitor(naiveCVisitor):
             param = self.builder.alloca(func.args[i].type)
             self.builder.store(func.args[i], param)
             self.ST.insert(paramList[i]['name'], param)
-        self.ret = False
         self.visit(ctx.block())
-        if not self.ret and str(func.return_value) != 'void':
-            position = 'line ' + str(ctx.stop.line) + ': '
-            error = '函数 ' + identity + ' 没有返回 -- expect ' + str(func.return_value)
-            print(position, error)
-            raise Exception('panic: functionDefine')
-        if not self.ret:
-            self.builder.ret_void()
         self.ST = self.ST.prev()
 
     def visitBlock(self, ctx: naiveCParser.BlockContext) -> None:
@@ -411,20 +409,39 @@ class MyVisitor(naiveCVisitor):
 
     def visitWhileBlock(self, ctx: naiveCParser.WhileBlockContext) -> None:
         while_cond = self.builder.append_basic_block(name='while_cond')
-        self.builder.branch(while_cond)
         while_begin = self.builder.append_basic_block(name='while_begin')
-        self.builder.position_at_start(while_begin)
-        self.visit(ctx.block())
         while_end = self.builder.append_basic_block(name='while_end')
-        cond = self.visit(ctx.conditionExpr())
-        self.builder.cbranch(cond, while_begin, while_end)
+        self.while_block = {
+            'cond': while_cond,
+            'begin': while_begin,
+            'end': while_end
+        }
+        self.builder.branch(while_cond)
         self.builder.position_at_start(while_cond)
         cond = self.visit(ctx.conditionExpr())
-        self.builder.cbranch(self.builder.not_(cond), while_end, while_begin)
+        self.builder.cbranch(cond, while_begin, while_end)
+        self.builder.position_at_start(while_begin)
+        self.visit(ctx.block())
+        cond = self.visit(ctx.conditionExpr())
+        self.builder.cbranch(cond, while_begin, while_end)
         self.builder.position_at_end(while_end)
+        self.while_block = None
 
-    def visitBreakLine(self, ctx: naiveCParser.BreakLineContext):
-        pass
+    def visitBreakLine(self, ctx: naiveCParser.BreakLineContext) -> None:
+        if not self.while_block:
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = '此处不允许使用break'
+            print(position, error)
+            raise Exception('panic: visitBreakLine')
+        else:
+            self.builder.branch(self.while_block['end'])
 
     def visitContinueLine(self, ctx: naiveCParser.ContinueLineContext):
+        if not self.while_block:
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = '此处不允许使用continue'
+            print(position, error)
+            raise Exception('panic: visitContinueLine')
+        else:
+            self.builder.branch(self.while_block['begin'])
         pass

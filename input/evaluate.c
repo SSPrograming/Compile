@@ -53,6 +53,7 @@ int operatorCmp(char operator1, char operator2)
             return -1;
         }
     }
+    return 0;
 }
 
 int calculate(int number_1, char operator, int number_2)
@@ -74,6 +75,7 @@ int calculate(int number_1, char operator, int number_2)
         return number_1 / number_2;
     }
     exit(-1);
+    return 0;
 }
 
 int evaluate(char *S)
@@ -132,6 +134,7 @@ int main()
 {
     char str[1024];
     scanf("%s", str);
+    printf("%s\n", str);
     int res = evaluate(str);
     printf("%d\n", res);
     return 0;
