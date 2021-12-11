@@ -183,6 +183,10 @@ class MyVisitor(naiveCVisitor):
             print('未定义的标识符: ' + identity)
             raise Exception('panic: visitId')
 
+    def visitChar(self, ctx:naiveCParser.CharContext):
+        symbol = ctx.Char().getSymbol().text.replace('\'','')
+        return ir.Constant(char, ord(symbol))
+
     def visitBoolExpr(self, ctx: naiveCParser.BoolExprContext) -> ir.Constant:
         if ctx.TRUE():
             return ir.Constant(boolean, True)
@@ -323,8 +327,10 @@ class MyVisitor(naiveCVisitor):
 
     def visitBlock(self, ctx: naiveCParser.BlockContext) -> None:
         self.ST = SymbolTable(self.ST)
+        print("before", self.ST.prev())
         self.visit(ctx.statements())
         self.ST = self.ST.prev()
+        print("after", self.ST)
 
     def _visitIfBlock(self, ctx: naiveCParser.IfBlockContext, i) -> None:
         if i == len(ctx.conditionExpr()):
