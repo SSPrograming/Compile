@@ -50,6 +50,8 @@ class MyVisitor(naiveCVisitor):
             token = ctx.TypeChar()
         elif ctx.TypeLL():
             token = ctx.TypeLL()
+        elif ctx.TypeDouble():
+            token = ctx.TypeDouble()
         else:
             raise Exception('panic: visitRealTypeID')
         return token.getSymbol().text
@@ -67,6 +69,8 @@ class MyVisitor(naiveCVisitor):
             token = ctx.TypeVoid()
         elif ctx.TypeLL():
             token = ctx.TypeLL()
+        elif ctx.TypeDouble():
+            token = ctx.TypeDouble()
         else:
             raise Exception('panic: visitTypeIdentifier')
         return token.getSymbol().text
@@ -116,6 +120,8 @@ class MyVisitor(naiveCVisitor):
                 cast = self.builder.sext(l_value, ir_type)
             else:
                 cast = l_value
+        elif isinstance(ir_type, ir.DoubleType) and isinstance(l_value.type, ir.IntType):
+            cast = self.builder.sitofp(l_value, ir_type)
         else:
             raise Exception('panic: visitTypeCast')
         return cast
@@ -165,6 +171,8 @@ class MyVisitor(naiveCVisitor):
             temp = self.builder.add(temp_l, self.builder.mul(ir.Constant(int64, left.type.pointee.width // 8), temp_r))
             return self.builder.inttoptr(temp, left.type)
         if left.type != right.type:
+            print(left.type)
+            print(right.type)
             position = 'line ' + str(ctx.start.line) + ': '
             error = '类型不匹配 -- ' + 'can\'t compute between ' + str(left.type) + ' and ' + str(right.type)
             print(position + error)

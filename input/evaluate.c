@@ -55,7 +55,7 @@ int operatorCmp(char operator1, char operator2)
     }
 }
 
-int calculate(int number_1, char operator, int number_2)
+double calculate(double number_1, char operator, double number_2)
 {
     if (operator== '+')
     {
@@ -76,9 +76,9 @@ int calculate(int number_1, char operator, int number_2)
     exit(-1);
 }
 
-int evaluate(char *S)
+double evaluate(char *S)
 {
-    int opnd[1024];
+    double opnd[1024];
     char optr[1024];
     int opnd_p = 0; //运算数栈指针
     int optr_p = 0; //运算符栈指针
@@ -95,7 +95,7 @@ int evaluate(char *S)
                 S = S + 1;
             }
             opnd_p = opnd_p + 1;
-            opnd[opnd_p] = number;
+            opnd[opnd_p] = (double)number;
         }
         else
         {
@@ -115,11 +115,11 @@ int evaluate(char *S)
             {
                 char op_top = optr[optr_p];
                 optr_p = optr_p - 1;
-                int number_2 = opnd[opnd_p];
+                double number_2 = opnd[opnd_p];
                 opnd_p = opnd_p - 1;
-                int number_1 = opnd[opnd_p];
+                double number_1 = opnd[opnd_p];
                 opnd_p = opnd_p - 1;
-                int cal_res = calculate(number_1, op_top, number_2);
+                double cal_res = calculate(number_1, op_top, number_2);
                 opnd_p = opnd_p + 1;
                 opnd[opnd_p] = cal_res;
             }
@@ -132,7 +132,7 @@ int main()
 {
     char str[1024];
     scanf("%s", str);
-    int res = evaluate(str);
+    double res = evaluate(str);
     printf("%d\n", res);
     return 0;
 }

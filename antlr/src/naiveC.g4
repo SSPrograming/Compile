@@ -17,6 +17,7 @@ Include: '#include'  ~[\r\n]* -> skip;
 realTypeID: TypeChar
           | TypeInt
           | TypeLL
+          | TypeDouble
           ;
 
 realTypeIDPointer: realTypeID '*' ;
@@ -26,6 +27,7 @@ typeIdentifier: TypeInt
                | TypeVoid
                | TypeChar
                | TypeLL
+               | TypeDouble
                ;
 
 typeIdentifierPointer: typeIdentifier '*';
@@ -42,6 +44,9 @@ TypeChar: 'char'
 
 TypeLL: 'long long'
       ;
+
+TypeDouble: 'double'
+    ;
 
 Break: 'break'
     ;
@@ -158,7 +163,7 @@ idList: ID ',' idList
 PositiveINT: [1-9][0-9]*;
 Char: '\'' ([\u0000-\u007f]|'\\0') '\'';
 INT: [-]?[1-9][0-9]* | '0';
-ID : [a-zA-Z_][a-z0-9A-Z_]* ;             // match lower-case identifiers
+ID : [a-zA-Z_][a-z0-9A-Z_]* ;
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
 arithmeticOperator:   ADD
