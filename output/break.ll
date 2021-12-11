@@ -14,6 +14,12 @@ declare void @"exit"(i32 %".1")
 
 declare i32 @"isdigit"(i32 %".1") 
 
+declare i32 @"isspace"(i32 %".1") 
+
+declare i32 @"getchar"() 
+
+declare i64 @"strlen"(i8* %".1") 
+
 define i32 @"main"() 
 {
 entry:
@@ -33,7 +39,7 @@ while_begin.if:
   br label %"while_end"
 while_begin.else:
   %".10" = load i32, i32* %"n"
-  %".11" = getelementptr inbounds [4 x i8], [4 x i8]* @"str", i32 0, i32 0
+  %".11" = getelementptr inbounds [4 x i8], [4 x i8]* @"string", i32 0, i32 0
   %".12" = call i32 (i8*, ...) @"printf"(i8* %".11", i32 %".10")
   %".13" = load i32, i32* %"n"
   %".14" = add i32 %".13", 1
@@ -44,4 +50,4 @@ while_begin.endif:
   br i1 %".17", label %"while_begin", label %"while_end"
 }
 
-@"str" = constant [4 x i8] c"%d\0a\00"
+@"string" = constant [4 x i8] c"%d\0a\00"

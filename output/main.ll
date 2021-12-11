@@ -14,6 +14,12 @@ declare void @"exit"(i32 %".1")
 
 declare i32 @"isdigit"(i32 %".1") 
 
+declare i32 @"isspace"(i32 %".1") 
+
+declare i32 @"getchar"() 
+
+declare i64 @"strlen"(i8* %".1") 
+
 define i32 @"main"() 
 {
 entry:

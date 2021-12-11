@@ -8,11 +8,11 @@ test:
 	make filename=add
 	make filename=arithmetic
 	make filename=array
-	make filename=basic_io
 	make filename=break
 	make filename=declare
 	make filename=if_else
 	make filename=sum
+	make filename=basic_io
 	make filename=sort
 	make filename=evaluate
 

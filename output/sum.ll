@@ -14,6 +14,12 @@ declare void @"exit"(i32 %".1")
 
 declare i32 @"isdigit"(i32 %".1") 
 
+declare i32 @"isspace"(i32 %".1") 
+
+declare i32 @"getchar"() 
+
+declare i64 @"strlen"(i8* %".1") 
+
 define i32 @"sum"(i32* %".1", i32 %".2") 
 {
 entry:
@@ -63,9 +69,9 @@ entry:
   %".8" = load [3 x i32], [3 x i32]* %"a"
   %".9" = getelementptr [3 x i32], [3 x i32]* %"a", i32 0, i32 0
   %".10" = call i32 @"sum"(i32* %".9", i32 3)
-  %".11" = getelementptr inbounds [19 x i8], [19 x i8]* @"str", i32 0, i32 0
+  %".11" = getelementptr inbounds [19 x i8], [19 x i8]* @"string", i32 0, i32 0
   %".12" = call i32 (i8*, ...) @"printf"(i8* %".11", i32 %".10")
   ret i32 0
 }
 
-@"str" = constant [19 x i8] c"sum(0, 1, 2) = %d\0a\00"
+@"string" = constant [19 x i8] c"sum(0, 1, 2) = %d\0a\00"

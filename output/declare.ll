@@ -14,10 +14,16 @@ declare void @"exit"(i32 %".1")
 
 declare i32 @"isdigit"(i32 %".1") 
 
+declare i32 @"isspace"(i32 %".1") 
+
+declare i32 @"getchar"() 
+
+declare i64 @"strlen"(i8* %".1") 
+
 define void @"test"() 
 {
 entry:
-  %".2" = getelementptr inbounds [6 x i8], [6 x i8]* @"str", i32 0, i32 0
+  %".2" = getelementptr inbounds [6 x i8], [6 x i8]* @"string", i32 0, i32 0
   %".3" = call i32 (i8*, ...) @"printf"(i8* %".2")
   ret void
 }
@@ -29,4 +35,4 @@ entry:
   ret i32 0
 }
 
-@"str" = constant [6 x i8] c"test\0a\00"
+@"string" = constant [6 x i8] c"test\0a\00"

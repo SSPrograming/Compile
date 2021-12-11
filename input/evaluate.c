@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//-1表示小于，0表示等于，1表示大于
+// -1表示小于，0表示等于，1表示大于
 int operatorCmp(char operator1, char operator2)
 {
     if (operator1 == '+' || operator1 == '-')
@@ -83,8 +83,8 @@ double evaluate(char *S)
 {
     double opnd[1024];
     char optr[1024];
-    int opnd_p = 0; //运算数栈指针
-    int optr_p = 0; //运算符栈指针
+    int opnd_p = 0; // 运算数栈指针
+    int optr_p = 0; // 运算符栈指针
     optr_p = optr_p + 1;
     optr[optr_p] = '\0';
     while (optr_p > 0)
@@ -133,11 +133,18 @@ double evaluate(char *S)
 
 int main()
 {
+    printf("表达式1：1 + 2 + 3 = %f\n", evaluate("1+2+3"));
+    printf("表达式2：1 * 2 + 3 = %f\n", evaluate("1*2+3"));
+    printf("表达式3：1 + 2 - 3 = %f\n", evaluate("1+2-3"));
+    printf("表达式4：1 - 2 / 3 = %f\n", evaluate("1-2/3"));
+    printf("表达式5：1 * (2 + 3) = %f\n", evaluate("1*(2+3)"));
+
     char str[1024];
     printf("请输入表达式：");
     char c = 'a';
     int i = 0;
-    while (c != '\n') {
+    while (c != '\n')
+    {
         c = (char)getchar();
         str[i] = c;
         i = i + 1;
@@ -147,8 +154,9 @@ int main()
     int len = (int)strlen(str);
     i = 0;
     int j = 0;
-    while (i < len) {
-        if(isspace((int)str[i])) 
+    while (i < len)
+    {
+        if (isspace((int)str[i]))
         {
             i = i + 1;
         }

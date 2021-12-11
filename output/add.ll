@@ -14,25 +14,27 @@ declare void @"exit"(i32 %".1")
 
 declare i32 @"isdigit"(i32 %".1") 
 
+declare i32 @"isspace"(i32 %".1") 
+
+declare i32 @"getchar"() 
+
+declare i64 @"strlen"(i8* %".1") 
+
 define i32 @"main"() 
 {
 entry:
   %"a" = alloca i32
+  store i32 1, i32* %"a"
   %"b" = alloca i32
-  %".2" = getelementptr inbounds [25 x i8], [25 x i8]* @"str", i32 0, i32 0
-  %".3" = call i32 (i8*, ...) @"printf"(i8* %".2")
-  %".4" = getelementptr inbounds [6 x i8], [6 x i8]* @"str.1", i32 0, i32 0
-  %".5" = call i32 (i8*, ...) @"scanf"(i8* %".4", i32* %"a", i32* %"b")
-  %".6" = load i32, i32* %"a"
+  store i32 2, i32* %"b"
+  %".4" = load i32, i32* %"a"
+  %".5" = load i32, i32* %"b"
+  %".6" = add i32 %".4", %".5"
   %".7" = load i32, i32* %"b"
-  %".8" = add i32 %".6", %".7"
-  %".9" = load i32, i32* %"b"
-  %".10" = load i32, i32* %"a"
-  %".11" = getelementptr inbounds [44 x i8], [44 x i8]* @"str.2", i32 0, i32 0
-  %".12" = call i32 (i8*, ...) @"printf"(i8* %".11", i32 %".10", i32 %".9", i32 %".8")
+  %".8" = load i32, i32* %"a"
+  %".9" = getelementptr inbounds [14 x i8], [14 x i8]* @"string", i32 0, i32 0
+  %".10" = call i32 (i8*, ...) @"printf"(i8* %".9", i32 %".8", i32 %".7", i32 %".6")
   ret i32 0
 }
 
-@"str" = constant [25 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e4\b8\a4\e4\b8\aa\e6\95\b0\e5\ad\97\ef\bc\9a\00"
-@"str.1" = constant [6 x i8] c"%d %d\00"
-@"str.2" = constant [44 x i8] c"\e6\82\a8\e8\be\93\e5\85\a5\e7\9a\84\e6\95\b0\e5\ad\97\e7\9a\84\e5\92\8c\e6\98\af\ef\bc\9a%d + %d = %d\0a\00"
+@"string" = constant [14 x i8] c"%d + %d = %d\0a\00"

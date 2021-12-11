@@ -14,6 +14,12 @@ declare void @"exit"(i32 %".1")
 
 declare i32 @"isdigit"(i32 %".1") 
 
+declare i32 @"isspace"(i32 %".1") 
+
+declare i32 @"getchar"() 
+
+declare i64 @"strlen"(i8* %".1") 
+
 define i32 @"main"() 
 {
 entry:
@@ -31,15 +37,15 @@ entry:
   store i32 %".10", i32* %".8"
   %".12" = getelementptr [3 x i32], [3 x i32]* %"a", i32 0, i32 0
   %".13" = load i32, i32* %".12"
-  %".14" = getelementptr inbounds [11 x i8], [11 x i8]* @"str", i32 0, i32 0
+  %".14" = getelementptr inbounds [11 x i8], [11 x i8]* @"string", i32 0, i32 0
   %".15" = call i32 (i8*, ...) @"printf"(i8* %".14", i32 %".13")
   %".16" = getelementptr [3 x i32], [3 x i32]* %"a", i32 0, i32 1
   %".17" = load i32, i32* %".16"
-  %".18" = getelementptr inbounds [11 x i8], [11 x i8]* @"str.1", i32 0, i32 0
+  %".18" = getelementptr inbounds [11 x i8], [11 x i8]* @"string.1", i32 0, i32 0
   %".19" = call i32 (i8*, ...) @"printf"(i8* %".18", i32 %".17")
   %".20" = getelementptr [3 x i32], [3 x i32]* %"a", i32 0, i32 2
   %".21" = load i32, i32* %".20"
-  %".22" = getelementptr inbounds [11 x i8], [11 x i8]* @"str.2", i32 0, i32 0
+  %".22" = getelementptr inbounds [11 x i8], [11 x i8]* @"string.2", i32 0, i32 0
   %".23" = call i32 (i8*, ...) @"printf"(i8* %".22", i32 %".21")
   store i32 5, i32* %"n"
   %"b" = alloca i32*
@@ -74,7 +80,7 @@ while_begin:
   %".51" = getelementptr i32, i32* %".50", i32 %".49"
   %".52" = load i32, i32* %".51"
   %".53" = load i32, i32* %"n"
-  %".54" = getelementptr inbounds [12 x i8], [12 x i8]* @"str.3", i32 0, i32 0
+  %".54" = getelementptr inbounds [12 x i8], [12 x i8]* @"string.3", i32 0, i32 0
   %".55" = call i32 (i8*, ...) @"printf"(i8* %".54", i32 %".53", i32 %".52")
   %".56" = load i32, i32* %"n"
   %".57" = sub i32 %".56", 1
@@ -90,7 +96,7 @@ while_end:
   ret i32 0
 }
 
-@"str" = constant [11 x i8] c"a[0] = %d\0a\00"
-@"str.1" = constant [11 x i8] c"a[1] = %d\0a\00"
-@"str.2" = constant [11 x i8] c"a[2] = %d\0a\00"
-@"str.3" = constant [12 x i8] c"b[%d] = %d\0a\00"
+@"string" = constant [11 x i8] c"a[0] = %d\0a\00"
+@"string.1" = constant [11 x i8] c"a[1] = %d\0a\00"
+@"string.2" = constant [11 x i8] c"a[2] = %d\0a\00"
+@"string.3" = constant [12 x i8] c"b[%d] = %d\0a\00"
