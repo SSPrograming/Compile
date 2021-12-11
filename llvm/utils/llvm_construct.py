@@ -35,3 +35,5 @@ def init_system(module: ir.Module) -> None:
     # IsDigit Function
     isdigit_ty = ir.FunctionType(int32, [int32])
     ir.Function(module, isdigit_ty, name='isdigit')
+    # GetChar Function
+
