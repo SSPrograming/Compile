@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <string.h>
 
 //-1表示小于，0表示等于，1表示大于
 int operatorCmp(char operator1, char operator2)
@@ -134,8 +135,32 @@ int main()
 {
     char str[1024];
     printf("请输入表达式：");
-    scanf("%s", str);
-    double res = evaluate(str);
-    printf("表达式计算结果为：%s = %f\n", str, res);
+    char c = 'a';
+    int i = 0;
+    while (c != '\n') {
+        c = getchar();
+        str[i] = c;
+        i = i + 1;
+    }
+    str[i - 1] = '\0';
+    char str_pro[1024];
+    int len = strlen(str);
+    i = 0;
+    int j = 0;
+    while (i < len) {
+        if(isspace(str[i])) 
+        {
+            i = i + 1;
+        }
+        else
+        {
+            str_pro[j] = str[i];
+            i = i + 1;
+            j = j + 1;
+        }
+    }
+    str_pro[j] = '\0';
+    double res = evaluate(str_pro);
+    printf("表达式计算结果为：%s = %f\n", str_pro, res);
     return 0;
 }
