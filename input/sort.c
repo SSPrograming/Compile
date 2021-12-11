@@ -6,9 +6,6 @@ void sort(int* arr, int n)
     if (n < 0) {
         return ;
     }
-    if (n < 0) {
-        return ;
-    }
     int i = n - 1;
     int j = 0;
     int change = 0;
