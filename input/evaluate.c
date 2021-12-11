@@ -94,7 +94,7 @@ double evaluate(char *S)
             int number = 0;
             while (isdigit((int)*S))
             {
-                number = number * 10 + (int)(*S) - '0';
+                number = number * 10 + (int)(*S - '0');
                 S = S + 1;
             }
             opnd_p = opnd_p + 1;
@@ -138,17 +138,17 @@ int main()
     char c = 'a';
     int i = 0;
     while (c != '\n') {
-        c = getchar();
+        c = (char)getchar();
         str[i] = c;
         i = i + 1;
     }
     str[i - 1] = '\0';
     char str_pro[1024];
-    int len = strlen(str);
+    int len = (int)strlen(str);
     i = 0;
     int j = 0;
     while (i < len) {
-        if(isspace(str[i])) 
+        if(isspace((int)str[i])) 
         {
             i = i + 1;
         }
