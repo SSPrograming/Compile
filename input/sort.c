@@ -36,16 +36,19 @@ void sort(int *arr, int n)
 int main()
 {
     int n;
+    printf("请输入数组的元素个数：");
     scanf("%d", &n);
     int *arr = (int *)malloc(sizeof(int) * n);
     int i = 0;
     printf("n = %d\n", n);
+    printf("请输入元素：");
     while (i < n)
     {
         scanf("%d", arr + i);
         i = i + 1;
     }
     sort(arr, n);
+    printf("数组排序结果：");
     i = 0;
     while (i < n)
     {

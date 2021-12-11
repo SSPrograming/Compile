@@ -1,4 +1,4 @@
-# Generated from D:/2021autumn/Брвы/Compile/antlr/src\naiveC.g4 by ANTLR 4.9.2
+# Generated from naiveC.g4 by ANTLR 4.9.3
 from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .naiveCParser import naiveCParser

@@ -133,9 +133,9 @@ double evaluate(char *S)
 int main()
 {
     char str[1024];
+    printf("请输入表达式：");
     scanf("%s", str);
-    printf("%s\n", str);
     double res = evaluate(str);
-    printf("%f\n", res);
+    printf("表达式计算结果为：%s = %f\n", str, res);
     return 0;
 }

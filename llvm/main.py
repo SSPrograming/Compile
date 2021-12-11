@@ -37,4 +37,4 @@ if __name__ == '__main__':
         else:
             target = '../output/' + filename + '.ll'
             visitor.write(target)
-            print('生成成功：' + source + ' -> ' + target)
+            print('generate successfully：' + source + ' -> ' + target)

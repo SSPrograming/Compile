@@ -350,25 +350,25 @@ define i32 @"main"()
 {
 entry:
   %"str" = alloca [1024 x i8]
-  %".2" = load [1024 x i8], [1024 x i8]* %"str"
-  %".3" = getelementptr inbounds [3 x i8], [3 x i8]* @"str", i32 0, i32 0
-  %".4" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
-  %".5" = call i32 (i8*, ...) @"scanf"(i8* %".3", i8* %".4")
-  %".6" = load [1024 x i8], [1024 x i8]* %"str"
-  %".7" = getelementptr inbounds [4 x i8], [4 x i8]* @"str.1", i32 0, i32 0
-  %".8" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
-  %".9" = call i32 (i8*, ...) @"printf"(i8* %".7", i8* %".8")
+  %".2" = getelementptr inbounds [22 x i8], [22 x i8]* @"str", i32 0, i32 0
+  %".3" = call i32 (i8*, ...) @"printf"(i8* %".2")
+  %".4" = load [1024 x i8], [1024 x i8]* %"str"
+  %".5" = getelementptr inbounds [3 x i8], [3 x i8]* @"str.1", i32 0, i32 0
+  %".6" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
+  %".7" = call i32 (i8*, ...) @"scanf"(i8* %".5", i8* %".6")
   %"res" = alloca double
-  %".10" = load [1024 x i8], [1024 x i8]* %"str"
-  %".11" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
-  %".12" = call double @"evaluate"(i8* %".11")
-  store double %".12", double* %"res"
-  %".14" = load double, double* %"res"
-  %".15" = getelementptr inbounds [4 x i8], [4 x i8]* @"str.2", i32 0, i32 0
-  %".16" = call i32 (i8*, ...) @"printf"(i8* %".15", double %".14")
+  %".8" = load [1024 x i8], [1024 x i8]* %"str"
+  %".9" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
+  %".10" = call double @"evaluate"(i8* %".9")
+  store double %".10", double* %"res"
+  %".12" = load double, double* %"res"
+  %".13" = load [1024 x i8], [1024 x i8]* %"str"
+  %".14" = getelementptr inbounds [36 x i8], [36 x i8]* @"str.2", i32 0, i32 0
+  %".15" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
+  %".16" = call i32 (i8*, ...) @"printf"(i8* %".14", i8* %".15", double %".12")
   ret i32 0
 }
 
-@"str" = constant [3 x i8] c"%s\00"
-@"str.1" = constant [4 x i8] c"%s\0a\00"
-@"str.2" = constant [4 x i8] c"%f\0a\00"
+@"str" = constant [22 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e8\a1\a8\e8\be\be\e5\bc\8f\ef\bc\9a\00"
+@"str.1" = constant [3 x i8] c"%s\00"
+@"str.2" = constant [36 x i8] c"\e8\a1\a8\e8\be\be\e5\bc\8f\e8\ae\a1\e7\ae\97\e7\bb\93\e6\9e\9c\e4\b8\ba\ef\bc\9a%s = %f\0a\00"
