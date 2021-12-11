@@ -241,34 +241,6 @@ class MyVisitor(naiveCVisitor):
         self.ST = self.ST.prev()
         self.ret = True
 
-    def visitFunctionDefine(self, ctx: naiveCParser.FunctionDefineContext) -> None:
-        typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
-        identity = ctx.ID().getSymbol().text
-        self.ST = SymbolTable(self.ST)
-        paramList = self.visit(ctx.defineParamList())
-        paramListType = [item['type'] for item in paramList]
-        func_ty = ir.FunctionType(typeIdentifier, paramListType)
-        if self.module.get_unique_name(identity) != identity:
-            print('函数重定义：' + identity)
-            raise Exception('panic: visitFunctionDefine')
-        func = ir.Function(self.module, func_ty, name=identity)
-        block = func.append_basic_block(name='entry')
-        if len(paramList) != len(func.args):
-            print('系统错误！')
-            raise Exception('panic: visitFunctionDefine')
-        self.builder.position_at_end(block)
-        for i in range(len(func.args)):
-            param = self.builder.alloca(func.args[i].type)
-            self.builder.store(func.args[i], param)
-            self.ST.insert(paramList[i]['name'], param)
-        self.ret = False
-        self.visit(ctx.block())
-        if not self.ret and func.return_value == 'void':
-            print('函数没有返回：' + identity)
-            raise Exception('panic: functionDefine')
-        if not self.ret:
-            self.builder.ret_void()
-
     def visitParamExpr(self, ctx: naiveCParser.ParamExprContext) -> ir.Value:
         return self.visit(ctx.expr())
 
@@ -320,6 +292,52 @@ class MyVisitor(naiveCVisitor):
             else:
                 paramsList.append(param)
         return self.builder.call(func, paramsList)
+
+    def visitFunctionDeclare(self, ctx: naiveCParser.FunctionDeclareContext) -> None:
+        typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
+        identity = ctx.ID().getSymbol().text
+        self.ST = SymbolTable(self.ST)
+        paramList = self.visit(ctx.defineParamList())
+        paramListType = [item['type'] for item in paramList]
+        func_ty = ir.FunctionType(typeIdentifier, paramListType)
+        if self.module.get_unique_name(identity) == identity:
+            ir.Function(self.module, func_ty, name=identity)
+        else:
+            func = self.module.get_global(identity)
+            if func.ftype != func_ty:
+                print('函数类型不匹配：' + 'expect ' + str(func.ftype) + 'but get ' + str(func_ty))
+                raise Exception('panic: visitFunctionDeclare')
+
+    def visitFunctionDefine(self, ctx: naiveCParser.FunctionDefineContext) -> None:
+        typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
+        identity = ctx.ID().getSymbol().text
+        self.ST = SymbolTable(self.ST)
+        paramList = self.visit(ctx.defineParamList())
+        paramListType = [item['type'] for item in paramList]
+        func_ty = ir.FunctionType(typeIdentifier, paramListType)
+        if self.module.get_unique_name(identity) == identity:
+            func = ir.Function(self.module, func_ty, name=identity)
+        else:
+            func = self.module.get_global(identity)
+            if func.ftype != func_ty:
+                print('函数类型不匹配：' + 'expect ' + str(func.ftype) + 'but get ' + str(func_ty))
+                raise Exception('panic: visitFunctionDefine')
+        block = func.append_basic_block(name='entry')
+        if len(paramList) != len(func.args):
+            print('系统错误！')
+            raise Exception('panic: visitFunctionDefine')
+        self.builder.position_at_end(block)
+        for i in range(len(func.args)):
+            param = self.builder.alloca(func.args[i].type)
+            self.builder.store(func.args[i], param)
+            self.ST.insert(paramList[i]['name'], param)
+        self.ret = False
+        self.visit(ctx.block())
+        if not self.ret and func.return_value == 'void':
+            print('函数没有返回：' + identity)
+            raise Exception('panic: functionDefine')
+        if not self.ret:
+            self.builder.ret_void()
 
     def visitBlock(self, ctx: naiveCParser.BlockContext) -> None:
         self.ST = SymbolTable(self.ST)
