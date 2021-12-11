@@ -89,7 +89,7 @@ int evaluate(char *S)
         if (isdigit((int)*S))
         {
             int number = 0;
-            while (isdigit(*S))
+            while (isdigit((int)*S))
             {
                 number = number * 10 + (int)(*S) - '0';
                 S = S + 1;

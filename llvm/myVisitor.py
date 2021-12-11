@@ -326,7 +326,15 @@ class MyVisitor(naiveCVisitor):
                 paramsList.append(self.builder.gep(temp, [ir.Constant(int32, 0), ir.Constant(int32, 0)]))
             else:
                 paramsList.append(param)
-        return self.builder.call(func, paramsList)
+        try:
+            ret = self.builder.call(func, paramsList)
+        except TypeError:
+            position = 'line ' + str(ctx.start.line) + ': '
+            paramsListType = [item.type for item in paramsList]
+            error = '参数类型不匹配'
+            print(position + error)
+            raise 'panic: visitFunctionCall'
+        return ret
 
     def visitFunctionDeclare(self, ctx: naiveCParser.FunctionDeclareContext) -> None:
         typeIdentifier = str2irType[self.visit(ctx.typeIdentifier())]
