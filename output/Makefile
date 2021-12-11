@@ -1,5 +1,5 @@
 filename = main
-cc = gcc
+cc = clang
 
 all:
 	llc $(filename).ll

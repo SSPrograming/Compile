@@ -80,15 +80,6 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#arithmeticOperator.
-    def enterArithmeticOperator(self, ctx:naiveCParser.ArithmeticOperatorContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#arithmeticOperator.
-    def exitArithmeticOperator(self, ctx:naiveCParser.ArithmeticOperatorContext):
-        pass
-
-
     # Enter a parse tree produced by naiveCParser#PositiveINT.
     def enterPositiveINT(self, ctx:naiveCParser.PositiveINTContext):
         pass
@@ -170,21 +161,21 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#GetP.
-    def enterGetP(self, ctx:naiveCParser.GetPContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#GetP.
-    def exitGetP(self, ctx:naiveCParser.GetPContext):
-        pass
-
-
     # Enter a parse tree produced by naiveCParser#TypeCast.
     def enterTypeCast(self, ctx:naiveCParser.TypeCastContext):
         pass
 
     # Exit a parse tree produced by naiveCParser#TypeCast.
     def exitTypeCast(self, ctx:naiveCParser.TypeCastContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#GetP.
+    def enterGetP(self, ctx:naiveCParser.GetPContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#GetP.
+    def exitGetP(self, ctx:naiveCParser.GetPContext):
         pass
 
 
