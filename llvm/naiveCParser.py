@@ -1,4 +1,4 @@
-# Generated from D:/2021autumn/±àÒë/Compile/antlr/src\naiveC.g4 by ANTLR 4.9.2
+# Generated from D:/2021autumn/ï¿½ï¿½ï¿½ï¿½/Compile/antlr/src\naiveC.g4 by ANTLR 4.9.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO

@@ -3,6 +3,7 @@ import sys
 from naiveCLexer import naiveCLexer
 from naiveCParser import naiveCParser
 from myVisitor import MyVisitor
+from myErrorListener import MyErrorListener
 
 from antlr4 import FileStream
 from antlr4 import CommonTokenStream
@@ -18,12 +19,22 @@ if __name__ == '__main__':
     lexer = naiveCLexer(input_stream)
     token = CommonTokenStream(lexer)
     parser = naiveCParser(token)
-    tree = parser.prog()
-
-    visitor = MyVisitor()
-    visitor.visit(tree)
-
-    print(visitor.module)
-
-    target = '../output/' + filename + '.ll'
-    visitor.write(target)
+    myErrorListener = MyErrorListener()
+    parser.addErrorListener(myErrorListener)
+    # 语法解析
+    try:
+        tree = parser.prog()
+    except SyntaxError as e:
+        print(e)
+    else:
+        visitor = MyVisitor()
+        # 语义解析 + 中间代码生成
+        try:
+            visitor.visit(tree)
+        except Exception as e:
+            print(e)
+            print('Semantic Error')
+        else:
+            target = '../output/' + filename + '.ll'
+            visitor.write(target)
+            print('生成成功：' + source + ' -> ' + target)
