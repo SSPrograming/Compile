@@ -252,8 +252,11 @@ class MyVisitor(naiveCVisitor):
         return self.builder.icmp_signed('!=', value, ir.Constant(value.type, 0))
 
     def visitReturnLine(self, ctx: naiveCParser.ReturnLineContext) -> None:
-        value = self.visit(ctx.expr())
-        self.builder.ret(value)
+        if ctx.expr():
+            value = self.visit(ctx.expr())
+            self.builder.ret(value)
+        else:
+            self.builder.ret_void()
         self.ST = self.ST.prev()
         self.ret = True
 
