@@ -1,6 +1,7 @@
 filename = main
+cc = gcc
 
 all:
 	llc $(filename).ll
-	gcc $(filename).s -o $(filename).out
+	$(cc) $(filename).s -o $(filename).out
 	./$(filename).out
