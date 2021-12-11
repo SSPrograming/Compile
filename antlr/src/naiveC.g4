@@ -211,7 +211,7 @@ definition: (realTypeID|realTypeIDPointer) ID ('=' expr)? ';'
 
 callProc: functionCall ';';
 
-returnLine: 'return' expr ';';
+returnLine: 'return' expr? ';';
 
 param:
        expr             # ParamExpr

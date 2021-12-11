@@ -1,3 +1,5 @@
+import antlr4.Token
+
 from naiveCParser import naiveCParser
 from naiveCVisitor import naiveCVisitor
 
@@ -90,7 +92,9 @@ class MyVisitor(naiveCVisitor):
         identity = ctx.ID().getSymbol().text
         l_value = self.ST.get(identity)
         if not l_value:
-            print('未定义的标识符: ' + identity)
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = position + '未定义的标识符: ' + identity
+            print(position + error)
             raise Exception('panic: visitAssignment')
         r_value = self.visit(ctx.expr())
         self.builder.store(r_value, l_value)
@@ -120,7 +124,9 @@ class MyVisitor(naiveCVisitor):
         identity = ctx.ID().getSymbol().text
         symbol = self.ST.get(identity)
         if not symbol:
-            print('未定义的标识符: ' + identity)
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = position + '未定义的标识符: ' + identity
+            print(position + error)
             raise Exception('panic: visitAssignment')
         index = self.visit(ctx.expr(0))
         if isinstance(symbol.type.pointee, ir.ArrayType):
@@ -137,7 +143,9 @@ class MyVisitor(naiveCVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         if left.type != right.type:
-            print('类型不匹配')
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = '类型不匹配 -- ' + 'can\'t compute between ' + left.type + ' and ' + right.type
+            print(position + error)
             raise Exception('panic: visitMulDiv')
         if ctx.op.type == naiveCParser.MUL:
             return self.builder.mul(left, right)
@@ -148,7 +156,9 @@ class MyVisitor(naiveCVisitor):
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
         if left.type != right.type:
-            print('类型不匹配')
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = '类型不匹配 -- ' + 'can\'t compute between ' + left.type + ' and ' + right.type
+            print(position + error)
             raise Exception('panic: visitAddSub')
         if ctx.op.type == naiveCParser.ADD:
             return self.builder.add(left, right)
@@ -165,7 +175,9 @@ class MyVisitor(naiveCVisitor):
         if symbol:
             return symbol
         else:
-            print('未定义的标识符: ' + identity)
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = position + '未定义的标识符: ' + identity
+            print(position + error)
             raise Exception('panic: visitGetP')
 
     def visitPositiveINT(self, ctx: naiveCParser.PositiveINTContext):
@@ -180,7 +192,9 @@ class MyVisitor(naiveCVisitor):
         if symbol:
             return self.builder.load(symbol)
         else:
-            print('未定义的标识符: ' + identity)
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = position + '未定义的标识符: ' + identity
+            print(position + error)
             raise Exception('panic: visitId')
 
     def visitBoolExpr(self, ctx: naiveCParser.BoolExprContext) -> ir.Constant:
@@ -204,7 +218,9 @@ class MyVisitor(naiveCVisitor):
                 l_value = self.builder.gep(symbol, [index])
             return self.builder.load(l_value)
         else:
-            print('未定义的标识符: ' + identity)
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = position + '未定义的标识符: ' + identity
+            print(position + error)
             raise Exception('panic: visitId')
 
     def visitParens(self, ctx: naiveCParser.ParensContext) -> ir.Value:
@@ -305,7 +321,9 @@ class MyVisitor(naiveCVisitor):
         else:
             func = self.module.get_global(identity)
             if func.ftype != func_ty:
-                print('函数类型不匹配：' + 'expect ' + str(func.ftype) + 'but get ' + str(func_ty))
+                position = 'line ' + str(ctx.start.line) + ': '
+                error = '函数类型不匹配 -- ' + 'expect "' + str(func.ftype) + '" but get "' + str(func_ty) + '"'
+                print(position + error)
                 raise Exception('panic: visitFunctionDeclare')
 
     def visitFunctionDefine(self, ctx: naiveCParser.FunctionDefineContext) -> None:
@@ -320,7 +338,9 @@ class MyVisitor(naiveCVisitor):
         else:
             func = self.module.get_global(identity)
             if func.ftype != func_ty:
-                print('函数类型不匹配：' + 'expect ' + str(func.ftype) + 'but get ' + str(func_ty))
+                position = 'line ' + str(ctx.start.line) + ': '
+                error = '函数类型不匹配 -- ' + 'expect "' + str(func.ftype) + '" but get "' + str(func_ty) + '"'
+                print(position + error)
                 raise Exception('panic: visitFunctionDefine')
         block = func.append_basic_block(name='entry')
         if len(paramList) != len(func.args):
@@ -333,8 +353,10 @@ class MyVisitor(naiveCVisitor):
             self.ST.insert(paramList[i]['name'], param)
         self.ret = False
         self.visit(ctx.block())
-        if not self.ret and func.return_value == 'void':
-            print('函数没有返回：' + identity)
+        if not self.ret and str(func.return_value) != 'void':
+            position = 'line ' + str(ctx.stop.line) + ': '
+            error = '函数 ' + identity + ' 没有返回 -- expect ' + str(func.return_value)
+            print(position, error)
             raise Exception('panic: functionDefine')
         if not self.ret:
             self.builder.ret_void()
@@ -372,3 +394,9 @@ class MyVisitor(naiveCVisitor):
         cond = self.visit(ctx.conditionExpr())
         self.builder.cbranch(self.builder.not_(cond), while_end, while_begin)
         self.builder.position_at_end(while_end)
+
+    def visitBreakLine(self, ctx: naiveCParser.BreakLineContext):
+        pass
+
+    def visitContinueLine(self, ctx: naiveCParser.ContinueLineContext):
+        pass
