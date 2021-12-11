@@ -453,4 +453,3 @@ class MyVisitor(naiveCVisitor):
             raise Exception('panic: visitContinueLine')
         else:
             self.builder.branch(self.while_block['begin'])
-        pass
