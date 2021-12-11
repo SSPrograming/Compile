@@ -145,7 +145,7 @@ TRUE: 'true'
 FALSE: 'false'
     ;
 
-sizeof: 'sizeof'
+SIZEOF: 'sizeof'
     ;
 
 boolExpr: TRUE | FALSE
@@ -181,6 +181,7 @@ expr: expr op=(MUL|DIV) expr    # MulDiv
     | INT                       # Int
     | ID                        # Id
     | functionCall              # FCall
+    | SIZEOF '(' typeIdentifier ')' # SizeOf
     | boolExpr                  # TrueFalse
     | ID '[' expr ']'           # ArrayVisit
     | '(' expr ')'              # Parens
@@ -248,7 +249,6 @@ BlockComment: '/*' .*? '*/' ->skip;
 LineComment: '//' ~[\r\n]* ->skip;
 String: '"' .*? '"';
 functionCall : ID '(' paramList ')'
-             | sizeof '(' typeIdentifier ')'
              ;
 functionDeclare: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' ';';
 functionDefine: (typeIdentifier|typeIdentifierPointer) ID '(' defineParamList ')' block;

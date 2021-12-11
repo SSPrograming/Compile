@@ -37,7 +37,7 @@ int main()
 {
     int n;
     scanf("%d", &n);
-    int *arr = (int *)malloc(4 * n);
+    int *arr = (int *)malloc(sizeof(int) * n);
     int i = 0;
     printf("n = %d\n", n);
     while (i < n)

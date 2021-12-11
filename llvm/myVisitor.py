@@ -1,7 +1,5 @@
 import re
 
-import antlr4.Token
-
 from naiveCParser import naiveCParser
 from naiveCVisitor import naiveCVisitor
 
@@ -157,6 +155,7 @@ class MyVisitor(naiveCVisitor):
     def visitAddSub(self, ctx: naiveCParser.AddSubContext) -> ir.Value:
         left = self.visit(ctx.expr(0))
         right = self.visit(ctx.expr(1))
+        # 特殊处理指针加法
         if isinstance(left.type, ir.PointerType) and isinstance(left.type.pointee, ir.IntType) and \
                 isinstance(right.type, ir.IntType):
             temp_l = self.builder.ptrtoint(left, int64)
@@ -191,12 +190,21 @@ class MyVisitor(naiveCVisitor):
             print(position + error)
             raise Exception('panic: visitGetP')
 
-    def visitMakP(self, ctx: naiveCParser.MakPContext):
+    def visitMakP(self, ctx: naiveCParser.MakPContext) -> ir.Value:
         r_value = self.visit(ctx.expr())
+        if not isinstance(r_value.type, ir.PointerType):
+            position = 'line ' + str(ctx.start.line) + ': '
+            error = position + '不是指针类型，解引用失败'
+            print(position + error)
+            raise Exception('panic: visitMakP')
         return self.builder.load(r_value)
 
-    def visitPositiveINT(self, ctx: naiveCParser.PositiveINTContext):
+    def visitPositiveINT(self, ctx: naiveCParser.PositiveINTContext) -> ir.Constant:
         return ir.Constant(int32, int(ctx.PositiveINT().getSymbol().text))
+
+    def visitChar(self, ctx: naiveCParser.CharContext):
+        symbol = ctx.Char().getSymbol().text
+        return ir.Constant(char, ord(convert_char(symbol)))
 
     def visitInt(self, ctx: naiveCParser.IntContext) -> ir.Constant:
         return ir.Constant(int32, int(ctx.INT().getSymbol().text))
@@ -212,16 +220,10 @@ class MyVisitor(naiveCVisitor):
             print(position + error)
             raise Exception('panic: visitId')
 
-    def visitChar(self, ctx: naiveCParser.CharContext):
-        symbol = ctx.Char().getSymbol().text
-        return ir.Constant(char, ord(convert_char(symbol)))
-
-    def visitBoolExpr(self, ctx: naiveCParser.BoolExprContext) -> ir.Constant:
-        if ctx.TRUE():
-            return ir.Constant(boolean, True)
-        elif ctx.FALSE():
-            return ir.Constant(boolean, False)
-        raise Exception('panic: visitBoolExpr')
+    def visitSizeOf(self, ctx: naiveCParser.SizeOfContext) -> ir.Constant:
+        identifier = self.visit(ctx.typeIdentifier())
+        ir_type = str2irType[identifier]
+        return ir.Constant(int32, ir_type.width)
 
     def visitArrayVisit(self, ctx: naiveCParser.ArrayVisitContext):
         identity = ctx.ID().getSymbol().text
@@ -244,6 +246,13 @@ class MyVisitor(naiveCVisitor):
 
     def visitParens(self, ctx: naiveCParser.ParensContext) -> ir.Value:
         return self.visit(ctx.expr())
+
+    def visitBoolExpr(self, ctx: naiveCParser.BoolExprContext) -> ir.Constant:
+        if ctx.TRUE():
+            return ir.Constant(boolean, True)
+        elif ctx.FALSE():
+            return ir.Constant(boolean, False)
+        raise Exception('panic: visitBoolExpr')
 
     def visitConditionOperator(self, ctx: naiveCParser.ConditionOperatorContext) -> str:
         return ctx.getChild(0).getSymbol().text
@@ -336,7 +345,6 @@ class MyVisitor(naiveCVisitor):
             ret = self.builder.call(func, paramsList)
         except TypeError:
             position = 'line ' + str(ctx.start.line) + ': '
-            paramsListType = [item.type for item in paramsList]
             error = '参数类型不匹配'
             print(position + error)
             raise 'panic: visitFunctionCall'

@@ -39,11 +39,6 @@ class naiveCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by naiveCParser#sizeof.
-    def visitSizeof(self, ctx:naiveCParser.SizeofContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by naiveCParser#boolExpr.
     def visitBoolExpr(self, ctx:naiveCParser.BoolExprContext):
         return self.visitChildren(ctx)
@@ -96,6 +91,11 @@ class naiveCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by naiveCParser#Char.
     def visitChar(self, ctx:naiveCParser.CharContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by naiveCParser#SizeOf.
+    def visitSizeOf(self, ctx:naiveCParser.SizeOfContext):
         return self.visitChildren(ctx)
 
 

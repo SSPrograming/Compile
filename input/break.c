@@ -5,7 +5,7 @@ int main() {
     while (1) {
         if (n > 5) {
             break;
-        } else{
+        } else {
             printf("%d\n", n);
             n = n + 1;
             continue;

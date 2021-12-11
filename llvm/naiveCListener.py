@@ -62,15 +62,6 @@ class naiveCListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by naiveCParser#sizeof.
-    def enterSizeof(self, ctx:naiveCParser.SizeofContext):
-        pass
-
-    # Exit a parse tree produced by naiveCParser#sizeof.
-    def exitSizeof(self, ctx:naiveCParser.SizeofContext):
-        pass
-
-
     # Enter a parse tree produced by naiveCParser#boolExpr.
     def enterBoolExpr(self, ctx:naiveCParser.BoolExprContext):
         pass
@@ -167,6 +158,15 @@ class naiveCListener(ParseTreeListener):
 
     # Exit a parse tree produced by naiveCParser#Char.
     def exitChar(self, ctx:naiveCParser.CharContext):
+        pass
+
+
+    # Enter a parse tree produced by naiveCParser#SizeOf.
+    def enterSizeOf(self, ctx:naiveCParser.SizeOfContext):
+        pass
+
+    # Exit a parse tree produced by naiveCParser#SizeOf.
+    def exitSizeOf(self, ctx:naiveCParser.SizeOfContext):
         pass
 
 
