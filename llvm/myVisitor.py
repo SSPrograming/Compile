@@ -50,6 +50,8 @@ class MyVisitor(naiveCVisitor):
             token = ctx.TypeChar()
         elif ctx.TypeLL():
             token = ctx.TypeLL()
+        elif ctx.TypeDouble():
+            token = ctx.TypeDouble()
         else:
             raise Exception('panic: visitRealTypeID')
         return token.getSymbol().text
@@ -67,6 +69,8 @@ class MyVisitor(naiveCVisitor):
             token = ctx.TypeVoid()
         elif ctx.TypeLL():
             token = ctx.TypeLL()
+        elif ctx.TypeDouble():
+            token = ctx.TypeDouble()
         else:
             raise Exception('panic: visitTypeIdentifier')
         return token.getSymbol().text
@@ -116,6 +120,8 @@ class MyVisitor(naiveCVisitor):
                 cast = self.builder.sext(l_value, ir_type)
             else:
                 cast = l_value
+        elif isinstance(ir_type, ir.DoubleType) and isinstance(l_value.type, ir.IntType):
+            cast = self.builder.sitofp(l_value, ir_type)
         else:
             raise Exception('panic: visitTypeCast')
         return cast
@@ -148,8 +154,12 @@ class MyVisitor(naiveCVisitor):
             print(position + error)
             raise Exception('panic: visitMulDiv')
         if ctx.op.type == naiveCParser.MUL:
+            if isinstance(left.type, ir.DoubleType):
+                return self.builder.fmul(left, right)
             return self.builder.mul(left, right)
         else:
+            if isinstance(left.type, ir.DoubleType):
+                return self.builder.fdiv(left, right)
             return self.builder.sdiv(left, right)
 
     def visitAddSub(self, ctx: naiveCParser.AddSubContext) -> ir.Value:
@@ -170,13 +180,20 @@ class MyVisitor(naiveCVisitor):
             error = '类型不匹配 -- ' + 'can\'t compute between ' + str(left.type) + ' and ' + str(right.type)
             print(position + error)
             raise Exception('panic: visitAddSub')
+
         if ctx.op.type == naiveCParser.ADD:
+            if isinstance(left.type, ir.DoubleType):
+                return self.builder.fadd(left, right)
             return self.builder.add(left, right)
         else:
+            if isinstance(left.type, ir.DoubleType):
+                return self.builder.fadd(left, right)
             return self.builder.sub(left, right)
 
     def visitNegative(self, ctx: naiveCParser.NegativeContext) -> ir.Value:
         value = self.visit(ctx.expr())
+        if isinstance(value.type, ir.DoubleType):
+            return self.builder.fneg(value)
         return self.builder.neg(value)
 
     def visitGetP(self, ctx: naiveCParser.GetPContext) -> ir.Value:

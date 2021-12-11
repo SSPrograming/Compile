@@ -1,4 +1,4 @@
-# Generated from E:/Tsinghua/课程/大三上/汇编与编译原理/作业/编译/编译小组作业/src/LLVM/antlr/src\naiveC.g4 by ANTLR 4.9.2
+# Generated from D:/2021autumn/编译/Compile/antlr/src\naiveC.g4 by ANTLR 4.9.2
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
@@ -11,7 +11,7 @@ else:
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\63")
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\64")
         buf.write("\u0151\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
@@ -46,34 +46,34 @@ def serializedATN():
         buf.write("\35\3\35\3\35\3\35\3\35\3\35\3\36\3\36\5\36\u0149\n\36")
         buf.write("\3\36\3\36\3\36\3\36\3\36\3\36\3\36\2\7\4\24\30$(\37\2")
         buf.write("\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64")
-        buf.write("\668:\2\t\4\2\5\5\7\b\3\2\5\b\3\2)*\5\2\17\17\22\25\36")
-        buf.write("\37\3\2\23\24\4\2\17\17\22\22\3\2\26\32\2\u0167\2<\3\2")
-        buf.write("\2\2\4B\3\2\2\2\6O\3\2\2\2\bQ\3\2\2\2\nT\3\2\2\2\fV\3")
-        buf.write("\2\2\2\16Y\3\2\2\2\20_\3\2\2\2\22a\3\2\2\2\24\u0086\3")
-        buf.write("\2\2\2\26\u0093\3\2\2\2\30\u009f\3\2\2\2\32\u00bf\3\2")
-        buf.write("\2\2\34\u00d6\3\2\2\2\36\u00d8\3\2\2\2 \u00db\3\2\2\2")
-        buf.write("\"\u00e4\3\2\2\2$\u00e6\3\2\2\2&\u00f4\3\2\2\2(\u00f8")
-        buf.write("\3\2\2\2*\u0104\3\2\2\2,\u0108\3\2\2\2.\u010b\3\2\2\2")
-        buf.write("\60\u0119\3\2\2\2\62\u011c\3\2\2\2\64\u0122\3\2\2\2\66")
-        buf.write("\u0137\3\2\2\28\u013e\3\2\2\2:\u0148\3\2\2\2<=\5\4\3\2")
-        buf.write("=\3\3\2\2\2>?\b\3\1\2?C\5\66\34\2@C\58\35\2AC\5:\36\2")
-        buf.write("B>\3\2\2\2B@\3\2\2\2BA\3\2\2\2CL\3\2\2\2DE\f\5\2\2EK\5")
-        buf.write("\66\34\2FG\f\4\2\2GK\5:\36\2HI\f\3\2\2IK\58\35\2JD\3\2")
-        buf.write("\2\2JF\3\2\2\2JH\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2\2\2")
-        buf.write("M\5\3\2\2\2NL\3\2\2\2OP\t\2\2\2P\7\3\2\2\2QR\5\6\4\2R")
-        buf.write("S\7\23\2\2S\t\3\2\2\2TU\t\3\2\2U\13\3\2\2\2VW\5\n\6\2")
-        buf.write("WX\7\23\2\2X\r\3\2\2\2YZ\t\4\2\2Z\17\3\2\2\2[\\\7/\2\2")
-        buf.write("\\]\7\3\2\2]`\5\20\t\2^`\7/\2\2_[\3\2\2\2_^\3\2\2\2`\21")
-        buf.write("\3\2\2\2ab\t\5\2\2b\23\3\2\2\2cd\b\13\1\2de\7\36\2\2e")
-        buf.write("\u0087\7/\2\2fg\7\23\2\2g\u0087\5\24\13\16hi\7\22\2\2")
-        buf.write("i\u0087\5\24\13\rjm\7#\2\2kn\5\b\5\2ln\5\6\4\2mk\3\2\2")
-        buf.write("\2ml\3\2\2\2no\3\2\2\2op\7$\2\2pq\5\24\13\fq\u0087\3\2")
-        buf.write("\2\2r\u0087\7,\2\2s\u0087\7-\2\2t\u0087\7.\2\2u\u0087")
-        buf.write("\7/\2\2v\u0087\5\66\34\2wx\7+\2\2xy\7#\2\2yz\5\n\6\2z")
-        buf.write("{\7$\2\2{\u0087\3\2\2\2|\u0087\5\16\b\2}~\7/\2\2~\177")
-        buf.write("\7%\2\2\177\u0080\5\24\13\2\u0080\u0081\7&\2\2\u0081\u0087")
-        buf.write("\3\2\2\2\u0082\u0083\7#\2\2\u0083\u0084\5\24\13\2\u0084")
-        buf.write("\u0085\7$\2\2\u0085\u0087\3\2\2\2\u0086c\3\2\2\2\u0086")
+        buf.write("\668:\2\t\4\2\5\5\7\t\3\2\5\t\3\2*+\5\2\20\20\23\26\37")
+        buf.write(" \3\2\24\25\4\2\20\20\23\23\3\2\27\33\2\u0167\2<\3\2\2")
+        buf.write("\2\4B\3\2\2\2\6O\3\2\2\2\bQ\3\2\2\2\nT\3\2\2\2\fV\3\2")
+        buf.write("\2\2\16Y\3\2\2\2\20_\3\2\2\2\22a\3\2\2\2\24\u0086\3\2")
+        buf.write("\2\2\26\u0093\3\2\2\2\30\u009f\3\2\2\2\32\u00bf\3\2\2")
+        buf.write("\2\34\u00d6\3\2\2\2\36\u00d8\3\2\2\2 \u00db\3\2\2\2\"")
+        buf.write("\u00e4\3\2\2\2$\u00e6\3\2\2\2&\u00f4\3\2\2\2(\u00f8\3")
+        buf.write("\2\2\2*\u0104\3\2\2\2,\u0108\3\2\2\2.\u010b\3\2\2\2\60")
+        buf.write("\u0119\3\2\2\2\62\u011c\3\2\2\2\64\u0122\3\2\2\2\66\u0137")
+        buf.write("\3\2\2\28\u013e\3\2\2\2:\u0148\3\2\2\2<=\5\4\3\2=\3\3")
+        buf.write("\2\2\2>?\b\3\1\2?C\5\66\34\2@C\58\35\2AC\5:\36\2B>\3\2")
+        buf.write("\2\2B@\3\2\2\2BA\3\2\2\2CL\3\2\2\2DE\f\5\2\2EK\5\66\34")
+        buf.write("\2FG\f\4\2\2GK\5:\36\2HI\f\3\2\2IK\58\35\2JD\3\2\2\2J")
+        buf.write("F\3\2\2\2JH\3\2\2\2KN\3\2\2\2LJ\3\2\2\2LM\3\2\2\2M\5\3")
+        buf.write("\2\2\2NL\3\2\2\2OP\t\2\2\2P\7\3\2\2\2QR\5\6\4\2RS\7\24")
+        buf.write("\2\2S\t\3\2\2\2TU\t\3\2\2U\13\3\2\2\2VW\5\n\6\2WX\7\24")
+        buf.write("\2\2X\r\3\2\2\2YZ\t\4\2\2Z\17\3\2\2\2[\\\7\60\2\2\\]\7")
+        buf.write("\3\2\2]`\5\20\t\2^`\7\60\2\2_[\3\2\2\2_^\3\2\2\2`\21\3")
+        buf.write("\2\2\2ab\t\5\2\2b\23\3\2\2\2cd\b\13\1\2de\7\37\2\2e\u0087")
+        buf.write("\7\60\2\2fg\7\24\2\2g\u0087\5\24\13\16hi\7\23\2\2i\u0087")
+        buf.write("\5\24\13\rjm\7$\2\2kn\5\b\5\2ln\5\6\4\2mk\3\2\2\2ml\3")
+        buf.write("\2\2\2no\3\2\2\2op\7%\2\2pq\5\24\13\fq\u0087\3\2\2\2r")
+        buf.write("\u0087\7-\2\2s\u0087\7.\2\2t\u0087\7/\2\2u\u0087\7\60")
+        buf.write("\2\2v\u0087\5\66\34\2wx\7,\2\2xy\7$\2\2yz\5\n\6\2z{\7")
+        buf.write("%\2\2{\u0087\3\2\2\2|\u0087\5\16\b\2}~\7\60\2\2~\177\7")
+        buf.write("&\2\2\177\u0080\5\24\13\2\u0080\u0081\7\'\2\2\u0081\u0087")
+        buf.write("\3\2\2\2\u0082\u0083\7$\2\2\u0083\u0084\5\24\13\2\u0084")
+        buf.write("\u0085\7%\2\2\u0085\u0087\3\2\2\2\u0086c\3\2\2\2\u0086")
         buf.write("f\3\2\2\2\u0086h\3\2\2\2\u0086j\3\2\2\2\u0086r\3\2\2\2")
         buf.write("\u0086s\3\2\2\2\u0086t\3\2\2\2\u0086u\3\2\2\2\u0086v\3")
         buf.write("\2\2\2\u0086w\3\2\2\2\u0086|\3\2\2\2\u0086}\3\2\2\2\u0086")
@@ -83,57 +83,57 @@ def serializedATN():
         buf.write("\u0088\3\2\2\2\u008e\u008b\3\2\2\2\u008f\u0092\3\2\2\2")
         buf.write("\u0090\u008e\3\2\2\2\u0090\u0091\3\2\2\2\u0091\25\3\2")
         buf.write("\2\2\u0092\u0090\3\2\2\2\u0093\u0094\t\b\2\2\u0094\27")
-        buf.write("\3\2\2\2\u0095\u0096\b\r\1\2\u0096\u0097\7#\2\2\u0097")
-        buf.write("\u0098\5\30\r\2\u0098\u0099\7$\2\2\u0099\u00a0\3\2\2\2")
+        buf.write("\3\2\2\2\u0095\u0096\b\r\1\2\u0096\u0097\7$\2\2\u0097")
+        buf.write("\u0098\5\30\r\2\u0098\u0099\7%\2\2\u0099\u00a0\3\2\2\2")
         buf.write("\u009a\u009b\5\24\13\2\u009b\u009c\5\26\f\2\u009c\u009d")
         buf.write("\5\24\13\2\u009d\u00a0\3\2\2\2\u009e\u00a0\5\24\13\2\u009f")
         buf.write("\u0095\3\2\2\2\u009f\u009a\3\2\2\2\u009f\u009e\3\2\2\2")
         buf.write("\u00a0\u00a9\3\2\2\2\u00a1\u00a2\f\7\2\2\u00a2\u00a3\7")
-        buf.write(" \2\2\u00a3\u00a8\5\30\r\b\u00a4\u00a5\f\6\2\2\u00a5\u00a6")
-        buf.write("\7!\2\2\u00a6\u00a8\5\30\r\7\u00a7\u00a1\3\2\2\2\u00a7")
+        buf.write("!\2\2\u00a3\u00a8\5\30\r\b\u00a4\u00a5\f\6\2\2\u00a5\u00a6")
+        buf.write("\7\"\2\2\u00a6\u00a8\5\30\r\7\u00a7\u00a1\3\2\2\2\u00a7")
         buf.write("\u00a4\3\2\2\2\u00a8\u00ab\3\2\2\2\u00a9\u00a7\3\2\2\2")
         buf.write("\u00a9\u00aa\3\2\2\2\u00aa\31\3\2\2\2\u00ab\u00a9\3\2")
-        buf.write("\2\2\u00ac\u00ad\7/\2\2\u00ad\u00ae\7\35\2\2\u00ae\u00af")
-        buf.write("\5\24\13\2\u00af\u00b0\7\"\2\2\u00b0\u00c0\3\2\2\2\u00b1")
-        buf.write("\u00b2\7\23\2\2\u00b2\u00b3\7/\2\2\u00b3\u00b4\7\35\2")
-        buf.write("\2\u00b4\u00b5\5\24\13\2\u00b5\u00b6\7\"\2\2\u00b6\u00c0")
-        buf.write("\3\2\2\2\u00b7\u00b8\7/\2\2\u00b8\u00b9\7%\2\2\u00b9\u00ba")
-        buf.write("\5\24\13\2\u00ba\u00bb\7&\2\2\u00bb\u00bc\7\35\2\2\u00bc")
-        buf.write("\u00bd\5\24\13\2\u00bd\u00be\7\"\2\2\u00be\u00c0\3\2\2")
-        buf.write("\2\u00bf\u00ac\3\2\2\2\u00bf\u00b1\3\2\2\2\u00bf\u00b7")
-        buf.write("\3\2\2\2\u00c0\33\3\2\2\2\u00c1\u00c4\5\6\4\2\u00c2\u00c4")
-        buf.write("\5\b\5\2\u00c3\u00c1\3\2\2\2\u00c3\u00c2\3\2\2\2\u00c4")
-        buf.write("\u00c5\3\2\2\2\u00c5\u00c8\7/\2\2\u00c6\u00c7\7\35\2\2")
-        buf.write("\u00c7\u00c9\5\24\13\2\u00c8\u00c6\3\2\2\2\u00c8\u00c9")
-        buf.write("\3\2\2\2\u00c9\u00ca\3\2\2\2\u00ca\u00cb\7\"\2\2\u00cb")
-        buf.write("\u00d7\3\2\2\2\u00cc\u00cf\5\6\4\2\u00cd\u00cf\5\b\5\2")
-        buf.write("\u00ce\u00cc\3\2\2\2\u00ce\u00cd\3\2\2\2\u00cf\u00d0\3")
-        buf.write("\2\2\2\u00d0\u00d1\7/\2\2\u00d1\u00d2\7%\2\2\u00d2\u00d3")
-        buf.write("\7,\2\2\u00d3\u00d4\7&\2\2\u00d4\u00d5\7\"\2\2\u00d5\u00d7")
-        buf.write("\3\2\2\2\u00d6\u00c3\3\2\2\2\u00d6\u00ce\3\2\2\2\u00d7")
-        buf.write("\35\3\2\2\2\u00d8\u00d9\5\66\34\2\u00d9\u00da\7\"\2\2")
-        buf.write("\u00da\37\3\2\2\2\u00db\u00dd\7\r\2\2\u00dc\u00de\5\24")
-        buf.write("\13\2\u00dd\u00dc\3\2\2\2\u00dd\u00de\3\2\2\2\u00de\u00df")
-        buf.write("\3\2\2\2\u00df\u00e0\7\"\2\2\u00e0!\3\2\2\2\u00e1\u00e5")
-        buf.write("\5\24\13\2\u00e2\u00e5\5\66\34\2\u00e3\u00e5\7\63\2\2")
-        buf.write("\u00e4\u00e1\3\2\2\2\u00e4\u00e2\3\2\2\2\u00e4\u00e3\3")
-        buf.write("\2\2\2\u00e5#\3\2\2\2\u00e6\u00e8\b\23\1\2\u00e7\u00e9")
+        buf.write("\2\2\u00ac\u00ad\7\60\2\2\u00ad\u00ae\7\36\2\2\u00ae\u00af")
+        buf.write("\5\24\13\2\u00af\u00b0\7#\2\2\u00b0\u00c0\3\2\2\2\u00b1")
+        buf.write("\u00b2\7\24\2\2\u00b2\u00b3\7\60\2\2\u00b3\u00b4\7\36")
+        buf.write("\2\2\u00b4\u00b5\5\24\13\2\u00b5\u00b6\7#\2\2\u00b6\u00c0")
+        buf.write("\3\2\2\2\u00b7\u00b8\7\60\2\2\u00b8\u00b9\7&\2\2\u00b9")
+        buf.write("\u00ba\5\24\13\2\u00ba\u00bb\7\'\2\2\u00bb\u00bc\7\36")
+        buf.write("\2\2\u00bc\u00bd\5\24\13\2\u00bd\u00be\7#\2\2\u00be\u00c0")
+        buf.write("\3\2\2\2\u00bf\u00ac\3\2\2\2\u00bf\u00b1\3\2\2\2\u00bf")
+        buf.write("\u00b7\3\2\2\2\u00c0\33\3\2\2\2\u00c1\u00c4\5\6\4\2\u00c2")
+        buf.write("\u00c4\5\b\5\2\u00c3\u00c1\3\2\2\2\u00c3\u00c2\3\2\2\2")
+        buf.write("\u00c4\u00c5\3\2\2\2\u00c5\u00c8\7\60\2\2\u00c6\u00c7")
+        buf.write("\7\36\2\2\u00c7\u00c9\5\24\13\2\u00c8\u00c6\3\2\2\2\u00c8")
+        buf.write("\u00c9\3\2\2\2\u00c9\u00ca\3\2\2\2\u00ca\u00cb\7#\2\2")
+        buf.write("\u00cb\u00d7\3\2\2\2\u00cc\u00cf\5\6\4\2\u00cd\u00cf\5")
+        buf.write("\b\5\2\u00ce\u00cc\3\2\2\2\u00ce\u00cd\3\2\2\2\u00cf\u00d0")
+        buf.write("\3\2\2\2\u00d0\u00d1\7\60\2\2\u00d1\u00d2\7&\2\2\u00d2")
+        buf.write("\u00d3\7-\2\2\u00d3\u00d4\7\'\2\2\u00d4\u00d5\7#\2\2\u00d5")
+        buf.write("\u00d7\3\2\2\2\u00d6\u00c3\3\2\2\2\u00d6\u00ce\3\2\2\2")
+        buf.write("\u00d7\35\3\2\2\2\u00d8\u00d9\5\66\34\2\u00d9\u00da\7")
+        buf.write("#\2\2\u00da\37\3\2\2\2\u00db\u00dd\7\16\2\2\u00dc\u00de")
+        buf.write("\5\24\13\2\u00dd\u00dc\3\2\2\2\u00dd\u00de\3\2\2\2\u00de")
+        buf.write("\u00df\3\2\2\2\u00df\u00e0\7#\2\2\u00e0!\3\2\2\2\u00e1")
+        buf.write("\u00e5\5\24\13\2\u00e2\u00e5\5\66\34\2\u00e3\u00e5\7\64")
+        buf.write("\2\2\u00e4\u00e1\3\2\2\2\u00e4\u00e2\3\2\2\2\u00e4\u00e3")
+        buf.write("\3\2\2\2\u00e5#\3\2\2\2\u00e6\u00e8\b\23\1\2\u00e7\u00e9")
         buf.write("\5\"\22\2\u00e8\u00e7\3\2\2\2\u00e8\u00e9\3\2\2\2\u00e9")
         buf.write("\u00ef\3\2\2\2\u00ea\u00eb\f\4\2\2\u00eb\u00ec\7\3\2\2")
         buf.write("\u00ec\u00ee\5\"\22\2\u00ed\u00ea\3\2\2\2\u00ee\u00f1")
         buf.write("\3\2\2\2\u00ef\u00ed\3\2\2\2\u00ef\u00f0\3\2\2\2\u00f0")
         buf.write("%\3\2\2\2\u00f1\u00ef\3\2\2\2\u00f2\u00f5\5\n\6\2\u00f3")
         buf.write("\u00f5\5\f\7\2\u00f4\u00f2\3\2\2\2\u00f4\u00f3\3\2\2\2")
-        buf.write("\u00f5\u00f6\3\2\2\2\u00f6\u00f7\7/\2\2\u00f7\'\3\2\2")
-        buf.write("\2\u00f8\u00fa\b\25\1\2\u00f9\u00fb\5&\24\2\u00fa\u00f9")
+        buf.write("\u00f5\u00f6\3\2\2\2\u00f6\u00f7\7\60\2\2\u00f7\'\3\2")
+        buf.write("\2\2\u00f8\u00fa\b\25\1\2\u00f9\u00fb\5&\24\2\u00fa\u00f9")
         buf.write("\3\2\2\2\u00fa\u00fb\3\2\2\2\u00fb\u0101\3\2\2\2\u00fc")
         buf.write("\u00fd\f\4\2\2\u00fd\u00fe\7\3\2\2\u00fe\u0100\5&\24\2")
         buf.write("\u00ff\u00fc\3\2\2\2\u0100\u0103\3\2\2\2\u0101\u00ff\3")
         buf.write("\2\2\2\u0101\u0102\3\2\2\2\u0102)\3\2\2\2\u0103\u0101")
-        buf.write("\3\2\2\2\u0104\u0105\7\'\2\2\u0105\u0106\5\60\31\2\u0106")
-        buf.write("\u0107\7(\2\2\u0107+\3\2\2\2\u0108\u0109\7\t\2\2\u0109")
-        buf.write("\u010a\7\"\2\2\u010a-\3\2\2\2\u010b\u010c\7\n\2\2\u010c")
-        buf.write("\u010d\7\"\2\2\u010d/\3\2\2\2\u010e\u0118\5\32\16\2\u010f")
+        buf.write("\3\2\2\2\u0104\u0105\7(\2\2\u0105\u0106\5\60\31\2\u0106")
+        buf.write("\u0107\7)\2\2\u0107+\3\2\2\2\u0108\u0109\7\n\2\2\u0109")
+        buf.write("\u010a\7#\2\2\u010a-\3\2\2\2\u010b\u010c\7\13\2\2\u010c")
+        buf.write("\u010d\7#\2\2\u010d/\3\2\2\2\u010e\u0118\5\32\16\2\u010f")
         buf.write("\u0118\5\34\17\2\u0110\u0118\5\36\20\2\u0111\u0118\5\62")
         buf.write("\32\2\u0112\u0118\5*\26\2\u0113\u0118\5\64\33\2\u0114")
         buf.write("\u0118\5 \21\2\u0115\u0118\5,\27\2\u0116\u0118\5.\30\2")
@@ -142,29 +142,29 @@ def serializedATN():
         buf.write("\3\2\2\2\u0117\u0114\3\2\2\2\u0117\u0115\3\2\2\2\u0117")
         buf.write("\u0116\3\2\2\2\u0118\u011b\3\2\2\2\u0119\u0117\3\2\2\2")
         buf.write("\u0119\u011a\3\2\2\2\u011a\61\3\2\2\2\u011b\u0119\3\2")
-        buf.write("\2\2\u011c\u011d\7\16\2\2\u011d\u011e\7#\2\2\u011e\u011f")
-        buf.write("\5\30\r\2\u011f\u0120\7$\2\2\u0120\u0121\5*\26\2\u0121")
-        buf.write("\63\3\2\2\2\u0122\u0123\7\13\2\2\u0123\u0124\7#\2\2\u0124")
-        buf.write("\u0125\5\30\r\2\u0125\u0126\7$\2\2\u0126\u0130\5*\26\2")
-        buf.write("\u0127\u0128\7\f\2\2\u0128\u0129\7\13\2\2\u0129\u012a")
-        buf.write("\7#\2\2\u012a\u012b\5\30\r\2\u012b\u012c\7$\2\2\u012c")
-        buf.write("\u012d\5*\26\2\u012d\u012f\3\2\2\2\u012e\u0127\3\2\2\2")
-        buf.write("\u012f\u0132\3\2\2\2\u0130\u012e\3\2\2\2\u0130\u0131\3")
-        buf.write("\2\2\2\u0131\u0135\3\2\2\2\u0132\u0130\3\2\2\2\u0133\u0134")
-        buf.write("\7\f\2\2\u0134\u0136\5*\26\2\u0135\u0133\3\2\2\2\u0135")
-        buf.write("\u0136\3\2\2\2\u0136\65\3\2\2\2\u0137\u0138\7/\2\2\u0138")
-        buf.write("\u0139\7#\2\2\u0139\u013a\5$\23\2\u013a\u013b\7$\2\2\u013b")
-        buf.write("\67\3\2\2\2\u013c\u013f\5\n\6\2\u013d\u013f\5\f\7\2\u013e")
+        buf.write("\2\2\u011c\u011d\7\17\2\2\u011d\u011e\7$\2\2\u011e\u011f")
+        buf.write("\5\30\r\2\u011f\u0120\7%\2\2\u0120\u0121\5*\26\2\u0121")
+        buf.write("\63\3\2\2\2\u0122\u0123\7\f\2\2\u0123\u0124\7$\2\2\u0124")
+        buf.write("\u0125\5\30\r\2\u0125\u0126\7%\2\2\u0126\u0130\5*\26\2")
+        buf.write("\u0127\u0128\7\r\2\2\u0128\u0129\7\f\2\2\u0129\u012a\7")
+        buf.write("$\2\2\u012a\u012b\5\30\r\2\u012b\u012c\7%\2\2\u012c\u012d")
+        buf.write("\5*\26\2\u012d\u012f\3\2\2\2\u012e\u0127\3\2\2\2\u012f")
+        buf.write("\u0132\3\2\2\2\u0130\u012e\3\2\2\2\u0130\u0131\3\2\2\2")
+        buf.write("\u0131\u0135\3\2\2\2\u0132\u0130\3\2\2\2\u0133\u0134\7")
+        buf.write("\r\2\2\u0134\u0136\5*\26\2\u0135\u0133\3\2\2\2\u0135\u0136")
+        buf.write("\3\2\2\2\u0136\65\3\2\2\2\u0137\u0138\7\60\2\2\u0138\u0139")
+        buf.write("\7$\2\2\u0139\u013a\5$\23\2\u013a\u013b\7%\2\2\u013b\67")
+        buf.write("\3\2\2\2\u013c\u013f\5\n\6\2\u013d\u013f\5\f\7\2\u013e")
         buf.write("\u013c\3\2\2\2\u013e\u013d\3\2\2\2\u013f\u0140\3\2\2\2")
-        buf.write("\u0140\u0141\7/\2\2\u0141\u0142\7#\2\2\u0142\u0143\5(")
-        buf.write("\25\2\u0143\u0144\7$\2\2\u0144\u0145\7\"\2\2\u01459\3")
+        buf.write("\u0140\u0141\7\60\2\2\u0141\u0142\7$\2\2\u0142\u0143\5")
+        buf.write("(\25\2\u0143\u0144\7%\2\2\u0144\u0145\7#\2\2\u01459\3")
         buf.write("\2\2\2\u0146\u0149\5\n\6\2\u0147\u0149\5\f\7\2\u0148\u0146")
         buf.write("\3\2\2\2\u0148\u0147\3\2\2\2\u0149\u014a\3\2\2\2\u014a")
-        buf.write("\u014b\7/\2\2\u014b\u014c\7#\2\2\u014c\u014d\5(\25\2\u014d")
-        buf.write("\u014e\7$\2\2\u014e\u014f\5*\26\2\u014f;\3\2\2\2\37BJ")
-        buf.write("L_m\u0086\u008e\u0090\u009f\u00a7\u00a9\u00bf\u00c3\u00c8")
-        buf.write("\u00ce\u00d6\u00dd\u00e4\u00e8\u00ef\u00f4\u00fa\u0101")
-        buf.write("\u0117\u0119\u0130\u0135\u013e\u0148")
+        buf.write("\u014b\7\60\2\2\u014b\u014c\7$\2\2\u014c\u014d\5(\25\2")
+        buf.write("\u014d\u014e\7%\2\2\u014e\u014f\5*\26\2\u014f;\3\2\2\2")
+        buf.write("\37BJL_m\u0086\u008e\u0090\u009f\u00a7\u00a9\u00bf\u00c3")
+        buf.write("\u00c8\u00ce\u00d6\u00dd\u00e4\u00e8\u00ef\u00f4\u00fa")
+        buf.write("\u0101\u0117\u0119\u0130\u0135\u013e\u0148")
         return buf.getvalue()
 
 
@@ -179,24 +179,24 @@ class naiveCParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "','", "<INVALID>", "'int'", "'void'", 
-                     "'char'", "'long long'", "'break'", "'continue'", "'if'", 
-                     "'else'", "'return'", "'while'", "'+'", "'++'", "'--'", 
-                     "'-'", "'*'", "'/'", "'%'", "'>'", "'<'", "'>='", "'<='", 
-                     "'=='", "'!='", "'!'", "'='", "'&'", "'|'", "'&&'", 
-                     "'||'", "';'", "'('", "')'", "'['", "']'", "'{'", "'}'", 
-                     "'true'", "'false'", "'sizeof'" ]
+                     "'char'", "'long long'", "'double'", "'break'", "'continue'", 
+                     "'if'", "'else'", "'return'", "'while'", "'+'", "'++'", 
+                     "'--'", "'-'", "'*'", "'/'", "'%'", "'>'", "'<'", "'>='", 
+                     "'<='", "'=='", "'!='", "'!'", "'='", "'&'", "'|'", 
+                     "'&&'", "'||'", "';'", "'('", "')'", "'['", "']'", 
+                     "'{'", "'}'", "'true'", "'false'", "'sizeof'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "Include", "TypeInt", "TypeVoid", 
-                      "TypeChar", "TypeLL", "Break", "Continue", "If", "Else", 
-                      "Return", "While", "ADD", "ADDADD", "SUBSUB", "SUB", 
-                      "MUL", "DIV", "MOD", "Greater", "Less", "GreaterEqual", 
-                      "LessEqual", "Equal", "NotEqual", "Not", "AssignOperator", 
-                      "ArithmeticAnd", "ArithmeticOR", "LogicAnd", "LogicOR", 
-                      "Semicolon", "LeftParentheses", "RightParentheses", 
-                      "LeftBracket", "RightBracket", "LeftBrace", "RightBrace", 
-                      "TRUE", "FALSE", "SIZEOF", "PositiveINT", "Char", 
-                      "INT", "ID", "WS", "BlockComment", "LineComment", 
-                      "String" ]
+                      "TypeChar", "TypeLL", "TypeDouble", "Break", "Continue", 
+                      "If", "Else", "Return", "While", "ADD", "ADDADD", 
+                      "SUBSUB", "SUB", "MUL", "DIV", "MOD", "Greater", "Less", 
+                      "GreaterEqual", "LessEqual", "Equal", "NotEqual", 
+                      "Not", "AssignOperator", "ArithmeticAnd", "ArithmeticOR", 
+                      "LogicAnd", "LogicOR", "Semicolon", "LeftParentheses", 
+                      "RightParentheses", "LeftBracket", "RightBracket", 
+                      "LeftBrace", "RightBrace", "TRUE", "FALSE", "SIZEOF", 
+                      "PositiveINT", "Char", "INT", "ID", "WS", "BlockComment", 
+                      "LineComment", "String" ]
 
     RULE_prog = 0
     RULE_r = 1
@@ -243,49 +243,50 @@ class naiveCParser ( Parser ):
     TypeVoid=4
     TypeChar=5
     TypeLL=6
-    Break=7
-    Continue=8
-    If=9
-    Else=10
-    Return=11
-    While=12
-    ADD=13
-    ADDADD=14
-    SUBSUB=15
-    SUB=16
-    MUL=17
-    DIV=18
-    MOD=19
-    Greater=20
-    Less=21
-    GreaterEqual=22
-    LessEqual=23
-    Equal=24
-    NotEqual=25
-    Not=26
-    AssignOperator=27
-    ArithmeticAnd=28
-    ArithmeticOR=29
-    LogicAnd=30
-    LogicOR=31
-    Semicolon=32
-    LeftParentheses=33
-    RightParentheses=34
-    LeftBracket=35
-    RightBracket=36
-    LeftBrace=37
-    RightBrace=38
-    TRUE=39
-    FALSE=40
-    SIZEOF=41
-    PositiveINT=42
-    Char=43
-    INT=44
-    ID=45
-    WS=46
-    BlockComment=47
-    LineComment=48
-    String=49
+    TypeDouble=7
+    Break=8
+    Continue=9
+    If=10
+    Else=11
+    Return=12
+    While=13
+    ADD=14
+    ADDADD=15
+    SUBSUB=16
+    SUB=17
+    MUL=18
+    DIV=19
+    MOD=20
+    Greater=21
+    Less=22
+    GreaterEqual=23
+    LessEqual=24
+    Equal=25
+    NotEqual=26
+    Not=27
+    AssignOperator=28
+    ArithmeticAnd=29
+    ArithmeticOR=30
+    LogicAnd=31
+    LogicOR=32
+    Semicolon=33
+    LeftParentheses=34
+    RightParentheses=35
+    LeftBracket=36
+    RightBracket=37
+    LeftBrace=38
+    RightBrace=39
+    TRUE=40
+    FALSE=41
+    SIZEOF=42
+    PositiveINT=43
+    Char=44
+    INT=45
+    ID=46
+    WS=47
+    BlockComment=48
+    LineComment=49
+    String=50
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -489,6 +490,9 @@ class naiveCParser ( Parser ):
         def TypeLL(self):
             return self.getToken(naiveCParser.TypeLL, 0)
 
+        def TypeDouble(self):
+            return self.getToken(naiveCParser.TypeDouble, 0)
+
         def getRuleIndex(self):
             return naiveCParser.RULE_realTypeID
 
@@ -518,7 +522,7 @@ class naiveCParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 77
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL) | (1 << naiveCParser.TypeDouble))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -604,6 +608,9 @@ class naiveCParser ( Parser ):
         def TypeLL(self):
             return self.getToken(naiveCParser.TypeLL, 0)
 
+        def TypeDouble(self):
+            return self.getToken(naiveCParser.TypeDouble, 0)
+
         def getRuleIndex(self):
             return naiveCParser.RULE_typeIdentifier
 
@@ -633,7 +640,7 @@ class naiveCParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 82
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeVoid) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeVoid) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL) | (1 << naiveCParser.TypeDouble))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -2945,7 +2952,7 @@ class naiveCParser ( Parser ):
             self.state = 279
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL) | (1 << naiveCParser.Break) | (1 << naiveCParser.Continue) | (1 << naiveCParser.If) | (1 << naiveCParser.Return) | (1 << naiveCParser.While) | (1 << naiveCParser.MUL) | (1 << naiveCParser.LeftBrace) | (1 << naiveCParser.ID))) != 0):
+            while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << naiveCParser.TypeInt) | (1 << naiveCParser.TypeChar) | (1 << naiveCParser.TypeLL) | (1 << naiveCParser.TypeDouble) | (1 << naiveCParser.Break) | (1 << naiveCParser.Continue) | (1 << naiveCParser.If) | (1 << naiveCParser.Return) | (1 << naiveCParser.While) | (1 << naiveCParser.MUL) | (1 << naiveCParser.LeftBrace) | (1 << naiveCParser.ID))) != 0):
                 self.state = 277
                 self._errHandler.sync(self)
                 la_ = self._interp.adaptivePredict(self._input,23,self._ctx)
