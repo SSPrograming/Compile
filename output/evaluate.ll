@@ -14,6 +14,12 @@ declare void @"exit"(i32 %".1")
 
 declare i32 @"isdigit"(i32 %".1") 
 
+declare i32 @"isspace"(i32 %".1") 
+
+declare i32 @"getchar"() 
+
+declare i64 @"strlen"(i8* %".1") 
+
 define i32 @"operatorCmp"(i8 %".1", i8 %".2") 
 {
 entry:
@@ -350,25 +356,100 @@ define i32 @"main"()
 {
 entry:
   %"str" = alloca [1024 x i8]
-  %".2" = getelementptr inbounds [22 x i8], [22 x i8]* @"str", i32 0, i32 0
+  %".2" = getelementptr inbounds [22 x i8], [22 x i8]* @"string", i32 0, i32 0
   %".3" = call i32 (i8*, ...) @"printf"(i8* %".2")
-  %".4" = load [1024 x i8], [1024 x i8]* %"str"
-  %".5" = getelementptr inbounds [3 x i8], [3 x i8]* @"str.1", i32 0, i32 0
-  %".6" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
-  %".7" = call i32 (i8*, ...) @"scanf"(i8* %".5", i8* %".6")
+  %"c" = alloca i8
+  store i8 97, i8* %"c"
+  %"i" = alloca i32
+  store i32 0, i32* %"i"
+  br label %"while_cond"
+while_cond:
+  %".7" = load i8, i8* %"c"
+  %".8" = icmp ne i8 %".7", 10
+  br i1 %".8", label %"while_begin", label %"while_end"
+while_begin:
+  %".10" = call i32 @"getchar"()
+  %".11" = trunc i32 %".10" to i8
+  store i8 %".11", i8* %"c"
+  %".13" = load i32, i32* %"i"
+  %".14" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 %".13"
+  %".15" = load i8, i8* %"c"
+  store i8 %".15", i8* %".14"
+  %".17" = load i32, i32* %"i"
+  %".18" = add i32 %".17", 1
+  store i32 %".18", i32* %"i"
+  %".20" = load i8, i8* %"c"
+  %".21" = icmp ne i8 %".20", 10
+  br i1 %".21", label %"while_begin", label %"while_end"
+while_end:
+  %".23" = load i32, i32* %"i"
+  %".24" = sub i32 %".23", 1
+  %".25" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 %".24"
+  store i8 0, i8* %".25"
+  %"str_pro" = alloca [1024 x i8]
+  %"len" = alloca i32
+  %".27" = load [1024 x i8], [1024 x i8]* %"str"
+  %".28" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
+  %".29" = call i64 @"strlen"(i8* %".28")
+  %".30" = trunc i64 %".29" to i32
+  store i32 %".30", i32* %"len"
+  store i32 0, i32* %"i"
+  %"j" = alloca i32
+  store i32 0, i32* %"j"
+  br label %"while_cond.1"
+while_cond.1:
+  %".35" = load i32, i32* %"i"
+  %".36" = load i32, i32* %"len"
+  %".37" = icmp slt i32 %".35", %".36"
+  br i1 %".37", label %"while_begin.1", label %"while_end.1"
+while_begin.1:
+  %".39" = load i32, i32* %"i"
+  %".40" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 %".39"
+  %".41" = load i8, i8* %".40"
+  %".42" = sext i8 %".41" to i32
+  %".43" = call i32 @"isspace"(i32 %".42")
+  %".44" = icmp ne i32 %".43", 0
+  br i1 %".44", label %"while_begin.1.if", label %"while_begin.1.else"
+while_end.1:
+  %".67" = load i32, i32* %"j"
+  %".68" = getelementptr [1024 x i8], [1024 x i8]* %"str_pro", i32 0, i32 %".67"
+  store i8 0, i8* %".68"
   %"res" = alloca double
-  %".8" = load [1024 x i8], [1024 x i8]* %"str"
-  %".9" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
-  %".10" = call double @"evaluate"(i8* %".9")
-  store double %".10", double* %"res"
-  %".12" = load double, double* %"res"
-  %".13" = load [1024 x i8], [1024 x i8]* %"str"
-  %".14" = getelementptr inbounds [36 x i8], [36 x i8]* @"str.2", i32 0, i32 0
-  %".15" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 0
-  %".16" = call i32 (i8*, ...) @"printf"(i8* %".14", i8* %".15", double %".12")
+  %".70" = load [1024 x i8], [1024 x i8]* %"str_pro"
+  %".71" = getelementptr [1024 x i8], [1024 x i8]* %"str_pro", i32 0, i32 0
+  %".72" = call double @"evaluate"(i8* %".71")
+  store double %".72", double* %"res"
+  %".74" = load double, double* %"res"
+  %".75" = load [1024 x i8], [1024 x i8]* %"str_pro"
+  %".76" = getelementptr inbounds [36 x i8], [36 x i8]* @"string.1", i32 0, i32 0
+  %".77" = getelementptr [1024 x i8], [1024 x i8]* %"str_pro", i32 0, i32 0
+  %".78" = call i32 (i8*, ...) @"printf"(i8* %".76", i8* %".77", double %".74")
   ret i32 0
+while_begin.1.if:
+  %".46" = load i32, i32* %"i"
+  %".47" = add i32 %".46", 1
+  store i32 %".47", i32* %"i"
+  br label %"while_begin.1.endif"
+while_begin.1.else:
+  %".50" = load i32, i32* %"j"
+  %".51" = getelementptr [1024 x i8], [1024 x i8]* %"str_pro", i32 0, i32 %".50"
+  %".52" = load i32, i32* %"i"
+  %".53" = getelementptr [1024 x i8], [1024 x i8]* %"str", i32 0, i32 %".52"
+  %".54" = load i8, i8* %".53"
+  store i8 %".54", i8* %".51"
+  %".56" = load i32, i32* %"i"
+  %".57" = add i32 %".56", 1
+  store i32 %".57", i32* %"i"
+  %".59" = load i32, i32* %"j"
+  %".60" = add i32 %".59", 1
+  store i32 %".60", i32* %"j"
+  br label %"while_begin.1.endif"
+while_begin.1.endif:
+  %".63" = load i32, i32* %"i"
+  %".64" = load i32, i32* %"len"
+  %".65" = icmp slt i32 %".63", %".64"
+  br i1 %".65", label %"while_begin.1", label %"while_end.1"
 }
 
-@"str" = constant [22 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e8\a1\a8\e8\be\be\e5\bc\8f\ef\bc\9a\00"
-@"str.1" = constant [3 x i8] c"%s\00"
-@"str.2" = constant [36 x i8] c"\e8\a1\a8\e8\be\be\e5\bc\8f\e8\ae\a1\e7\ae\97\e7\bb\93\e6\9e\9c\e4\b8\ba\ef\bc\9a%s = %f\0a\00"
+@"string" = constant [22 x i8] c"\e8\af\b7\e8\be\93\e5\85\a5\e8\a1\a8\e8\be\be\e5\bc\8f\ef\bc\9a\00"
+@"string.1" = constant [36 x i8] c"\e8\a1\a8\e8\be\be\e5\bc\8f\e8\ae\a1\e7\ae\97\e7\bb\93\e6\9e\9c\e4\b8\ba\ef\bc\9a%s = %f\0a\00"

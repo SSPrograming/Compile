@@ -35,5 +35,12 @@ def init_system(module: ir.Module) -> None:
     # IsDigit Function
     isdigit_ty = ir.FunctionType(int32, [int32])
     ir.Function(module, isdigit_ty, name='isdigit')
+    # IsSpace Function
+    isspace_ty = ir.FunctionType(int32, [int32])
+    ir.Function(module, isspace_ty, name='isspace')
     # GetChar Function
-
+    getchar_ty = ir.FunctionType(int32, [])
+    ir.Function(module, getchar_ty, name='getchar')
+    # Strlen Function
+    strlen_ty = ir.FunctionType(int64, [ir.PointerType(char)])
+    ir.Function(module, strlen_ty, name='strlen')
