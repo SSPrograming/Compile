@@ -25,6 +25,7 @@ testnames = \
 	declare \
 	if_else \
 	sum \
+	fib \
 	basic_io \
 	sort \
 	evaluate \

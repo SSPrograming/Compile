@@ -23,7 +23,7 @@ run: $(output)/$(filename).ll
 	cd $(output) && make run
 
 
-$(output)/$(filename).ll: $(llvmfiles)
+$(output)/$(filename).ll: $(llvmfiles) $(input)/$(filename).c
 	python $(llvm)/main.py $(input)/$(filename).c $(output)/$(filename).ll
 
 $(llvmfiles): $(antlr)/src/$(grammar)
@@ -42,6 +42,7 @@ testnames = \
 	declare \
 	if_else \
 	sum \
+	fib \
 	basic_io \
 	sort \
 	evaluate \
