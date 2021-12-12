@@ -43,6 +43,7 @@ testnames = \
 	if_else \
 	sum \
 	fib \
+	emoji \
 	basic_io \
 	sort \
 	evaluate \
