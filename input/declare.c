@@ -3,11 +3,14 @@
 
 void test();
 
-int main () {
+int main()
+{
     test();
     return 0;
 }
 
-void test() {
+void test()
+{
     printf("test\n");
+    return;
 }

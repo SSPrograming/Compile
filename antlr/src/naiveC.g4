@@ -17,6 +17,7 @@ Include: '#include'  ~[\r\n]* -> skip;
 realTypeID: TypeChar
           | TypeInt
           | TypeLL
+          | TypeDouble
           ;
 
 realTypeIDPointer: realTypeID '*' ;
@@ -26,6 +27,7 @@ typeIdentifier: TypeInt
                | TypeVoid
                | TypeChar
                | TypeLL
+               | TypeDouble
                ;
 
 typeIdentifierPointer: typeIdentifier '*';
@@ -42,6 +44,9 @@ TypeChar: 'char'
 
 TypeLL: 'long long'
       ;
+
+TypeDouble: 'double'
+    ;
 
 Break: 'break'
     ;
@@ -156,26 +161,15 @@ idList: ID ',' idList
       ;
 
 PositiveINT: [1-9][0-9]*;
-Char: '\'' ([\u0000-\u007f]|'\\0') '\'';
+Char: '\'' ([\u0000-\u007f]|'\\0'|'\\t'|'\\n') '\'';
 INT: [-]?[1-9][0-9]* | '0';
 ID : [a-zA-Z_][a-z0-9A-Z_]* ;             // match lower-case identifiers
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
-arithmeticOperator:   ADD
-                    | SUB
-                    | MUL
-                    | DIV
-                    | MOD
-                    | ArithmeticAnd
-                    | ArithmeticOR
-                    ;
-
-expr: expr op=(MUL|DIV) expr    # MulDiv
-    | expr op=(ADD|SUB) expr    # AddSub
-	| '&' ID                    # GetP
-	| '*' expr                  # MakP
-	| '-' expr                  # Negative
-	| '(' (realTypeIDPointer | realTypeID) ')' expr # TypeCast
+expr: '(' (realTypeIDPointer | realTypeID) ')' expr # TypeCast
+    | '-' expr                  # Negative
+    | '*' expr                  # MakP
+    | '&' ID                    # GetP
 	| PositiveINT               # PositiveINT
 	| Char                      # Char
     | INT                       # Int
@@ -185,6 +179,8 @@ expr: expr op=(MUL|DIV) expr    # MulDiv
     | boolExpr                  # TrueFalse
     | ID '[' expr ']'           # ArrayVisit
     | '(' expr ')'              # Parens
+    | expr op=(MUL|DIV) expr    # MulDiv
+    | expr op=(ADD|SUB) expr    # AddSub
     ;
 
 conditionOperator: Greater
@@ -192,9 +188,11 @@ conditionOperator: Greater
                  | Less
                  | LessEqual
                  | Equal
+                 | NotEqual
                  ;
 
-conditionExpr: conditionExpr '&&' conditionExpr  # And
+conditionExpr: '!' conditionExpr # Neg
+             | conditionExpr '&&' conditionExpr  # And
              | conditionExpr '||'  conditionExpr # Or
              | '(' conditionExpr ')' # CondParen
              | expr conditionOperator expr # CondOp

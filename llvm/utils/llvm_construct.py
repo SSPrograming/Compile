@@ -4,7 +4,7 @@ from utils.llvm_definition import *
 def add_global_string_constant(module: ir.Module, string: str) -> ir.GlobalVariable:
     byte_string = bytearray(string.encode())
     ir_string = ir.Constant(ir.ArrayType(char, len(byte_string)), byte_string)
-    g_string = ir.GlobalVariable(module, ir_string.type, module.get_unique_name('str'))
+    g_string = ir.GlobalVariable(module, ir_string.type, module.get_unique_name('string'))
     g_string.global_constant = True
     g_string.initializer = ir_string
     return g_string
@@ -35,3 +35,12 @@ def init_system(module: ir.Module) -> None:
     # IsDigit Function
     isdigit_ty = ir.FunctionType(int32, [int32])
     ir.Function(module, isdigit_ty, name='isdigit')
+    # IsSpace Function
+    isspace_ty = ir.FunctionType(int32, [int32])
+    ir.Function(module, isspace_ty, name='isspace')
+    # GetChar Function
+    getchar_ty = ir.FunctionType(int32, [])
+    ir.Function(module, getchar_ty, name='getchar')
+    # Strlen Function
+    strlen_ty = ir.FunctionType(int64, [ir.PointerType(char)])
+    ir.Function(module, strlen_ty, name='strlen')

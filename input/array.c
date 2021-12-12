@@ -11,18 +11,19 @@ int main()
     printf("a[0] = %d\n", a[0]);
     printf("a[1] = %d\n", a[1]);
     printf("a[2] = %d\n", a[2]);
-    
+
     n = 5;
-    int* b = (int*)malloc(n);
+    int *b = (int *)malloc(n);
     b[0] = 0;
     b[1] = 4;
     b[2] = 2;
     b[4] = 4;
     b[5] = 6;
-    while(n + 1 > 0) {
+    while (n + 1 > 0)
+    {
         printf("b[%d] = %d\n", n, b[n]);
         n = n - 1;
     }
-    free((char*)b);
+    free((char *)b);
     return 0;
 }
