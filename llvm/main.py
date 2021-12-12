@@ -9,13 +9,15 @@ from antlr4 import FileStream
 from antlr4 import CommonTokenStream
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
+    if len(sys.argv) < 3:
         print('Can\'t get filename, use default = \'main\' ')
-        filename = 'main'
+        input_filename = '../input/main.c'
+        output_filename = '../output/main.ll'
     else:
-        filename = sys.argv[1]
-    source = '../input/' + filename + '.c'
-    input_stream = FileStream(source, encoding='utf-8')
+        input_filename = sys.argv[1]
+        output_filename = sys.argv[2]
+
+    input_stream = FileStream(input_filename, encoding='utf-8')
     lexer = naiveCLexer(input_stream)
     token = CommonTokenStream(lexer)
     parser = naiveCParser(token)
@@ -35,6 +37,5 @@ if __name__ == '__main__':
             print(e)
             print('Semantic Error')
         else:
-            target = '../output/' + filename + '.ll'
-            visitor.write(target)
-            print('generate successfully：' + source + ' -> ' + target)
+            visitor.write(output_filename)
+            print('generate successfully：' + input_filename + ' -> ' + output_filename)
