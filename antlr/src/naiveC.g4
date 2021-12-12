@@ -163,7 +163,7 @@ idList: ID ',' idList
 PositiveINT: [1-9][0-9]*;
 Char: '\'' ([\u0000-\u007f]|'\\0'|'\\t'|'\\n') '\'';
 INT: [-]?[1-9][0-9]* | '0';
-ID : ([a-zA-Z_][A-Za-z0-9]*|[\p{Emoji}]) ;             // match lower-case identifiers
+ID : [a-zA-Z_][a-z0-9A-Z_]*|[\p{Emoji}] ;             // match lower-case identifiers
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
 expr: '(' (realTypeIDPointer | realTypeID) ')' expr # TypeCast
