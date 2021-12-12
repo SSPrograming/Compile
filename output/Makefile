@@ -38,7 +38,7 @@ test: $(testfiles)
 		echo 'generate successfully：./input/'$$testname'.ll -> ./output/'$$testname'.s'; \
 	done
 	for testname in $(testnames); do \
-		gcc $$testname.s -o $$testname.out $(CFLAGS); \
+		$(CC) $$testname.s -o $$testname.out $(CFLAGS); \
 		echo 'generate successfully：./input/'$$testname'.s -> ./output/'$$testname'.out'; \
 	done
 	for testname in $(testnames); do \
