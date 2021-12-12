@@ -30,7 +30,7 @@ $(llvmfiles): $(antlr)/src/$(grammar)
 	cd ./antlr && make
 
 clean: 
-	cd $(llvm) && rm -f naiveC*
+	cd $(llvm) && rm -f naiveC* && rm -rf __pycache__
 	cd $(output) && rm -rf *.ll && make clean
 
 testnames = \
